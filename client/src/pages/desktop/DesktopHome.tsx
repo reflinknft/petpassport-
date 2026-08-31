@@ -4,7 +4,7 @@ import ProgressRing from "@/components/ProgressRing";
 import { ASSETS, BRAND_TASKS, CONTENTS, COURSES, MERCHANTS, PARTNERS, REWARDS } from "@/lib/data";
 import { ArrowRight, BarChart3, BookOpen, Coins, Gift, GraduationCap, HeartPulse, MapPin, PawPrint, QrCode, ShieldCheck, Sparkles, Star, Store, Target, TrendingUp, Users } from "lucide-react";
 
-const HERO_PHONE = "/manus-storage/conti-real_ef15ae3b.png";
+const HERO_PHONE = "/manus-storage/pet-jumi_ae641b54.png";
 
 /** 桌機版行銷首頁（Biscuit 式完整平台介紹） */
 export default function DesktopHome() {
