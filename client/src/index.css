@@ -3,6 +3,12 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ============================================================
+   毛孩護照 Pet Passport — 暖陽手帳（Warm Journal）設計系統
+   品牌色：可可棕 #5C2E0B / 暖陽橘 #F26B1D / 奶油白 #FFF9F2
+   字體：Noto Sans TC（中文）+ Nunito（英文數字）
+   ============================================================ */
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -43,39 +49,59 @@
 }
 
 :root {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-600);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-  --radius: 0.65rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.235 0.015 65);
+  /* 品牌核心色（OKLCH） */
+  --brand-brown: oklch(0.34 0.075 55);      /* 可可棕 #5C2E0B */
+  --brand-orange: oklch(0.66 0.19 45);      /* 暖陽橘 #F26B1D */
+  --brand-cream: oklch(0.975 0.012 80);     /* 奶油白 #FFF9F2 */
+  --brand-apricot: oklch(0.945 0.03 80);    /* 淺杏 #FDF1E3 */
+  --brand-matcha: oklch(0.56 0.09 145);     /* 抹茶綠（成功） */
+  --brand-honey: oklch(0.72 0.12 75);       /* 蜂蜜黃（警示） */
+  --brand-brick: oklch(0.52 0.14 35);       /* 磚紅（錯誤） */
+
+  --primary: var(--brand-orange);
+  --primary-foreground: oklch(0.99 0.005 80);
+  --sidebar-primary: var(--brand-orange);
+  --sidebar-primary-foreground: oklch(0.99 0.005 80);
+  --chart-1: var(--brand-orange);
+  --chart-2: var(--brand-brown);
+  --chart-3: var(--brand-matcha);
+  --chart-4: var(--brand-honey);
+  --chart-5: var(--brand-brick);
+  --radius: 1rem;
+  --background: var(--brand-cream);
+  --foreground: var(--brand-brown);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.235 0.015 65);
+  --card-foreground: var(--brand-brown);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.235 0.015 65);
-  --secondary: oklch(0.98 0.001 286.375);
-  --secondary-foreground: oklch(0.4 0.015 65);
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.141 0.005 285.823);
-  --destructive: oklch(0.577 0.245 27.325);
+  --popover-foreground: var(--brand-brown);
+  --secondary: var(--brand-apricot);
+  --secondary-foreground: var(--brand-brown);
+  --muted: var(--brand-apricot);
+  --muted-foreground: oklch(0.5 0.05 60);
+  --accent: var(--brand-apricot);
+  --accent-foreground: var(--brand-brown);
+  --destructive: var(--brand-brick);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.92 0.004 286.32);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.623 0.214 259.815);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.235 0.015 65);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.623 0.214 259.815);
+  --border: oklch(0.9 0.02 70);
+  --input: oklch(0.9 0.02 70);
+  --ring: var(--brand-orange);
+  --sidebar: var(--brand-cream);
+  --sidebar-foreground: var(--brand-brown);
+  --sidebar-accent: var(--brand-apricot);
+  --sidebar-accent-foreground: var(--brand-brown);
+  --sidebar-border: oklch(0.9 0.02 70);
+  --sidebar-ring: var(--brand-orange);
+}
+
+@theme inline {
+  --color-brand-brown: var(--brand-brown);
+  --color-brand-orange: var(--brand-orange);
+  --color-brand-cream: var(--brand-cream);
+  --color-brand-apricot: var(--brand-apricot);
+  --color-brand-matcha: var(--brand-matcha);
+  --color-brand-honey: var(--brand-honey);
+  --color-brand-brick: var(--brand-brick);
+  --font-sans: "Nunito", "Noto Sans TC", ui-sans-serif, system-ui, sans-serif;
 }
 
 .dark {
@@ -174,4 +200,144 @@
       max-width: 1280px; /* Standard content width */
     }
   }
+}
+
+/* ============================================================
+   暖陽手帳 — 全域元件樣式
+   ============================================================ */
+
+@layer components {
+  /* 手機殼：桌機展示時的裝置框架 */
+  .phone-shell {
+    width: 390px;
+    height: 844px;
+    max-height: calc(100vh - 2rem);
+    border-radius: 44px;
+    box-shadow:
+      0 0 0 10px oklch(0.25 0.04 55),
+      0 0 0 12px oklch(0.85 0.02 70),
+      0 30px 80px -20px oklch(0.34 0.075 55 / 0.35);
+    overflow: hidden;
+    position: relative;
+    background: var(--brand-cream);
+  }
+  @media (max-width: 767px) {
+    .phone-shell {
+      width: 100%;
+      height: 100dvh;
+      max-height: none;
+      border-radius: 0;
+      box-shadow: none;
+    }
+  }
+
+  /* 紙感卡片 */
+  .paper-card {
+    background: oklch(1 0 0);
+    border-radius: var(--radius);
+    box-shadow:
+      0 1px 2px oklch(0.34 0.075 55 / 0.05),
+      0 8px 24px -12px oklch(0.34 0.075 55 / 0.12);
+  }
+
+  /* 戳章：完成狀態的印章效果 */
+  .stamp {
+    border: 2.5px dashed var(--brand-orange);
+    color: var(--brand-orange);
+    border-radius: 9999px;
+    transform: rotate(-6deg);
+    font-weight: 800;
+    letter-spacing: 0.05em;
+  }
+
+  /* 票券撕線：中間虛線與半圓缺口 */
+  .ticket-notch {
+    position: relative;
+  }
+  .ticket-notch::before,
+  .ticket-notch::after {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-radius: 9999px;
+    background: var(--brand-cream);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .ticket-notch::before { left: -12px; }
+  .ticket-notch::after { right: -12px; }
+
+  /* 護照虛線框 */
+  .passport-frame {
+    border: 1.5px dashed oklch(0.66 0.19 45 / 0.5);
+    border-radius: var(--radius);
+  }
+
+  /* 手帳標籤頁（貼紙感） */
+  .journal-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.375rem 0.875rem;
+    background: var(--brand-apricot);
+    border: 1.5px dashed oklch(0.66 0.19 45 / 0.45);
+    border-radius: 9999px;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--brand-brown);
+    transform: rotate(-1.5deg);
+    box-shadow: 0 2px 6px oklch(0.34 0.075 55 / 0.08);
+  }
+
+  /* 收據條（點數紀錄感） */
+  .receipt-strip {
+    background: repeating-linear-gradient(
+      to bottom,
+      oklch(1 0 0),
+      oklch(1 0 0) 26px,
+      oklch(0.975 0.012 80) 26px,
+      oklch(0.975 0.012 80) 27px
+    );
+    border: 1.5px dashed oklch(0.66 0.19 45 / 0.35);
+    border-radius: var(--radius);
+  }
+
+  /* 貼紙微旋轉 */
+  .sticker-l { transform: rotate(-1.2deg); }
+  .sticker-r { transform: rotate(1.2deg); }
+  .sticker-l2 { transform: rotate(-2deg); }
+  .sticker-r2 { transform: rotate(2deg); }
+
+  /* 入場動效 */
+  .journal-enter {
+    animation: journal-in 0.45s cubic-bezier(0.23, 1, 0.32, 1) both;
+  }
+  .journal-enter-1 { animation-delay: 0.06s; }
+  .journal-enter-2 { animation-delay: 0.12s; }
+  .journal-enter-3 { animation-delay: 0.18s; }
+  .journal-enter-4 { animation-delay: 0.24s; }
+  .journal-enter-5 { animation-delay: 0.3s; }
+
+  /* 戳章落定動效 */
+  .stamp-in {
+    animation: stamp-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+
+  /* 點數滾動 */
+  .tabular { font-variant-numeric: tabular-nums; }
+}
+
+@keyframes journal-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes stamp-in {
+  0% { opacity: 0; transform: scale(1.3) rotate(-12deg); }
+  100% { opacity: 1; transform: scale(1) rotate(-6deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .journal-enter, .stamp-in { animation: none !important; }
 }

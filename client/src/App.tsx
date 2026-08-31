@@ -4,15 +4,88 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import Home from "./pages/Home";
+import { DemoProvider } from "./contexts/DemoContext";
+import PhoneFrame from "./components/PhoneFrame";
 
+// 啟動與引導
+import Splash from "./pages/onboarding/Splash";
+import Welcome from "./pages/onboarding/Welcome";
+import Login from "./pages/onboarding/Login";
+import Guide from "./pages/onboarding/Guide";
+import PetForm from "./pages/onboarding/PetForm";
+import PetDone from "./pages/onboarding/PetDone";
+// 會員
+import MemberHome from "./pages/home/MemberHome";
+import PetProfile from "./pages/pet/PetProfile";
+import PetEdit from "./pages/pet/PetEdit";
+import PetCard from "./pages/pet/PetCard";
+import Wallet from "./pages/wallet/Wallet";
+import History from "./pages/wallet/History";
+import TaskCenter from "./pages/tasks/TaskCenter";
+import TaskDetail from "./pages/tasks/TaskDetail";
+import TaskDone from "./pages/tasks/TaskDone";
+import RewardHome from "./pages/rewards/RewardHome";
+import RewardDetail from "./pages/rewards/RewardDetail";
+import RedeemConfirm from "./pages/rewards/RedeemConfirm";
+import RedeemSuccess from "./pages/rewards/RedeemSuccess";
+import MyCoupons from "./pages/coupons/MyCoupons";
+import CouponDetail from "./pages/coupons/CouponDetail";
+import Redeemed from "./pages/coupons/Redeemed";
+import MerchantList from "./pages/merchants/MerchantList";
+import MerchantDetail from "./pages/merchants/MerchantDetail";
+import MemberCenter from "./pages/me/MemberCenter";
+import Settings from "./pages/me/Settings";
+import AiAssistant from "./pages/ai/AiAssistant";
+import Notifications from "./pages/notifications/Notifications";
+import DesktopHome from "./pages/desktop/DesktopHome";
 
 function Router() {
   return (
     <Switch>
-      <Route path={"/"} component={Home} />
+      {/* 桌機版行銷首頁 */}
+      <Route path={"/desktop"} component={DesktopHome} />
+
+      {/* 手機版 DEMO（包在手機殼中） */}
+      <Route>
+        {() => (
+          <PhoneFrame>
+            <Switch>
+              <Route path={"/"} component={Splash} />
+              <Route path={"/welcome"} component={Welcome} />
+              <Route path={"/login"} component={Login} />
+              <Route path={"/guide"} component={Guide} />
+              <Route path={"/pet/new"} component={PetForm} />
+              <Route path={"/pet/done"} component={PetDone} />
+              <Route path={"/home"} component={MemberHome} />
+              <Route path={"/pets/:id"} component={PetProfile} />
+              <Route path={"/pets/:id/edit"} component={PetEdit} />
+              <Route path={"/pets/:id/card"} component={PetCard} />
+              <Route path={"/wallet"} component={Wallet} />
+              <Route path={"/wallet/history"} component={History} />
+              <Route path={"/tasks"} component={TaskCenter} />
+              <Route path={"/tasks/:id"} component={TaskDetail} />
+              <Route path={"/tasks/:id/done"} component={TaskDone} />
+              <Route path={"/rewards"} component={RewardHome} />
+              <Route path={"/rewards/:id"} component={RewardDetail} />
+              <Route path={"/rewards/:id/confirm"} component={RedeemConfirm} />
+              <Route path={"/rewards/:id/success"} component={RedeemSuccess} />
+              <Route path={"/coupons"} component={MyCoupons} />
+              <Route path={"/coupons/:id"} component={CouponDetail} />
+              <Route path={"/coupons/:id/redeemed"} component={Redeemed} />
+              <Route path={"/merchants"} component={MerchantList} />
+              <Route path={"/merchants/:id"} component={MerchantDetail} />
+              <Route path={"/me"} component={MemberCenter} />
+              <Route path={"/settings"} component={Settings} />
+              <Route path={"/ai"} component={AiAssistant} />
+              <Route path={"/notifications"} component={Notifications} />
+              <Route path={"/favorites"} component={MemberCenter} />
+              <Route path={"/support"} component={MemberCenter} />
+              <Route component={NotFound} />
+            </Switch>
+          </PhoneFrame>
+        )}
+      </Route>
       <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
       <Route component={NotFound} />
     </Switch>
   );
@@ -28,12 +101,13 @@ function App() {
     <ErrorBoundary>
       <ThemeProvider
         defaultTheme="light"
-        // switchable
       >
-        <TooltipProvider>
-          <Toaster />
-          <Router />
-        </TooltipProvider>
+        <DemoProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Router />
+          </TooltipProvider>
+        </DemoProvider>
       </ThemeProvider>
     </ErrorBoundary>
   );
