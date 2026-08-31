@@ -56,6 +56,10 @@ import BusinessDashboard from "./pages/business/BusinessDashboard";
 import CampaignList from "./pages/business/CampaignList";
 import CampaignNew from "./pages/business/CampaignNew";
 import BusinessLanding from "./pages/business/BusinessLanding";
+import AudienceList from "./pages/business/AudienceList";
+import VerificationCenter from "./pages/business/VerificationCenter";
+import Sampling from "./pages/business/Sampling";
+import Reports from "./pages/business/Reports";
 import MerchantLogin from "./pages/merchant/MerchantLogin";
 import MerchantHome from "./pages/merchant/MerchantHome";
 import MerchantRedemptions from "./pages/merchant/MerchantRedemptions";
@@ -64,6 +68,15 @@ import MerchantSupport from "./pages/merchant/MerchantSupport";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminOrganizations from "./pages/admin/AdminOrganizations";
+import AdminCampaigns from "./pages/admin/AdminCampaigns";
+import AdminMembers from "./pages/admin/AdminMembers";
+import AdminRisk from "./pages/admin/AdminRisk";
+import AdminPoints from "./pages/admin/AdminPoints";
+import AdminRedemptions from "./pages/admin/AdminRedemptions";
+import AdminSupport from "./pages/admin/AdminSupport";
+import AdminSettlement from "./pages/admin/AdminSettlement";
+import AdminSettings from "./pages/admin/AdminSettings";
+import AdminAudit from "./pages/admin/AdminAudit";
 import Consent from "./pages/me/Consent";
 
 function Router() {
@@ -120,6 +133,10 @@ function Router() {
               <Route path={"/business/campaigns"} component={CampaignList} />
               <Route path={"/business/campaigns/new"} component={CampaignNew} />
               <Route path={"/business"} component={BusinessLanding} />
+              <Route path={"/business/audiences"} component={AudienceList} />
+              <Route path={"/business/verification"} component={VerificationCenter} />
+              <Route path={"/business/sampling"} component={Sampling} />
+              <Route path={"/business/reports"} component={Reports} />
               <Route path={"/merchant/login"} component={MerchantLogin} />
               <Route path={"/merchant/home"} component={MerchantHome} />
               <Route path={"/merchant/redemptions"} component={MerchantRedemptions} />
@@ -128,6 +145,15 @@ function Router() {
               <Route path={"/admin/login"} component={AdminLogin} />
               <Route path={"/admin/dashboard"} component={AdminDashboard} />
               <Route path={"/admin/organizations"} component={AdminOrganizations} />
+              <Route path={"/admin/campaigns"} component={AdminCampaigns} />
+              <Route path={"/admin/members"} component={AdminMembers} />
+              <Route path={"/admin/risk"} component={AdminRisk} />
+              <Route path={"/admin/points"} component={AdminPoints} />
+              <Route path={"/admin/redemptions"} component={AdminRedemptions} />
+              <Route path={"/admin/support"} component={AdminSupport} />
+              <Route path={"/admin/settlement"} component={AdminSettlement} />
+              <Route path={"/admin/settings"} component={AdminSettings} />
+              <Route path={"/admin/audit"} component={AdminAudit} />
               <Route path={"/consent"} component={Consent} />
               <Route path={"/favorites"} component={MemberCenter} />
               <Route path={"/support"} component={MemberCenter} />

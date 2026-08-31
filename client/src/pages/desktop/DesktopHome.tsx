@@ -433,6 +433,11 @@ export default function DesktopHome() {
               <p className="text-[10px] text-brand-sub">Pet Passport · 毛孩點數平台 DEMO</p>
             </div>
           </div>
+          <div className="flex items-center gap-6 text-xs font-bold text-brand-sub">
+            <button onClick={() => navigate("/business")} className="hover:text-brand-purple transition-colors">企業合作</button>
+            <button onClick={() => navigate("/merchant/login")} className="hover:text-brand-purple transition-colors">商家登入</button>
+            <button onClick={() => navigate("/admin/login")} className="hover:text-brand-purple transition-colors">平台營運</button>
+          </div>
           <p className="text-xs text-brand-sub">© 2026 毛孩護照 Pet Passport. 僅供產品演示。</p>
         </div>
       </footer>

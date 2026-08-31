@@ -1,5 +1,5 @@
 import { useLocation } from "wouter";
-import { ArrowRight, BarChart3, Building2, Coins, Gift, Store, Target, Users } from "lucide-react";
+import { ArrowRight, BarChart3, Building2, Coins, Gift, ShieldCheck, Store, Target, Users } from "lucide-react";
 import BrandIcon from "@/components/BrandIcon";
 
 /** B2B2C 品牌合作分頁 */
@@ -82,6 +82,97 @@ export default function BusinessLanding() {
             <div className="mt-8 h-48 rounded-2xl bg-brand-lilac/50 flex items-center justify-center">
               <BarChart3 size={48} className="text-brand-purple/40" />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 品牌合作好處 */}
+      <section className="py-16">
+        <div className="max-w-6xl mx-auto px-8">
+          <div className="text-center">
+            <span className="journal-tab">WHY US</span>
+            <h2 className="mt-4 text-4xl font-black text-brand-ink">品牌合作好處</h2>
+            <p className="mt-3 text-brand-sub max-w-xl mx-auto">不只曝光，更是可衡量、可追蹤、可再行銷的會員營運。</p>
+          </div>
+          <div className="mt-10 grid md:grid-cols-3 gap-6">
+            {[
+              { icon: Target, title: "精準觸達", desc: "依品種、年齡、地區、需求標籤建立受眾，只讓對的飼主看到對的活動。" },
+              { icon: BarChart3, title: "成效可衡量", desc: "曝光、參加、驗證、核銷、成交全漏斗追蹤，CPA 一目了然。" },
+              { icon: Users, title: "會員資產", desc: "活動結束後，會員持續互動，形成品牌自有流量池。" },
+              { icon: Coins, title: "點數經濟", desc: "點數作為互動媒介，降低現金補貼成本，提升參與意願。" },
+              { icon: Store, title: "線下導流", desc: "線上領券、線下核銷，直接帶動門店來客與業績。" },
+              { icon: ShieldCheck, title: "合規安全", desc: "分層同意、個資最小揭露、全操作稽核，符合法規要求。" },
+            ].map((b, i) => (
+              <div key={b.title} className={`paper-card p-6 journal-enter journal-enter-${i + 1}`}>
+                <div className="w-12 h-12 rounded-full bg-brand-lilac flex items-center justify-center">
+                  <b.icon size={22} className="text-brand-purple" />
+                </div>
+                <p className="mt-3 font-black text-brand-ink">{b.title}</p>
+                <p className="mt-2 text-sm text-brand-sub">{b.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 商務合作模式 */}
+      <section className="py-16 bg-white/50">
+        <div className="max-w-6xl mx-auto px-8">
+          <div className="text-center">
+            <span className="journal-tab">BUSINESS MODEL</span>
+            <h2 className="mt-4 text-4xl font-black text-brand-ink">商務合作模式</h2>
+            <p className="mt-3 text-brand-sub max-w-xl mx-auto">依據品牌規模與目標，提供彈性計費方式。</p>
+          </div>
+          <div className="mt-10 grid md:grid-cols-3 gap-6">
+            {[
+              { name: "品牌任務", price: "按有效完成計費", desc: "問卷、試用、影片觀看", features: ["精準受眾投放", "任務驗證與審核", "點數預算管理", "成效報表"], cta: "了解詳情" },
+              { name: "精準派樣", price: "專案報價", desc: "樣品申請、資格審核、履約與回饋", features: ["樣品庫存管理", "資格自動審核", "物流追蹤", "回購追蹤"], cta: "預約洽談", primary: true },
+              { name: "門店營運", price: "月費 + 核銷抽成", desc: "核銷、發點、會員標籤與報表", features: ["多門店管理", "店員權限", "核銷後台", "會員洞察"], cta: "了解詳情" },
+            ].map((p, i) => (
+              <div key={p.name} className={`paper-card p-6 text-center journal-enter journal-enter-${i + 1} ${p.primary ? "ring-2 ring-brand-purple shadow-xl shadow-brand-purple/20" : ""}`}>
+                {p.primary && <span className="inline-block px-3 py-1 rounded-full bg-brand-purple text-white text-[10px] font-bold mb-3">最受歡迎</span>}
+                <h3 className="font-black text-brand-ink text-lg">{p.name}</h3>
+                <p className="mt-1 text-xl font-black text-brand-purple">{p.price}</p>
+                <p className="mt-1 text-xs text-brand-sub">{p.desc}</p>
+                <ul className="mt-5 space-y-2.5 text-sm text-brand-sub text-left">
+                  {p.features.map((f) => (
+                    <li key={f} className="flex items-center gap-2"><ShieldCheck size={14} className="text-brand-mint shrink-0" /> {f}</li>
+                  ))}
+                </ul>
+                <button className={`mt-6 w-full h-11 rounded-full font-bold text-sm active:scale-[0.97] transition-transform ${p.primary ? "bg-brand-purple text-white shadow-lg shadow-brand-purple/30" : "border-2 border-brand-purple/20 text-brand-purple-dark"}`}>
+                  {p.cta}
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 後台功能示意 */}
+      <section className="py-16">
+        <div className="max-w-6xl mx-auto px-8">
+          <div className="text-center">
+            <span className="journal-tab">BACKEND</span>
+            <h2 className="mt-4 text-4xl font-black text-brand-ink">後台功能示意</h2>
+            <p className="mt-3 text-brand-sub max-w-xl mx-auto">企業後台、商家後台與平台 Admin，三位一體的營運中樞。</p>
+          </div>
+          <div className="mt-10 grid md:grid-cols-3 gap-6">
+            {[
+              { title: "企業後台", desc: "活動建立、受眾管理、任務驗證、派樣、報表、帳務", path: "/business/login" },
+              { title: "商家後台", desc: "掃碼核銷、消費發點、核銷紀錄、異常申訴", path: "/merchant/login" },
+              { title: "平台 Admin", desc: "企業審核、活動審核、風控、點數、票券、客服、結算", path: "/admin/login" },
+            ].map((b, i) => (
+              <button key={b.title} onClick={() => navigate(b.path)} className={`paper-card p-6 text-left journal-enter journal-enter-${i + 1} active:scale-[0.98] transition-transform`}>
+                <div className="w-12 h-12 rounded-full bg-brand-lilac flex items-center justify-center">
+                  <Building2 size={22} className="text-brand-purple" />
+                </div>
+                <p className="mt-3 font-black text-brand-ink">{b.title}</p>
+                <p className="mt-2 text-sm text-brand-sub">{b.desc}</p>
+                <span className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-brand-purple">
+                  進入後台 <ArrowRight size={14} />
+                </span>
+              </button>
+            ))}
           </div>
         </div>
       </section>
