@@ -132,7 +132,7 @@ export default function TaskDetail() {
             <h2 className="font-black text-brand-ink text-sm">驗證方式</h2>
             <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
               {task.type === "content" && "透過追蹤連結前往 HEHO Pet，回站後系統自動驗證閱讀狀態。"}
-              {task.type === "course" && "於 Teachify 完成課程後，系統將自動驗證；若串接延遲，將顯示「待驗證」並由營運補發。"}
+              {task.type === "course" && "於毛小孩照護學院完成課程後，系統將自動驗證；若串接延遲，將顯示「待驗證」並由營運補發。"}
               {task.type === "visit" && "到店出示會員 QR，由店家掃碼核銷後自動入點。"}
               {(task.type === "daily" || task.type === "newbie") && "於站內完成操作後立即驗證入點。"}
             </p>
@@ -166,7 +166,7 @@ export default function TaskDetail() {
         <div className="fixed inset-0 z-50 flex items-end justify-center bg-brand-purple-dark/40" onClick={() => setShowLeaveTip(false)}>
           <div className="w-full max-w-[390px] bg-white rounded-t-3xl p-6 pb-8 journal-enter" onClick={(e) => e.stopPropagation()}>
             <div className="w-10 h-1 rounded-full bg-border mx-auto mb-5" />
-            <h2 className="font-black text-brand-ink">即將前往{task.type === "content" ? " HEHO Pet" : " Teachify"}</h2>
+            <h2 className="font-black text-brand-ink">即將前往{task.type === "content" ? " HEHO Pet" : " 毛小孩照護學院"}</h2>
             <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
               完成{task.type === "content" ? "閱讀" : "課程"}後，請回到本頁，系統會自動驗證並發放 {task.points} 點。若忘記回站，可於「任務中心 → 進行中」找到此任務。
             </p>

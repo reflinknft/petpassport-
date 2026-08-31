@@ -184,8 +184,8 @@ export const TASKS: Task[] = [
     deadline: "2026/09/30",
     progress: 40,
     status: "ongoing",
-    description: "在 Teachify 完成《新手飼主必學的基礎照護》課程，預估 25 分鐘。",
-    steps: ["前往 Teachify 課程頁", "完成三個單元與測驗", "系統驗證後自動入點"],
+    description: "在毛小孩照護學院完成《新手飼主必學的基礎照護》課程，預估 25 分鐘。",
+    steps: ["前往毛小孩照護學院課程頁", "完成三個單元與測驗", "系統驗證後自動入點"],
   },
   {
     id: "t4",
@@ -309,7 +309,7 @@ export const TRANSACTIONS: Transaction[] = [
   { id: "tx2", title: "內容任務｜熟齡照護文章", points: 20, date: "2026/08/22", source: "HEHO Pet", status: "done", serial: "TXN-20260822-014" },
   { id: "tx3", title: "兌換｜洗護折抵券", points: -500, date: "2026/08/25", source: "權益中心", status: "done", serial: "TXN-20260825-006" },
   { id: "tx4", title: "活動補發｜夏日毛孩節", points: 50, date: "2026/08/28", source: "營運補發", status: "done", serial: "TXN-20260828-003" },
-  { id: "tx5", title: "課程任務｜基礎照護課", points: 100, date: "待生效", source: "Teachify", status: "pending", serial: "TXN-PENDING-002" },
+  { id: "tx5", title: "課程任務｜基礎照護課", points: 100, date: "待生效", source: "毛小孩照護學院", status: "pending", serial: "TXN-PENDING-002" },
 ];
 
 export const COUPONS: Coupon[] = [
@@ -356,12 +356,18 @@ export const CONTENTS = [
 export const COURSES = [
   {
     id: "co1",
-    source: "Teachify",
+    source: "毛小孩照護學院",
     title: "新手飼主必學的基礎照護",
     image: ASSETS.contentCourse,
     duration: "25 分鐘",
     points: 100,
   },
+];
+
+/** 合作夥伴連結 */
+export const PARTNERS = [
+  { name: "毛小孩照護學院", url: "https://maolearn.kaik.io/", desc: "線上寵物照護課程" },
+  { name: "HEHO 寵物媒體", url: "https://hehopets.com/", desc: "寵物健康內容" },
 ];
 
 /** 每日照護任務（場景二） */

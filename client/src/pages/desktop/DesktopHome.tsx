@@ -2,7 +2,7 @@ import { ArrowRight, BookOpen, Coins, Gift, GraduationCap, HeartPulse, MapPin, P
 import { useLocation } from "wouter";
 import BrandIcon from "@/components/BrandIcon";
 import ProgressRing from "@/components/ProgressRing";
-import { ASSETS, BRAND_TASKS, CONTENTS, COURSES, MERCHANTS, REWARDS } from "@/lib/data";
+import { ASSETS, BRAND_TASKS, CONTENTS, COURSES, MERCHANTS, PARTNERS, REWARDS } from "@/lib/data";
 
 const HERO_PHONE = "/manus-storage/hero-dog-phone_1d7f527b.png";
 
@@ -118,7 +118,7 @@ export default function DesktopHome() {
               { Icon: PawPrint, t: "毛孩護照", d: "建立毛孩數位身份，記錄基本資料、健康問卷、疫苗與驅蟲狀態。", c: "bg-brand-purple/10 text-brand-purple" },
               { Icon: HeartPulse, t: "每日照護任務", d: "散步、飲水、刷牙、梳毛等日常任務，完成打卡累積連續天數。", c: "bg-brand-mint/10 text-brand-mint" },
               { Icon: BookOpen, t: "內容任務", d: "閱讀 HEHO Pet 文章、完成問答驗驗證，邊學邊賺點。", c: "bg-brand-coral/10 text-brand-coral" },
-              { Icon: GraduationCap, t: "課程任務", d: "Teachify 課程學習，完成試看或正式課程獲得高額點數。", c: "bg-brand-purple/10 text-brand-purple" },
+              { Icon: GraduationCap, t: "課程任務", d: "毛小孩照護學院課程學習，完成試看或正式課程獲得高額點數。", c: "bg-brand-purple/10 text-brand-purple" },
               { Icon: Store, t: "到店消費", d: "出示會員 QR 碼，門店掃碼累積消費點數，首次到店加碼。", c: "bg-brand-mint/10 text-brand-mint" },
               { Icon: TrendingUp, t: "品牌任務", d: "品牌贊助問卷、試用、影片觀看，精準媒合目標飼主。", c: "bg-brand-coral/10 text-brand-coral" },
             ].map(({ Icon, t, d, c }, i) => (
@@ -202,7 +202,7 @@ export default function DesktopHome() {
           <div className="text-center max-w-2xl mx-auto">
             <span className="journal-tab">LEARN & EARN</span>
             <h2 className="mt-4 text-4xl font-black gradient-title">邊學邊賺</h2>
-            <p className="mt-3 text-brand-sub">HEHO Pet 文章與 Teachify 課程，完成即得點。</p>
+            <p className="mt-3 text-brand-sub">HEHO Pet 文章與毛小孩照護學院課程，完成即得點。</p>
           </div>
           <div className="mt-10 grid md:grid-cols-2 gap-6">
             {CONTENTS.map((c, i) => (
@@ -250,6 +250,35 @@ export default function DesktopHome() {
                   <p className="mt-1 text-xs text-brand-sub">{b.audience}</p>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 合作夥伴 */}
+      <section className="py-16 bg-white/50">
+        <div className="max-w-4xl mx-auto px-8 text-center">
+          <span className="journal-tab">PARTNERS</span>
+          <h2 className="mt-4 text-3xl font-black gradient-title">合作夥伴</h2>
+          <p className="mt-3 text-brand-sub">與優質寵物內容與課程平台合作，讓學習也能累積點數。</p>
+          <div className="mt-8 grid sm:grid-cols-2 gap-4">
+            {PARTNERS.map((p) => (
+              <a
+                key={p.name}
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="paper-card p-6 flex items-center gap-4 text-left hover:shadow-lg transition-shadow active:scale-[0.98]"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-brand-lilac flex items-center justify-center shrink-0">
+                  {p.name.includes("學院") ? <GraduationCap size={22} className="text-brand-purple" /> : <BookOpen size={22} className="text-brand-purple" />}
+                </div>
+                <div>
+                  <p className="font-black text-brand-ink">{p.name}</p>
+                  <p className="text-xs text-brand-sub mt-0.5">{p.desc}</p>
+                </div>
+                <ArrowRight size={16} className="ml-auto text-brand-purple shrink-0" />
+              </a>
             ))}
           </div>
         </div>
