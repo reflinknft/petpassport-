@@ -4,7 +4,7 @@ import BrandIcon from "@/components/BrandIcon";
 import ProgressRing from "@/components/ProgressRing";
 import { ASSETS, BRAND_TASKS, CONTENTS, COURSES, MERCHANTS, PARTNERS, REWARDS } from "@/lib/data";
 
-const HERO_PHONE = "/manus-storage/hero-dog-phone_1d7f527b.png";
+const HERO_PHONE = "/manus-storage/hero-dog-phone-green-yellow_e5470bd8.png";
 
 /** 桌機版行銷首頁（Biscuit 式完整平台介紹） */
 export default function DesktopHome() {
