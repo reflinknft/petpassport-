@@ -363,3 +363,73 @@ export const COURSES = [
     points: 100,
   },
 ];
+
+/** 每日照護任務（場景二） */
+export interface DailyTask {
+  id: string;
+  icon: string;
+  title: string;
+  points: number;
+  done: boolean;
+}
+
+export const DAILY_TASKS: DailyTask[] = [
+  { id: "d1", icon: "🚶", title: "每日散步 20 分鐘", points: 5, done: true },
+  { id: "d2", icon: "💧", title: "補充飲水", points: 3, done: true },
+  { id: "d3", icon: "🪥", title: "刷牙", points: 5, done: false },
+  { id: "d4", icon: "🖐️", title: "梳毛", points: 3, done: false },
+  { id: "d5", icon: "⚖️", title: "記錄體重", points: 5, done: false },
+];
+
+/** 品牌贊助任務（場景六） */
+export interface BrandTask {
+  id: string;
+  brand: string;
+  title: string;
+  points: number;
+  deadline: string;
+  image: string;
+  description: string;
+  steps: string[];
+  audience: string;
+}
+
+export const BRAND_TASKS: BrandTask[] = [
+  {
+    id: "b1",
+    brand: "汪星球鮮食",
+    title: "完成品牌問卷，領取試用包",
+    points: 50,
+    deadline: "2026/09/30",
+    image: ASSETS.contentNutrition,
+    description: "完成 5 題品牌問卷，即可獲得 50 點，並有機會收到熟齡犬鮮食試用包。",
+    steps: ["前往品牌問卷頁", "完成全部 5 題", "提交後系統自動發點"],
+    audience: "7 歲以上犬貓飼主",
+  },
+  {
+    id: "b2",
+    brand: "毛舒服保健品",
+    title: "觀看關節保健介紹影片",
+    points: 30,
+    deadline: "2026/10/15",
+    image: ASSETS.rewardHealth,
+    description: "觀看 2 分鐘關節保健介紹影片，完成後獲得 30 點。",
+    steps: ["前往影片頁", "完整觀看影片", "回答 1 題確認問題"],
+    audience: "熟齡犬飼主",
+  },
+];
+
+/** 點數規則（場景五） */
+export const POINTS_RULES = [
+  { behavior: "合作門店消費", rule: "每 100 元 1 點", limit: "依商戶合約" },
+  { behavior: "首次到店", rule: "額外 50 點", limit: "每店一次" },
+  { behavior: "指定服務體驗", rule: "100–300 點", limit: "活動期間" },
+  { behavior: "填寫服務評價", rule: "20 點", limit: "每筆交易一次" },
+  { behavior: "推薦好友到店", rule: "100 點", limit: "好友完成消費後" },
+];
+
+/** 健康提醒 */
+export const HEALTH_REMINDERS = [
+  { id: "h1", icon: "💉", title: "疫苗提醒", body: "Jumi 的年度疫苗將於 10 月到期，建議提前預約。", level: "info" },
+  { id: "h2", icon: "🦷", title: "口腔照護", body: "已 3 天未完成刷牙任務，記得幫 Jumi 清潔口腔。", level: "warn" },
+];

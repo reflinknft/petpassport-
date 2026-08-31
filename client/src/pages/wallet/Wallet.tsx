@@ -88,11 +88,23 @@ export default function Wallet() {
         </div>
 
         {/* 規則入口 */}
-        <button className="mt-4 w-full passport-frame p-4 flex items-center gap-3 bg-white/60 active:scale-[0.98] transition-transform journal-enter journal-enter-3">
+        <button onClick={() => navigate("/wallet/rules")} className="mt-4 w-full passport-frame p-4 flex items-center gap-3 bg-white/60 active:scale-[0.98] transition-transform journal-enter journal-enter-3">
           <Info size={16} className="text-brand-purple shrink-0" />
           <p className="text-xs text-muted-foreground text-left">
             點數如何取得、使用與到期？<span className="font-bold text-brand-ink">查看點數規則</span>
           </p>
+        </button>
+
+        {/* 會員碼入口 */}
+        <button onClick={() => navigate("/wallet/code")} className="mt-3 w-full paper-card p-4 flex items-center gap-3 active:scale-[0.98] transition-transform journal-enter journal-enter-4">
+          <div className="w-10 h-10 rounded-xl bg-brand-purple/15 flex items-center justify-center shrink-0">
+            <Coins size={18} className="text-brand-purple" />
+          </div>
+          <div className="text-left">
+            <p className="text-sm font-bold text-brand-ink">我的會員碼</p>
+            <p className="text-[11px] text-muted-foreground">到店出示 QR，消費累積點數</p>
+          </div>
+          <ChevronRight size={16} className="ml-auto text-muted-foreground" />
         </button>
       </div>
     </div>

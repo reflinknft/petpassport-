@@ -1,16 +1,19 @@
-import { Bell, BookOpen, ChevronRight, Flame, GraduationCap, MapPin, Sparkles } from "lucide-react";
+import { Bell, BookOpen, ChevronRight, Flame, GraduationCap, MapPin, Sparkles, Target, TrendingUp } from "lucide-react";
 import { useLocation } from "wouter";
 import BottomNav from "@/components/BottomNav";
 import ProgressRing from "@/components/ProgressRing";
 import { MerchantCard, RewardCard, TaskCard } from "@/components/cards";
 import { useDemo } from "@/contexts/DemoContext";
-import { CONTENTS, COURSES, MEMBER, MERCHANTS, REWARDS, TASKS } from "@/lib/data";
+import { BRAND_TASKS, CONTENTS, COURSES, DAILY_TASKS, HEALTH_REMINDERS, MEMBER, MERCHANTS, REWARDS, TASKS } from "@/lib/data";
 
 /** P07 會員首頁 */
 export default function MemberHome() {
   const [, navigate] = useLocation();
   const { currentPet, setCurrentPet, pets, points } = useDemo();
   const todayTasks = TASKS.filter((t) => t.status !== "done").slice(0, 3);
+  const dailyDone = DAILY_TASKS.filter((d) => d.done).length;
+  const dailyTotal = DAILY_TASKS.length;
+  const dailyPercent = Math.round((dailyDone / dailyTotal) * 100);
 
   return (
     <div className="min-h-full bg-brand-cream flex flex-col">
@@ -55,32 +58,46 @@ export default function MemberHome() {
         </div>
       </section>
 
-      {/* 寵物照護卡（含圓形進度環） */}
+      {/* 今日照護進度（Biscuit 式首屏） */}
       <section className="px-5 mt-4 journal-enter journal-enter-1">
-        <div onClick={() => navigate(`/pets/${currentPet.id}`)} role="button" tabIndex={0} onKeyDown={(e) => e.key === "Enter" && navigate(`/pets/${currentPet.id}`)} className="w-full text-left paper-card overflow-hidden active:scale-[0.98] transition-transform cursor-pointer">
-          <div className="relative h-36">
-            <img src={currentPet.photo} alt={currentPet.name} className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-brand-purple-dark/60 via-transparent to-transparent" />
-            <div className="absolute bottom-3 left-4 right-4 flex items-end justify-between">
-              <div>
-                <p className="text-white font-black text-lg">{currentPet.name}</p>
-                <p className="text-white/80 text-[11px]">{currentPet.breed} · {currentPet.age} 歲 · {currentPet.gender === "female" ? "女生" : "男生"}</p>
+        <div className="paper-card p-5">
+          <div className="flex items-center gap-5">
+            <ProgressRing value={dailyPercent} size={88} stroke={9}>
+              <div className="text-center">
+                <p className="text-xl font-black text-brand-purple tabular">{dailyDone}/{dailyTotal}</p>
+                <p className="text-[9px] font-bold text-brand-sub">今日任務</p>
+              </div>
+            </ProgressRing>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-black text-brand-ink">今日照護進度</p>
+              <p className="mt-1 text-xs text-brand-sub">完成 {dailyDone} 項，再完成 {dailyTotal - dailyDone} 項可領今日滿額點數</p>
+              <div className="mt-2.5 flex items-center gap-3">
+                <span className="flex items-center gap-1 text-[11px] font-bold text-brand-coral">
+                  <Flame size={12} /> 連續 6 天
+                </span>
+                <span className="flex items-center gap-1 text-[11px] font-bold text-brand-mint">
+                  <Target size={12} /> 本週目標 4/5
+                </span>
               </div>
             </div>
           </div>
-          <div className="p-4 flex items-center gap-4">
-            <ProgressRing value={currentPet.completeness} size={64} stroke={7}>
-              <span className="text-sm font-black text-brand-purple tabular">{currentPet.completeness}%</span>
-            </ProgressRing>
-            <div className="flex-1 min-w-0">
-              <p className="text-xs font-bold text-brand-ink">護照資料完整度</p>
-              <div className="mt-1.5 flex gap-1.5 flex-wrap">
-                {currentPet.tags.map((t) => (
-                  <span key={t} className="text-[10px] font-bold px-2 py-1 rounded-full bg-brand-lilac text-brand-purple-dark">{t}</span>
-                ))}
-              </div>
+          {/* 每日任務快覽 */}
+          <div className="mt-4 pt-4 border-t border-dashed border-border">
+            <div className="flex gap-2 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              {DAILY_TASKS.map((d) => (
+                <button
+                  key={d.id}
+                  onClick={() => navigate("/daily")}
+                  className={`flex flex-col items-center gap-1 px-3 py-2 rounded-xl shrink-0 transition-all active:scale-95 ${
+                    d.done ? "bg-brand-mint/15" : "bg-brand-lilac"
+                  }`}
+                >
+                  <span className="text-lg">{d.icon}</span>
+                  <span className={`text-[10px] font-bold ${d.done ? "text-brand-mint" : "text-brand-purple-dark"}`}>{d.title}</span>
+                  <span className="text-[9px] text-brand-sub">+{d.points} 點</span>
+                </button>
+              ))}
             </div>
-            <ChevronRight size={16} className="text-muted-foreground shrink-0" />
           </div>
         </div>
       </section>
@@ -113,8 +130,23 @@ export default function MemberHome() {
         </div>
       </section>
 
+      {/* 健康提醒 */}
+      <section className="px-5 mt-4 journal-enter journal-enter-3">
+        <div className="space-y-2.5">
+          {HEALTH_REMINDERS.map((h) => (
+            <div key={h.id} className={`paper-card p-3.5 flex items-start gap-3 border-l-4 ${h.level === "warn" ? "border-l-brand-coral" : "border-l-brand-mint"}`}>
+              <span className="text-lg shrink-0">{h.icon}</span>
+              <div className="flex-1 min-w-0">
+                <p className="text-xs font-bold text-brand-ink">{h.title}</p>
+                <p className="text-[11px] text-brand-sub mt-0.5 leading-relaxed">{h.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* 今日任務 */}
-      <section className="px-5 mt-6 journal-enter journal-enter-3">
+      <section className="px-5 mt-6 journal-enter journal-enter-4">
         <div className="flex items-center justify-between">
           <h2 className="font-black text-brand-ink">今日任務</h2>
           <button onClick={() => navigate("/tasks")} className="text-xs font-bold text-brand-purple flex items-center">
@@ -128,8 +160,33 @@ export default function MemberHome() {
         </div>
       </section>
 
+      {/* 品牌任務 */}
+      <section className="px-5 mt-6 journal-enter journal-enter-5">
+        <div className="flex items-center justify-between">
+          <h2 className="font-black text-brand-ink flex items-center gap-1.5"><TrendingUp size={16} className="text-brand-coral" /> 品牌任務</h2>
+          <span className="text-[10px] font-bold text-brand-sub">贊助</span>
+        </div>
+        <div className="mt-3 space-y-2.5">
+          {BRAND_TASKS.map((b) => (
+            <button
+              key={b.id}
+              onClick={() => navigate(`/brand-tasks/${b.id}`)}
+              className="paper-card w-full text-left p-4 flex items-center gap-3 active:scale-[0.98] transition-transform"
+            >
+              <img src={b.image} alt={b.brand} className="w-14 h-14 rounded-xl object-cover shrink-0" />
+              <div className="flex-1 min-w-0">
+                <p className="text-[10px] font-bold text-brand-coral">{b.brand}</p>
+                <p className="text-sm font-bold text-brand-ink truncate">{b.title}</p>
+                <p className="text-[10px] text-brand-sub mt-0.5">{b.audience}</p>
+              </div>
+              <span className="text-brand-coral font-extrabold text-sm tabular shrink-0">+{b.points} 點</span>
+            </button>
+          ))}
+        </div>
+      </section>
+
       {/* 為你推薦權益 */}
-      <section className="mt-6 journal-enter journal-enter-4">
+      <section className="mt-6 journal-enter journal-enter-5">
         <div className="px-5 flex items-center justify-between">
           <h2 className="font-black text-brand-ink">為 {currentPet.name} 推薦</h2>
           <button onClick={() => navigate("/rewards")} className="text-xs font-bold text-brand-purple flex items-center">
@@ -144,7 +201,7 @@ export default function MemberHome() {
       </section>
 
       {/* 附近商家 */}
-      <section className="px-5 mt-6 journal-enter journal-enter-5">
+      <section className="px-5 mt-6">
         <div className="flex items-center justify-between">
           <h2 className="font-black text-brand-ink flex items-center gap-1.5"><MapPin size={16} className="text-brand-purple" /> 附近商家</h2>
           <button onClick={() => navigate("/merchants")} className="text-xs font-bold text-brand-purple flex items-center">

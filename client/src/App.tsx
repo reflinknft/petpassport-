@@ -21,9 +21,16 @@ import PetEdit from "./pages/pet/PetEdit";
 import PetCard from "./pages/pet/PetCard";
 import Wallet from "./pages/wallet/Wallet";
 import History from "./pages/wallet/History";
+import MemberCode from "./pages/wallet/MemberCode";
+import PointsRules from "./pages/wallet/PointsRules";
 import TaskCenter from "./pages/tasks/TaskCenter";
 import TaskDetail from "./pages/tasks/TaskDetail";
 import TaskDone from "./pages/tasks/TaskDone";
+import ContentBridge from "./pages/tasks/ContentBridge";
+import CourseBridge from "./pages/tasks/CourseBridge";
+import Verify from "./pages/tasks/Verify";
+import BrandTaskDetail from "./pages/tasks/BrandTaskDetail";
+import DailyCheckin from "./pages/daily/DailyCheckin";
 import RewardHome from "./pages/rewards/RewardHome";
 import RewardDetail from "./pages/rewards/RewardDetail";
 import RedeemConfirm from "./pages/rewards/RedeemConfirm";
@@ -62,9 +69,16 @@ function Router() {
               <Route path={"/pets/:id/card"} component={PetCard} />
               <Route path={"/wallet"} component={Wallet} />
               <Route path={"/wallet/history"} component={History} />
+              <Route path={"/wallet/code"} component={MemberCode} />
+              <Route path={"/wallet/rules"} component={PointsRules} />
               <Route path={"/tasks"} component={TaskCenter} />
               <Route path={"/tasks/:id"} component={TaskDetail} />
               <Route path={"/tasks/:id/done"} component={TaskDone} />
+              <Route path={"/tasks/content/:id"} component={ContentBridge} />
+              <Route path={"/tasks/course/:id"} component={CourseBridge} />
+              <Route path={"/tasks/verify/:id"} component={Verify} />
+              <Route path={"/brand-tasks/:id"} component={BrandTaskDetail} />
+              <Route path={"/daily"} component={DailyCheckin} />
               <Route path={"/rewards"} component={RewardHome} />
               <Route path={"/rewards/:id"} component={RewardDetail} />
               <Route path={"/rewards/:id/confirm"} component={RedeemConfirm} />

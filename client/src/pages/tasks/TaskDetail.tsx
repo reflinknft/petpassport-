@@ -37,6 +37,31 @@ export default function TaskDetail() {
       navigate(`/tasks/${task.id}/done`);
       return;
     }
+    if (task.type === "content") {
+      navigate("/tasks/content/a1");
+      return;
+    }
+    if (task.type === "course") {
+      navigate("/tasks/course/co1");
+      return;
+    }
+    if (task.type === "visit") {
+      navigate("/wallet/code");
+      return;
+    }
+    if (task.type === "daily") {
+      navigate("/daily");
+      return;
+    }
+    setStatus("claimable");
+  };
+
+  const handleCtaOld = () => {
+    if (status === "claimable") {
+      addPoints(task.points);
+      navigate(`/tasks/${task.id}/done`);
+      return;
+    }
     if (task.type === "content" || task.type === "course") {
       setShowLeaveTip(true);
       return;
