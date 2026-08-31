@@ -3,16 +3,40 @@ import { useLocation } from "wouter";
 import ProgressRing from "@/components/ProgressRing";
 import { MerchantCard, RewardCard, TaskCard } from "@/components/cards";
 import { useDemo } from "@/contexts/DemoContext";
-import { BRAND_TASKS, CONTENTS, COURSES, DAILY_TASKS, HEALTH_REMINDERS, MEMBER, MERCHANTS, REWARDS, TASKS } from "@/lib/data";
+import { useAsyncData } from "@/hooks/useAsyncData";
+import { api } from "@/lib/api";
+import { HomeSkeleton, Skeleton } from "@/components/Skeleton";
+import { MEMBER } from "@/lib/data";
 
 /** P07 會員首頁 */
 export default function MemberHome() {
   const [, navigate] = useLocation();
   const { currentPet, setCurrentPet, pets, points } = useDemo();
-  const todayTasks = TASKS.filter((t) => t.status !== "done").slice(0, 3);
-  const dailyDone = DAILY_TASKS.filter((d) => d.done).length;
-  const dailyTotal = DAILY_TASKS.length;
-  const dailyPercent = Math.round((dailyDone / dailyTotal) * 100);
+  const { data: dailyTasks, loading: dailyLoading } = useAsyncData(() => api.getDailyTasks());
+  const { data: tasks, loading: tasksLoading } = useAsyncData(() => api.getTasks());
+  const { data: rewards, loading: rewardsLoading } = useAsyncData(() => api.getRewards());
+  const { data: merchants, loading: merchantsLoading } = useAsyncData(() => api.getMerchants());
+  const { data: contents, loading: contentsLoading } = useAsyncData(() => api.getContents());
+  const { data: courses, loading: coursesLoading } = useAsyncData(() => api.getCourses());
+  const { data: brandTasks, loading: brandTasksLoading } = useAsyncData(() => api.getBrandTasks());
+  const { data: healthReminders, loading: healthLoading } = useAsyncData(() => api.getHealthReminders());
+
+  const todayTasks = tasks?.filter((t) => t.status !== "done").slice(0, 3) ?? [];
+  const dailyDone = dailyTasks?.filter((d) => d.done).length ?? 0;
+  const dailyTotal = dailyTasks?.length ?? 0;
+  const dailyPercent = dailyTotal > 0 ? Math.round((dailyDone / dailyTotal) * 100) : 0;
+
+  if (dailyLoading || tasksLoading || rewardsLoading || merchantsLoading || contentsLoading || coursesLoading || brandTasksLoading || healthLoading) {
+    return (
+      <div className="min-h-full bg-brand-cream">
+        <div className="px-5 pt-4 flex items-center justify-between">
+          <Skeleton className="h-8 w-32" />
+          <Skeleton className="w-10 h-10 rounded-full" />
+        </div>
+        <HomeSkeleton />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-full bg-brand-cream flex flex-col">
@@ -83,7 +107,7 @@ export default function MemberHome() {
           {/* 每日任務快覽 */}
           <div className="mt-4 pt-4 border-t border-dashed border-border">
             <div className="flex gap-2 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-              {DAILY_TASKS.map((d) => (
+              {dailyTasks?.map((d) => (
                 <button
                   key={d.id}
                   onClick={() => navigate("/daily")}
@@ -132,7 +156,7 @@ export default function MemberHome() {
       {/* 健康提醒 */}
       <section className="px-5 mt-4 journal-enter journal-enter-3">
         <div className="space-y-2.5">
-          {HEALTH_REMINDERS.map((h) => (
+          {healthReminders?.map((h) => (
             <div key={h.id} className={`paper-card p-3.5 flex items-start gap-3 border-l-4 ${h.level === "warn" ? "border-l-brand-coral" : "border-l-brand-mint"}`}>
               <span className="text-lg shrink-0">{h.icon}</span>
               <div className="flex-1 min-w-0">
@@ -166,7 +190,7 @@ export default function MemberHome() {
           <span className="text-[10px] font-bold text-brand-sub">贊助</span>
         </div>
         <div className="mt-3 space-y-2.5">
-          {BRAND_TASKS.map((b) => (
+          {brandTasks?.map((b) => (
             <button
               key={b.id}
               onClick={() => navigate(`/brand-tasks/${b.id}`)}
@@ -193,7 +217,7 @@ export default function MemberHome() {
           </button>
         </div>
         <div className="mt-3 flex gap-3 overflow-x-auto px-5 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {REWARDS.map((r, i) => (
+          {rewards?.map((r, i) => (
             <RewardCard key={r.id} reward={r} index={i} />
           ))}
         </div>
@@ -208,7 +232,7 @@ export default function MemberHome() {
           </button>
         </div>
         <div className="mt-3 space-y-3">
-          {MERCHANTS.slice(0, 2).map((m, i) => (
+          {merchants?.slice(0, 2).map((m, i) => (
             <MerchantCard key={m.id} merchant={m} index={i} />
           ))}
         </div>
@@ -218,7 +242,7 @@ export default function MemberHome() {
       <section className="px-5 mt-6 pb-6">
         <h2 className="font-black text-brand-ink">精選內容與課程</h2>
         <div className="mt-3 space-y-3">
-          {CONTENTS.map((c) => (
+          {contents?.map((c) => (
             <button key={c.id} onClick={() => navigate("/tasks/t2")} className="paper-card w-full text-left overflow-hidden flex active:scale-[0.98] transition-transform">
               <img src={c.image} alt={c.title} className="w-24 h-20 object-cover shrink-0" />
               <div className="flex-1 min-w-0 p-3">
@@ -228,7 +252,7 @@ export default function MemberHome() {
               </div>
             </button>
           ))}
-          {COURSES.map((c) => (
+          {courses?.map((c) => (
             <button key={c.id} onClick={() => navigate("/tasks/t3")} className="paper-card w-full text-left overflow-hidden flex active:scale-[0.98] transition-transform">
               <img src={c.image} alt={c.title} className="w-24 h-20 object-cover shrink-0" />
               <div className="flex-1 min-w-0 p-3">

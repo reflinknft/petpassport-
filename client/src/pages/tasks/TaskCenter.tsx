@@ -2,9 +2,11 @@ import { useState } from "react";
 import { Flame } from "lucide-react";
 import TopBar from "@/components/TopBar";
 import { TaskCard } from "@/components/cards";
-import { TASKS } from "@/lib/data";
 import { Crown } from "lucide-react";
 import { useLocation } from "wouter";
+import { useAsyncData } from "@/hooks/useAsyncData";
+import { api } from "@/lib/api";
+import { ListSkeleton, Skeleton } from "@/components/Skeleton";
 
 const TABS = ["推薦", "進行中", "已完成"] as const;
 
@@ -12,11 +14,32 @@ const TABS = ["推薦", "進行中", "已完成"] as const;
 export default function TaskCenter() {
   const [tab, setTab] = useState<(typeof TABS)[number]>("推薦");
   const [, navigate] = useLocation();
-  const list = TASKS.filter((t) => {
+  const { data: tasks, loading } = useAsyncData(() => api.getTasks());
+
+  const list = tasks?.filter((t) => {
     if (tab === "進行中") return t.status === "ongoing" || t.status === "pending" || t.status === "claimable";
     if (tab === "已完成") return t.status === "done";
     return t.status === "available" || t.status === "claimable";
-  });
+  }) ?? [];
+
+  if (loading) {
+    return (
+      <div className="min-h-full bg-brand-cream flex flex-col">
+        <TopBar title="任務中心" showBell />
+        <div className="px-5 pt-4">
+          <Skeleton className="h-16 w-full rounded-2xl" />
+        </div>
+        <div className="px-5 pt-4 flex gap-2">
+          {TABS.map((t) => (
+            <Skeleton key={t} className="h-9 w-20 rounded-full" />
+          ))}
+        </div>
+        <div className="flex-1 px-5 pt-4 pb-6">
+          <ListSkeleton count={4} />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-full bg-brand-cream flex flex-col">

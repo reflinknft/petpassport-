@@ -3,7 +3,7 @@
  * 目前回傳假資料，未來替換為真實 fetch 呼叫
  */
 
-import { BRAND_TASKS, CONTENTS, COUPONS, COURSES, DAILY_TASKS, HEALTH_REMINDERS, MEMBER, MERCHANTS, NOTIFICATIONS, PETS, POINTS_RULES, REWARDS, TASKS, TRANSACTIONS } from "./data";
+import { AMBASSADOR, BRAND_TASKS, CONTENTS, COUPONS, COURSES, DAILY_TASKS, HEALTH_REMINDERS, MEMBER, MERCHANTS, NOTIFICATIONS, PETS, POINTS_RULES, REFERRALS, REWARDS, TASKS, TRANSACTIONS } from "./data";
 
 const delay = (ms = 300) => new Promise((r) => setTimeout(r, ms));
 
@@ -48,4 +48,10 @@ export const api = {
 
   // 點數規則
   getPointsRules: async () => { await delay(); return POINTS_RULES; },
+
+  // 大使推薦
+  getReferrals: async () => { await delay(); return REFERRALS; },
+
+  // 大使資料
+  getAmbassador: async () => { await delay(); return AMBASSADOR; },
 };

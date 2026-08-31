@@ -4,7 +4,9 @@ import { useLocation } from "wouter";
 import TopBar from "@/components/TopBar";
 import { RewardCard } from "@/components/cards";
 import { useDemo } from "@/contexts/DemoContext";
-import { REWARDS } from "@/lib/data";
+import { useAsyncData } from "@/hooks/useAsyncData";
+import { api } from "@/lib/api";
+import { ListSkeleton, Skeleton } from "@/components/Skeleton";
 
 const CATS = ["全部", "洗護美容", "醫療保健", "用品零食"] as const;
 
@@ -13,7 +15,31 @@ export default function RewardHome() {
   const [, navigate] = useLocation();
   const { points } = useDemo();
   const [cat, setCat] = useState<(typeof CATS)[number]>("全部");
-  const list = REWARDS.filter((r) => cat === "全部" || r.category === cat);
+  const { data: rewards, loading } = useAsyncData(() => api.getRewards());
+
+  const list = rewards?.filter((r) => cat === "全部" || r.category === cat) ?? [];
+
+  if (loading) {
+    return (
+      <div className="min-h-full bg-brand-cream flex flex-col">
+        <TopBar title="權益中心" showBell />
+        <div className="px-5 pt-4">
+          <Skeleton className="h-16 w-full rounded-2xl" />
+        </div>
+        <div className="px-5 pt-4">
+          <Skeleton className="h-11 w-full rounded-full" />
+        </div>
+        <div className="px-5 pt-4 flex gap-2">
+          {CATS.map((c) => (
+            <Skeleton key={c} className="h-9 w-20 rounded-full" />
+          ))}
+        </div>
+        <div className="flex-1 px-5 pt-4 pb-6">
+          <ListSkeleton count={4} />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-full bg-brand-cream flex flex-col">

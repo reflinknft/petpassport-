@@ -2,7 +2,9 @@ import { useState } from "react";
 import { useLocation } from "wouter";
 import TopBar from "@/components/TopBar";
 import { CouponCard } from "@/components/cards";
-import { COUPONS } from "@/lib/data";
+import { useAsyncData } from "@/hooks/useAsyncData";
+import { api } from "@/lib/api";
+import { ListSkeleton, Skeleton } from "@/components/Skeleton";
 
 const TABS = ["可使用", "已使用", "已失效"] as const;
 
@@ -11,7 +13,25 @@ export default function MyCoupons() {
   const [, navigate] = useLocation();
   const [tab, setTab] = useState<(typeof TABS)[number]>("可使用");
   const statusMap = { 可使用: "usable", 已使用: "used", 已失效: "expired" } as const;
-  const list = COUPONS.filter((c) => c.status === statusMap[tab]);
+  const { data: coupons, loading } = useAsyncData(() => api.getCoupons());
+
+  const list = coupons?.filter((c) => c.status === statusMap[tab]) ?? [];
+
+  if (loading) {
+    return (
+      <div className="min-h-full bg-brand-cream">
+        <TopBar showBack title="我的票券" />
+        <div className="px-5 pt-4 flex gap-2">
+          {TABS.map((t) => (
+            <Skeleton key={t} className="h-9 w-20 rounded-full" />
+          ))}
+        </div>
+        <div className="px-5 pt-4 pb-8">
+          <ListSkeleton count={3} />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-full bg-brand-cream">

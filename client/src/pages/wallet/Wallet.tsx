@@ -2,13 +2,39 @@ import { ArrowDownLeft, ArrowUpRight, ChevronRight, Coins, Flame, Hourglass, Inf
 import { useLocation } from "wouter";
 import TopBar from "@/components/TopBar";
 import { useDemo } from "@/contexts/DemoContext";
-import { MEMBER, TRANSACTIONS } from "@/lib/data";
+import { MEMBER } from "@/lib/data";
+import { useAsyncData } from "@/hooks/useAsyncData";
+import { api } from "@/lib/api";
+import { ListSkeleton, Skeleton } from "@/components/Skeleton";
 
 /** P12 點數錢包 */
 export default function Wallet() {
   const [, navigate] = useLocation();
   const { points } = useDemo();
-  const recent = TRANSACTIONS.slice(0, 4);
+  const { data: transactions, loading } = useAsyncData(() => api.getTransactions());
+
+  const recent = transactions?.slice(0, 4) ?? [];
+
+  if (loading) {
+    return (
+      <div className="min-h-full bg-brand-cream">
+        <TopBar showBack title="點數錢包" />
+        <div className="px-5 pt-5 pb-8">
+          <Skeleton className="h-48 w-full rounded-3xl" />
+          <div className="mt-4 grid grid-cols-2 gap-3">
+            <Skeleton className="h-20 rounded-2xl" />
+            <Skeleton className="h-20 rounded-2xl" />
+          </div>
+          <div className="mt-6">
+            <Skeleton className="h-5 w-24" />
+            <div className="mt-3">
+              <ListSkeleton count={4} />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-full bg-brand-cream">

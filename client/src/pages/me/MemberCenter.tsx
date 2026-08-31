@@ -2,12 +2,38 @@ import { ChevronRight, Crown, Headset, Heart, IdCard, Settings, Ticket, Wallet }
 import { useLocation } from "wouter";
 import TopBar from "@/components/TopBar";
 import { useDemo } from "@/contexts/DemoContext";
-import { MEMBER } from "@/lib/data";
+import { useAsyncData } from "@/hooks/useAsyncData";
+import { api } from "@/lib/api";
+import { Skeleton } from "@/components/Skeleton";
 
 /** P33 會員中心 */
 export default function MemberCenter() {
   const [, navigate] = useLocation();
   const { pets, points } = useDemo();
+  const { data: member, loading } = useAsyncData(() => api.getMember());
+
+  if (loading) {
+    return (
+      <div className="min-h-full bg-brand-cream flex flex-col">
+        <TopBar title="我的" showBell />
+        <div className="px-5 pt-5">
+          <Skeleton className="h-32 w-full rounded-3xl" />
+        </div>
+        <div className="px-5 mt-6">
+          <Skeleton className="h-5 w-24" />
+          <div className="mt-3 flex gap-3">
+            <Skeleton className="h-16 flex-1 rounded-2xl" />
+            <Skeleton className="h-16 flex-1 rounded-2xl" />
+          </div>
+        </div>
+        <div className="px-5 mt-6 space-y-2.5">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <Skeleton key={i} className="h-16 w-full rounded-2xl" />
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   const menu = [
     { icon: Wallet, label: "點數錢包", desc: `${points.toLocaleString()} 點`, path: "/wallet" },
@@ -28,11 +54,11 @@ export default function MemberCenter() {
             <div className="flex items-center gap-4">
               <div className="w-14 h-14 rounded-full bg-brand-purple flex items-center justify-center text-2xl font-black">毛</div>
               <div className="flex-1">
-                <p className="font-black text-lg">{MEMBER.name}</p>
-                <p className="text-[11px] text-white/60 font-mono">{MEMBER.memberId}</p>
+                <p className="font-black text-lg">{member?.name}</p>
+                <p className="text-[11px] text-white/60 font-mono">{member?.memberId}</p>
               </div>
               <span className="flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full bg-brand-coral/25 text-brand-coral">
-                <Crown size={12} /> {MEMBER.level}
+                <Crown size={12} /> {member?.level}
               </span>
             </div>
             <div className="mt-4 pt-4 border-t border-white/10 flex justify-between text-center">

@@ -2,14 +2,34 @@ import { useState } from "react";
 import { Map } from "lucide-react";
 import TopBar from "@/components/TopBar";
 import { MerchantCard } from "@/components/cards";
-import { MERCHANTS } from "@/lib/data";
+import { useAsyncData } from "@/hooks/useAsyncData";
+import { api } from "@/lib/api";
+import { ListSkeleton, Skeleton } from "@/components/Skeleton";
 
 const CATS = ["全部", "洗護美容", "醫療保健", "用品零食"] as const;
 
 /** P29 商家列表 */
 export default function MerchantList() {
   const [cat, setCat] = useState<(typeof CATS)[number]>("全部");
-  const list = MERCHANTS.filter((m) => cat === "全部" || m.category === cat);
+  const { data: merchants, loading } = useAsyncData(() => api.getMerchants());
+
+  const list = merchants?.filter((m) => cat === "全部" || m.category === cat) ?? [];
+
+  if (loading) {
+    return (
+      <div className="min-h-full bg-brand-cream flex flex-col">
+        <TopBar title="合作商家" showBell />
+        <div className="px-5 pt-4 flex gap-2">
+          {CATS.map((c) => (
+            <Skeleton key={c} className="h-9 w-20 rounded-full" />
+          ))}
+        </div>
+        <div className="flex-1 px-5 pt-4 pb-6">
+          <ListSkeleton count={4} />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-full bg-brand-cream flex flex-col">
