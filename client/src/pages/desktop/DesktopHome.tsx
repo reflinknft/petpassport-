@@ -4,6 +4,8 @@ import BrandIcon from "@/components/BrandIcon";
 import ProgressRing from "@/components/ProgressRing";
 import { ASSETS, MERCHANTS, REWARDS } from "@/lib/data";
 
+const HERO_PHONE = "/manus-storage/hero-dog-phone_1d7f527b.png";
+
 /** 桌機版首頁（Biscuit 式 1440px 行銷頁） */
 export default function DesktopHome() {
   const [, navigate] = useLocation();
@@ -34,45 +36,37 @@ export default function DesktopHome() {
         </div>
       </header>
 
-      {/* Hero：雙色漸層大標題 + 手持手機感 */}
+      {/* Hero：Biscuit 式中央對齊 + 狗狗與手機並置 */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 glow-bg" />
-        <div className="relative max-w-6xl mx-auto px-8 pt-16 pb-20 grid lg:grid-cols-2 gap-12 items-center">
-          <div className="journal-enter">
-            <span className="journal-tab">毛孩點數平台 · DEMO</span>
-            <h1 className="mt-5 text-[52px] leading-[1.1] font-black gradient-title">
-              照顧毛孩，<br />也累積每一份回饋
-            </h1>
-            <p className="mt-5 text-lg text-brand-sub leading-relaxed max-w-md">
-              記錄每一次照護、完成任務、閱讀與上課，都能累積毛孩點，兌換洗護、健檢與用品優惠。
-            </p>
-            <div className="mt-8 flex gap-4">
-              <button
-                onClick={() => navigate("/welcome")}
-                className="h-13 px-8 rounded-full bg-brand-purple text-white font-bold shadow-xl shadow-brand-purple/35 active:scale-[0.97] transition-transform flex items-center gap-2"
-              >
-                開始體驗 DEMO <ArrowRight size={18} />
-              </button>
-              <a href="#rewards" className="h-13 px-8 rounded-full border-2 border-brand-purple/20 font-bold text-brand-purple-dark flex items-center active:scale-[0.97] transition-transform">
-                先看看權益
-              </a>
-            </div>
-            {/* 數據 */}
-            <div className="mt-12 grid grid-cols-3 gap-4 max-w-md">
-              {[["1,280", "DEMO 可用點數"], ["5", "可體驗任務"], ["3", "合作商家類型"]].map(([n, l]) => (
-                <div key={l} className="paper-card p-4 text-center">
-                  <p className="text-2xl font-black text-brand-purple tabular">{n}</p>
-                  <p className="text-[11px] text-brand-sub mt-1">{l}</p>
-                </div>
-              ))}
-            </div>
+        <div className="relative max-w-4xl mx-auto px-8 pt-14 pb-0 text-center">
+          <span className="journal-tab journal-enter">毛孩點數平台 · DEMO</span>
+          <h1 className="mt-5 text-[56px] leading-[1.08] font-black gradient-title journal-enter journal-enter-1">
+            照顧毛孩，<br />也累積每一份回饋
+          </h1>
+          <p className="mt-5 text-lg text-brand-sub leading-relaxed max-w-xl mx-auto journal-enter journal-enter-2">
+            記錄每一次照護、完成任務、閱讀與上課，都能累積毛孩點，兌換洗護、健檢與用品優惠。
+          </p>
+          <div className="mt-8 flex justify-center gap-4 journal-enter journal-enter-3">
+            <button
+              onClick={() => navigate("/welcome")}
+              className="h-13 px-8 rounded-full bg-brand-purple text-white font-bold shadow-xl shadow-brand-purple/35 active:scale-[0.97] transition-transform flex items-center gap-2"
+            >
+              開始體驗 DEMO <ArrowRight size={18} />
+            </button>
+            <a href="#rewards" className="h-13 px-8 rounded-full border-2 border-brand-purple/20 font-bold text-brand-purple-dark flex items-center active:scale-[0.97] transition-transform">
+              先看看權益
+            </a>
           </div>
-          <div className="relative journal-enter journal-enter-2">
-            <div className="rounded-[2.5rem] overflow-hidden shadow-2xl shadow-brand-purple/20 rotate-1">
-              <img src={ASSETS.heroPets} alt="毛孩日常" className="w-full h-[440px] object-cover" />
+        </div>
+        {/* 狗狗 + 手機主視覺 */}
+        <div className="relative max-w-5xl mx-auto px-8 mt-10 journal-enter journal-enter-4">
+          <div className="relative">
+            <div className="rounded-t-[2.5rem] overflow-hidden shadow-2xl shadow-brand-purple/20 bg-brand-cream">
+              <img src={HERO_PHONE} alt="毛孩護照 App 與狗狗" className="w-full max-w-3xl mx-auto block" />
             </div>
             {/* 浮動點數卡 */}
-            <div className="absolute -bottom-6 -left-6 paper-card p-4 rotate-[-2deg] shadow-xl flex items-center gap-3">
+            <div className="absolute bottom-8 left-1/2 -translate-x-[110%] paper-card p-4 rotate-[-3deg] shadow-xl flex items-center gap-3">
               <ProgressRing value={80} size={56} stroke={6}>
                 <span className="text-xs font-black text-brand-purple tabular">80%</span>
               </ProgressRing>
@@ -81,7 +75,28 @@ export default function DesktopHome() {
                 <p className="text-xl font-black text-brand-coral tabular">+170 點</p>
               </div>
             </div>
-            <span className="stamp absolute -top-4 -right-4 bg-white px-4 py-2 text-sm shadow-lg">PET PASSPORT</span>
+            <span className="stamp absolute top-6 right-[12%] bg-white px-4 py-2 text-sm shadow-lg">PET PASSPORT</span>
+          </div>
+        </div>
+      </section>
+
+      {/* 數據卡 */}
+      <section className="py-16">
+        <div className="max-w-5xl mx-auto px-8">
+          <div className="grid grid-cols-3 gap-6">
+            {[
+              { n: "1,280", l: "DEMO 可用點數", Icon: Coins },
+              { n: "5", l: "可體驗任務", Icon: PawPrint },
+              { n: "3", l: "合作商家類型", Icon: Gift },
+            ].map(({ n, l, Icon }, i) => (
+              <div key={l} className={`paper-card p-6 text-center journal-enter journal-enter-${i + 1}`}>
+                <div className="w-12 h-12 mx-auto rounded-full bg-brand-lilac flex items-center justify-center">
+                  <Icon size={22} className="text-brand-purple" />
+                </div>
+                <p className="mt-3 text-3xl font-black text-brand-purple tabular">{n}</p>
+                <p className="text-sm text-brand-sub mt-1">{l}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
