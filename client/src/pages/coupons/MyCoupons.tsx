@@ -22,7 +22,7 @@ export default function MyCoupons() {
             key={t}
             onClick={() => setTab(t)}
             className={`px-4 h-9 rounded-full text-sm font-bold transition-all active:scale-95 ${
-              tab === t ? "bg-brand-brown text-white" : "bg-white text-muted-foreground"
+              tab === t ? "bg-brand-purple-dark text-white" : "bg-white text-muted-foreground"
             }`}
           >
             {t}
@@ -36,7 +36,7 @@ export default function MyCoupons() {
         {list.length === 0 && (
           <div className="py-20 text-center">
             <p className="text-sm font-bold text-muted-foreground">目前沒有{tab}的票券</p>
-            <button onClick={() => navigate("/rewards")} className="mt-4 text-sm font-bold text-brand-orange active:scale-95">
+            <button onClick={() => navigate("/rewards")} className="mt-4 text-sm font-bold text-brand-purple active:scale-95">
               去權益中心看看
             </button>
           </div>

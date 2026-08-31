@@ -61,8 +61,8 @@ export default function CouponDetail() {
           <div className="flex">
             <img src={coupon.image} alt={coupon.title} className="w-24 h-24 object-cover shrink-0" />
             <div className="p-4">
-              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-brand-matcha/15 text-brand-matcha">可使用</span>
-              <h1 className="mt-1.5 font-black text-brand-brown">{coupon.title}</h1>
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-brand-mint/15 text-brand-mint">可使用</span>
+              <h1 className="mt-1.5 font-black text-brand-ink">{coupon.title}</h1>
               <p className="text-[11px] text-muted-foreground mt-0.5">{coupon.merchant}</p>
             </div>
           </div>
@@ -71,17 +71,17 @@ export default function CouponDetail() {
             <p className="text-[11px] text-muted-foreground">使用期限至 {coupon.expireDate}</p>
             <button
               onClick={() => setShowQr(true)}
-              className="mt-4 w-full h-12 rounded-2xl bg-brand-brown text-white font-bold flex items-center justify-center gap-2 active:scale-[0.97] transition-transform"
+              className="mt-4 w-full h-12 rounded-2xl bg-brand-purple-dark text-white font-bold flex items-center justify-center gap-2 active:scale-[0.97] transition-transform"
             >
               <ScanLine size={18} /> 出示票券
             </button>
-            <p className="mt-3 text-[10px] text-muted-foreground">核銷碼：<span className="font-mono font-bold text-brand-brown">{coupon.code}</span></p>
+            <p className="mt-3 text-[10px] text-muted-foreground">核銷碼：<span className="font-mono font-bold text-brand-ink">{coupon.code}</span></p>
           </div>
         </div>
 
         {/* 使用說明 */}
         <div className="mt-4 paper-card p-5 journal-enter journal-enter-1">
-          <h2 className="font-black text-brand-brown text-sm">使用說明</h2>
+          <h2 className="font-black text-brand-ink text-sm">使用說明</h2>
           <ul className="mt-3 space-y-2 text-xs text-muted-foreground leading-relaxed">
             <li>· 到店消費時出示動態 QR 或核銷碼，由店員掃碼完成核銷。</li>
             <li>· QR 每 30 秒自動更新，截圖無法使用。</li>
@@ -92,11 +92,11 @@ export default function CouponDetail() {
         <div className="mt-4 grid grid-cols-2 gap-3 journal-enter journal-enter-2">
           <button
             onClick={() => navigate(`/merchants/${coupon.merchantId}`)}
-            className="h-11 rounded-xl bg-white font-bold text-sm text-brand-brown flex items-center justify-center gap-1.5 active:scale-95 transition-transform"
+            className="h-11 rounded-xl bg-white font-bold text-sm text-brand-ink flex items-center justify-center gap-1.5 active:scale-95 transition-transform"
           >
             <MapPin size={15} /> 門店導航
           </button>
-          <button className="h-11 rounded-xl bg-white font-bold text-sm text-brand-brown flex items-center justify-center gap-1.5 active:scale-95 transition-transform">
+          <button className="h-11 rounded-xl bg-white font-bold text-sm text-brand-ink flex items-center justify-center gap-1.5 active:scale-95 transition-transform">
             <Headset size={15} /> 聯絡客服
           </button>
         </div>
@@ -106,15 +106,15 @@ export default function CouponDetail() {
       {showQr && (
         <div className="fixed inset-0 z-50 bg-white flex flex-col items-center justify-center px-8" style={{ filter: "brightness(1.05)" }}>
           <p className="text-xs font-bold text-muted-foreground">出示給店員掃碼</p>
-          <h2 className="mt-1 text-lg font-black text-brand-brown">{coupon.title}</h2>
-          <div className="mt-6 w-64 h-64 p-4 rounded-3xl border-4 border-brand-brown/10 shadow-2xl">
+          <h2 className="mt-1 text-lg font-black text-brand-ink">{coupon.title}</h2>
+          <div className="mt-6 w-64 h-64 p-4 rounded-3xl border-4 border-brand-purple-dark/10 shadow-2xl">
             <MockQr seed={`${coupon.code}-${tick}`} />
           </div>
-          <p className="mt-4 font-mono text-sm font-bold text-brand-brown">{coupon.code}</p>
+          <p className="mt-4 font-mono text-sm font-bold text-brand-ink">{coupon.code}</p>
           <p className="mt-1 text-[10px] text-muted-foreground">QR 每 30 秒更新 · 截圖無效</p>
           <button
             onClick={() => navigate(`/coupons/${coupon.id}/redeemed`)}
-            className="mt-8 w-full max-w-[280px] h-12 rounded-2xl bg-brand-orange text-white font-bold active:scale-[0.97] transition-transform"
+            className="mt-8 w-full max-w-[280px] h-12 rounded-2xl bg-brand-purple text-white font-bold active:scale-[0.97] transition-transform"
           >
             （DEMO）模擬店員已完成核銷
           </button>

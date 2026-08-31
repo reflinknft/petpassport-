@@ -22,22 +22,22 @@ export default function PetDone() {
         <img src={ASSETS.petJumi} alt="Jumi" className="w-32 h-32 rounded-full object-cover border-4 border-white shadow-xl" />
         <span className="stamp stamp-in absolute -bottom-2 -right-6 bg-white px-3 py-1.5 text-xs shadow-lg">+100 點</span>
       </div>
-      <div className="mt-8 flex items-center gap-2 text-brand-orange">
+      <div className="mt-8 flex items-center gap-2 text-brand-purple">
         <PartyPopper size={20} />
         <p className="font-bold">建檔完成！</p>
       </div>
-      <h1 className="mt-2 text-2xl font-black text-brand-brown">Jumi 的毛孩護照已建立</h1>
+      <h1 className="mt-2 text-2xl font-black text-brand-ink">Jumi 的毛孩護照已建立</h1>
       <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-        新手見面禮 <span className="font-extrabold text-brand-orange tabular">100 點</span> 已入帳。
+        新手見面禮 <span className="font-extrabold text-brand-purple tabular">100 點</span> 已入帳。
         接下來完成「閱讀熟齡照護文章」，再賺 20 點。
       </p>
       <button
         onClick={() => navigate("/home")}
-        className="mt-8 w-full h-12 rounded-2xl bg-brand-orange text-white font-bold shadow-lg shadow-brand-orange/30 active:scale-[0.97] transition-transform flex items-center justify-center gap-2"
+        className="mt-8 w-full h-12 rounded-2xl bg-brand-purple text-white font-bold shadow-lg shadow-brand-purple/30 active:scale-[0.97] transition-transform flex items-center justify-center gap-2"
       >
         前往首頁 <ArrowRight size={18} />
       </button>
-      <button onClick={() => navigate("/tasks")} className="mt-3 text-sm font-bold text-brand-brown active:scale-95">
+      <button onClick={() => navigate("/tasks")} className="mt-3 text-sm font-bold text-brand-ink active:scale-95">
         直接看下一個任務
       </button>
     </div>

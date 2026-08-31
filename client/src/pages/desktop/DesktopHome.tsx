@@ -1,9 +1,10 @@
-import { ArrowRight, Coins, Gift, PawPrint, QrCode, ShieldCheck, Sparkles } from "lucide-react";
-import BrandIcon from "@/components/BrandIcon";
+import { ArrowRight, Coins, Gift, PawPrint, QrCode, ShieldCheck, Sparkles, Star } from "lucide-react";
 import { useLocation } from "wouter";
+import BrandIcon from "@/components/BrandIcon";
+import ProgressRing from "@/components/ProgressRing";
 import { ASSETS, MERCHANTS, REWARDS } from "@/lib/data";
 
-/** 桌機版首頁（1440px 響應式示意） */
+/** 桌機版首頁（Biscuit 式 1440px 行銷頁） */
 export default function DesktopHome() {
   const [, navigate] = useLocation();
   return (
@@ -14,89 +15,102 @@ export default function DesktopHome() {
           <div className="flex items-center gap-3">
             <BrandIcon className="w-10 h-10" />
             <div>
-              <p className="font-black text-brand-brown leading-none">毛孩護照</p>
-              <p className="text-[10px] font-bold text-brand-orange tracking-wider">PET PASSPORT</p>
+              <p className="font-black text-brand-ink leading-none">毛孩護照</p>
+              <p className="text-[10px] font-bold text-brand-purple tracking-wider">PET PASSPORT</p>
             </div>
           </div>
-          <nav className="hidden md:flex items-center gap-8 text-sm font-bold text-brand-brown/70">
-            <a href="#features" className="hover:text-brand-orange transition-colors">功能</a>
-            <a href="#rewards" className="hover:text-brand-orange transition-colors">權益</a>
-            <a href="#merchants" className="hover:text-brand-orange transition-colors">合作商家</a>
-            <a href="#trust" className="hover:text-brand-orange transition-colors">信任與透明</a>
+          <nav className="hidden md:flex items-center gap-8 text-sm font-bold text-brand-sub">
+            <a href="#how" className="hover:text-brand-purple transition-colors">如何運作</a>
+            <a href="#rewards" className="hover:text-brand-purple transition-colors">權益</a>
+            <a href="#merchants" className="hover:text-brand-purple transition-colors">合作商家</a>
+            <a href="#plans" className="hover:text-brand-purple transition-colors">方案</a>
           </nav>
           <button
             onClick={() => navigate("/welcome")}
-            className="h-10 px-5 rounded-xl bg-brand-orange text-white text-sm font-bold shadow-lg shadow-brand-orange/25 active:scale-95 transition-transform"
+            className="h-10 px-6 rounded-full bg-brand-purple text-white text-sm font-bold shadow-lg shadow-brand-purple/30 active:scale-95 transition-transform"
           >
             免費加入
           </button>
         </div>
       </header>
 
-      {/* Hero */}
-      <section className="max-w-6xl mx-auto px-8 pt-16 pb-20 grid lg:grid-cols-2 gap-12 items-center">
-        <div className="journal-enter">
-          <p className="text-sm font-bold text-brand-orange tracking-widest">毛孩點數平台 · DEMO</p>
-          <h1 className="mt-4 text-5xl leading-[1.15] font-black text-brand-brown">
-            照顧毛孩，<br />也累積每一份回饋
-          </h1>
-          <p className="mt-5 text-lg text-muted-foreground leading-relaxed max-w-md">
-            毛孩護照把每一次照護、閱讀與消費，都蓋成一枚值得收藏的戳章。點數透明、權益實用、商家閉環可追蹤。
-          </p>
-          <div className="mt-8 flex gap-4">
-            <button
-              onClick={() => navigate("/welcome")}
-              className="h-13 px-7 rounded-2xl bg-brand-orange text-white font-bold shadow-xl shadow-brand-orange/30 active:scale-[0.97] transition-transform flex items-center gap-2"
-            >
-              開始體驗 DEMO <ArrowRight size={18} />
-            </button>
-            <a href="#rewards" className="h-13 px-7 rounded-2xl border-2 border-brand-brown/15 font-bold text-brand-brown flex items-center active:scale-[0.97] transition-transform">
-              先看看權益
-            </a>
+      {/* Hero：雙色漸層大標題 + 手持手機感 */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 glow-bg" />
+        <div className="relative max-w-6xl mx-auto px-8 pt-16 pb-20 grid lg:grid-cols-2 gap-12 items-center">
+          <div className="journal-enter">
+            <span className="journal-tab">毛孩點數平台 · DEMO</span>
+            <h1 className="mt-5 text-[52px] leading-[1.1] font-black gradient-title">
+              照顧毛孩，<br />也累積每一份回饋
+            </h1>
+            <p className="mt-5 text-lg text-brand-sub leading-relaxed max-w-md">
+              記錄每一次照護、完成任務、閱讀與上課，都能累積毛孩點，兌換洗護、健檢與用品優惠。
+            </p>
+            <div className="mt-8 flex gap-4">
+              <button
+                onClick={() => navigate("/welcome")}
+                className="h-13 px-8 rounded-full bg-brand-purple text-white font-bold shadow-xl shadow-brand-purple/35 active:scale-[0.97] transition-transform flex items-center gap-2"
+              >
+                開始體驗 DEMO <ArrowRight size={18} />
+              </button>
+              <a href="#rewards" className="h-13 px-8 rounded-full border-2 border-brand-purple/20 font-bold text-brand-purple-dark flex items-center active:scale-[0.97] transition-transform">
+                先看看權益
+              </a>
+            </div>
+            {/* 數據 */}
+            <div className="mt-12 grid grid-cols-3 gap-4 max-w-md">
+              {[["1,280", "DEMO 可用點數"], ["5", "可體驗任務"], ["3", "合作商家類型"]].map(([n, l]) => (
+                <div key={l} className="paper-card p-4 text-center">
+                  <p className="text-2xl font-black text-brand-purple tabular">{n}</p>
+                  <p className="text-[11px] text-brand-sub mt-1">{l}</p>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="mt-10 flex gap-8">
-            {[["3", "合作商家類型"], ["1,280", "DEMO 可用點數"], ["5", "可體驗任務"]].map(([n, l]) => (
-              <div key={l}>
-                <p className="text-3xl font-black text-brand-brown tabular">{n}</p>
-                <p className="text-xs text-muted-foreground mt-1">{l}</p>
+          <div className="relative journal-enter journal-enter-2">
+            <div className="rounded-[2.5rem] overflow-hidden shadow-2xl shadow-brand-purple/20 rotate-1">
+              <img src={ASSETS.heroPets} alt="毛孩日常" className="w-full h-[440px] object-cover" />
+            </div>
+            {/* 浮動點數卡 */}
+            <div className="absolute -bottom-6 -left-6 paper-card p-4 rotate-[-2deg] shadow-xl flex items-center gap-3">
+              <ProgressRing value={80} size={56} stroke={6}>
+                <span className="text-xs font-black text-brand-purple tabular">80%</span>
+              </ProgressRing>
+              <div>
+                <p className="text-[10px] font-bold text-brand-sub">本週已累積</p>
+                <p className="text-xl font-black text-brand-coral tabular">+170 點</p>
               </div>
-            ))}
+            </div>
+            <span className="stamp absolute -top-4 -right-4 bg-white px-4 py-2 text-sm shadow-lg">PET PASSPORT</span>
           </div>
-        </div>
-        <div className="relative journal-enter journal-enter-2">
-          <div className="rounded-[2rem] overflow-hidden shadow-2xl shadow-brand-brown/20 rotate-1">
-            <img src={ASSETS.heroPets} alt="毛孩日常" className="w-full h-[420px] object-cover" />
-          </div>
-          <div className="absolute -bottom-6 -left-6 paper-card p-4 rotate-[-2deg] shadow-xl">
-            <p className="text-[10px] font-bold text-muted-foreground">本週已累積</p>
-            <p className="text-2xl font-black text-brand-orange tabular">+170 點</p>
-          </div>
-          <span className="stamp absolute -top-4 -right-4 bg-white px-4 py-2 text-sm shadow-lg">PET PASSPORT</span>
         </div>
       </section>
 
-      {/* 功能 */}
-      <section id="features" className="bg-white/60 py-20">
+      {/* 如何運作：步驟卡 */}
+      <section id="how" className="py-20">
         <div className="max-w-6xl mx-auto px-8">
           <div className="text-center">
-            <span className="journal-tab">PASSPORT PAGES</span>
-            <h2 className="mt-4 text-3xl font-black text-brand-brown">一本護照，串起毛孩的每一天</h2>
-            <p className="mt-3 text-muted-foreground">從建檔、任務、點數到核銷，每一頁都是一枚戳章。</p>
+            <span className="journal-tab">HOW IT WORKS</span>
+            <h2 className="mt-4 text-4xl font-black text-brand-ink">毛孩護照如何運作？</h2>
+            <p className="mt-3 text-brand-sub">記錄照護、完成任務、累積毛孩點，兌換真正有用的回饋。</p>
           </div>
-          <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: PawPrint, title: "寵物優先", body: "首頁就是毛孩的照護卡，任務圍繞牠的年齡、品種與健康標籤。", rot: "sticker-l" },
-              { icon: Coins, title: "點數透明", body: "每一點都有來源、效期與稽核編號，帳務清清楚楚可申訴。", rot: "sticker-r" },
-              { icon: Gift, title: "權益實用", body: "洗護折抵、健檢加值、用品優惠，點數直接換成照護資源。", rot: "sticker-l2" },
-              { icon: QrCode, title: "到店核銷", body: "出示動態 QR，店員掃碼完成核銷，轉換可追蹤。", rot: "sticker-r2" },
-            ].map(({ icon: Icon, title, body }, i) => (
-              <div key={title} className={`paper-card p-6 journal-enter journal-enter-${i + 1} ${["sticker-l","sticker-r","sticker-l2","sticker-r2"][i]}`}>
-                <div className="w-12 h-12 rounded-2xl bg-brand-apricot flex items-center justify-center">
-                  <Icon size={22} className="text-brand-orange" />
+              { n: "1", icon: PawPrint, title: "建立寵物護照", body: "記錄品種、生日與健康標籤，任務與建議都依牠量身打造。", rot: "sticker-l" },
+              { n: "2", icon: Coins, title: "完成任務賺點", body: "照護打卡、閱讀文章、完成課程，每一點都有來源與效期。", rot: "sticker-r" },
+              { n: "3", icon: Gift, title: "兌換實用權益", body: "洗護折抵、健檢加值、用品優惠，點數直接換成照護資源。", rot: "sticker-l2" },
+              { n: "4", icon: QrCode, title: "到店出示核銷", body: "出示動態 QR，店員掃碼完成核銷，轉換可追蹤。", rot: "sticker-r2" },
+            ].map(({ n, icon: Icon, title, body, rot }, i) => (
+              <div key={n} className={`paper-card p-6 journal-enter journal-enter-${i + 1} ${rot}`}>
+                <div className="flex items-center justify-between">
+                  <div className="w-12 h-12 rounded-full bg-brand-lilac flex items-center justify-center">
+                    <Icon size={22} className="text-brand-purple" />
+                  </div>
+                  <span className="text-4xl font-black text-brand-lilac">{n}</span>
                 </div>
-                <h3 className="mt-4 font-black text-brand-brown">{title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{body}</p>
-                <div className="mt-4 pt-3 border-t border-dashed border-border text-[10px] font-bold text-brand-orange/70 tracking-widest">STAMP 0{i + 1}</div>
+                <h3 className="mt-4 font-black text-brand-ink">{title}</h3>
+                <p className="mt-2 text-sm text-brand-sub leading-relaxed">{body}</p>
+                <div className="mt-4 pt-3 border-t border-dashed border-border text-[10px] font-bold text-brand-purple/60 tracking-widest">STEP {n}</div>
               </div>
             ))}
           </div>
@@ -104,37 +118,37 @@ export default function DesktopHome() {
       </section>
 
       {/* 權益 */}
-      <section id="rewards" className="py-20">
+      <section id="rewards" className="bg-white/60 py-20">
         <div className="max-w-6xl mx-auto px-8">
           <div className="flex items-end justify-between">
             <div>
               <span className="journal-tab">TICKET STUBS</span>
-              <h2 className="mt-4 text-3xl font-black text-brand-brown">熱門權益</h2>
-              <p className="mt-2 text-muted-foreground">點數直接兌換洗護、健檢與用品優惠。</p>
+              <h2 className="mt-4 text-4xl font-black text-brand-ink">熱門權益</h2>
+              <p className="mt-2 text-brand-sub">點數直接兌換洗護、健檢與用品優惠。</p>
             </div>
-            <button onClick={() => navigate("/rewards")} className="text-sm font-bold text-brand-orange flex items-center gap-1">
+            <button onClick={() => navigate("/rewards")} className="text-sm font-bold text-brand-purple flex items-center gap-1">
               全部權益 <ArrowRight size={15} />
             </button>
           </div>
-          <div className="mt-8 grid md:grid-cols-3 gap-6 items-start">
+          <div className="mt-10 grid md:grid-cols-3 gap-6 items-start">
             {REWARDS.map((r, i) => (
               <button
                 key={r.id}
                 onClick={() => navigate(`/rewards/${r.id}`)}
-                className={`paper-card overflow-hidden text-left active:scale-[0.98] transition-transform journal-enter journal-enter-${i + 1} ${["sticker-l","sticker-r","sticker-l"][i]} ${i === 1 ? "md:mt-8" : ""}`}
+                className={`paper-card overflow-hidden text-left active:scale-[0.98] transition-transform journal-enter journal-enter-${i + 1} ${["sticker-l", "sticker-r", "sticker-l"][i]} ${i === 1 ? "md:mt-8" : ""}`}
               >
                 <img src={r.image} alt={r.title} className="w-full h-48 object-cover" />
                 <div className="p-5">
-                  <p className="font-black text-brand-brown">{r.title}</p>
-                  <p className="mt-1 text-xs text-muted-foreground">{r.merchant}</p>
+                  <p className="font-black text-brand-ink">{r.title}</p>
+                  <p className="mt-1 text-xs text-brand-sub">{r.merchant}</p>
                   <div className="mt-3 flex items-center justify-between">
-                    <span className="text-brand-orange font-black text-lg tabular">{r.points} 點</span>
-                    <span className="text-[11px] text-muted-foreground">{r.refValue}</span>
+                    <span className="text-brand-purple font-black text-lg tabular">{r.points} 點</span>
+                    <span className="text-[11px] text-brand-sub">{r.refValue}</span>
                   </div>
                 </div>
                 <div className="ticket-notch border-t border-dashed border-border px-5 py-2.5 flex items-center justify-between">
-                  <span className="text-[10px] font-mono text-muted-foreground">PP-{r.id.toUpperCase()}-2026</span>
-                  <span className="text-[10px] font-bold text-brand-orange">可兌換</span>
+                  <span className="text-[10px] font-mono text-brand-sub">PP-{r.id.toUpperCase()}-2026</span>
+                  <span className="text-[10px] font-bold text-brand-purple">可兌換</span>
                 </div>
               </button>
             ))}
@@ -143,31 +157,31 @@ export default function DesktopHome() {
       </section>
 
       {/* 商家 */}
-      <section id="merchants" className="bg-white/60 py-20">
+      <section id="merchants" className="py-20">
         <div className="max-w-6xl mx-auto px-8">
           <span className="journal-tab">PARTNER STAMPS</span>
-          <h2 className="mt-4 text-3xl font-black text-brand-brown">合作商家</h2>
-          <p className="mt-2 text-muted-foreground">洗護、用品與醫療保健，形成可追蹤的服務閉環。</p>
-          <div className="mt-8 grid md:grid-cols-3 gap-6 items-start">
+          <h2 className="mt-4 text-4xl font-black text-brand-ink">合作商家</h2>
+          <p className="mt-2 text-brand-sub">洗護、用品與醫療保健，形成可追蹤的服務閉環。</p>
+          <div className="mt-10 grid md:grid-cols-3 gap-6 items-start">
             {MERCHANTS.map((m, i) => (
               <button
                 key={m.id}
                 onClick={() => navigate(`/merchants/${m.id}`)}
-                className={`paper-card overflow-hidden text-left active:scale-[0.98] transition-transform journal-enter journal-enter-${i + 1} ${["sticker-r","sticker-l","sticker-r2"][i]} ${i === 1 ? "md:mt-6" : ""}`}
+                className={`paper-card overflow-hidden text-left active:scale-[0.98] transition-transform journal-enter journal-enter-${i + 1} ${["sticker-r", "sticker-l", "sticker-r2"][i]} ${i === 1 ? "md:mt-6" : ""}`}
               >
                 <img src={m.image} alt={m.name} className="w-full h-40 object-cover" />
                 <div className="p-5">
                   <div className="flex items-center justify-between">
-                    <p className="font-black text-brand-brown">{m.name}</p>
-                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${m.open ? "bg-brand-matcha/15 text-brand-matcha" : "bg-brand-apricot text-muted-foreground"}`}>
+                    <p className="font-black text-brand-ink">{m.name}</p>
+                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${m.open ? "bg-brand-mint/15 text-brand-mint" : "bg-brand-lilac text-brand-sub"}`}>
                       {m.open ? "營業中" : "休息中"}
                     </span>
                   </div>
-                  <p className="mt-1 text-xs text-muted-foreground">{m.branch} · {m.distance}</p>
+                  <p className="mt-1 text-xs text-brand-sub">{m.branch} · {m.distance}</p>
                 </div>
                 <div className="ticket-notch border-t border-dashed border-border px-5 py-2 flex items-center justify-between">
-                  <span className="text-[10px] font-bold text-brand-brown/60">{m.category}</span>
-                  <span className="text-[10px] font-mono text-muted-foreground">{m.hours}</span>
+                  <span className="text-[10px] font-bold text-brand-purple-dark/60">{m.category}</span>
+                  <span className="text-[10px] font-mono text-brand-sub">{m.hours}</span>
                 </div>
               </button>
             ))}
@@ -175,20 +189,98 @@ export default function DesktopHome() {
         </div>
       </section>
 
+      {/* 方案 */}
+      <section id="plans" className="bg-white/60 py-20">
+        <div className="max-w-6xl mx-auto px-8">
+          <div className="text-center">
+            <span className="journal-tab">PLANS</span>
+            <h2 className="mt-4 text-4xl font-black text-brand-ink">找到適合你的方案</h2>
+            <p className="mt-3 text-brand-sub">免費開始，或升級解鎖更多權益。</p>
+          </div>
+          <div className="mt-12 grid md:grid-cols-3 gap-6 items-start">
+            {[
+              { name: "毛孩護照", tier: "Basic", price: "NT$0", unit: "永久免費", features: ["建立寵物護照", "完成任務賺毛孩點", "兌換基礎權益", "查看點數明細"], cta: "免費開始", primary: false },
+              { name: "毛孩護照", tier: "Plus", price: "NT$99", unit: "每月", features: ["點數加倍活動", "專屬權益與品牌專區", "AI 毛孩助手優先推薦", "無廣告體驗"], cta: "升級 Plus", primary: true },
+              { name: "毛孩護照", tier: "商家合作", price: "洽談", unit: "專案合作", features: ["權益上架與曝光", "到店導流與核銷", "轉換數據報表", "聯名活動企劃"], cta: "洽談合作", primary: false },
+            ].map((p, i) => (
+              <div key={p.tier} className={`paper-card overflow-hidden journal-enter journal-enter-${i + 1} ${p.primary ? "ring-2 ring-brand-purple md:-mt-4 shadow-xl shadow-brand-purple/15" : ""}`}>
+                {p.primary && <div className="bg-brand-purple text-white text-center text-xs font-bold py-2">最受歡迎</div>}
+                <div className="p-6">
+                  <p className="text-sm font-bold text-brand-sub">{p.name}</p>
+                  <p className="text-2xl font-black text-brand-ink">{p.tier}</p>
+                  <div className="mt-4">
+                    <span className="text-4xl font-black text-brand-purple tabular">{p.price}</span>
+                    <span className="text-sm text-brand-sub ml-1.5">{p.unit}</span>
+                  </div>
+                  <ul className="mt-5 space-y-2.5">
+                    {p.features.map((f) => (
+                      <li key={f} className="flex gap-2 text-sm text-brand-sub">
+                        <span className="text-brand-mint font-black">✓</span> {f}
+                      </li>
+                    ))}
+                  </ul>
+                  <button
+                    onClick={() => navigate("/welcome")}
+                    className={`mt-6 w-full h-12 rounded-full font-bold active:scale-[0.97] transition-transform ${
+                      p.primary ? "bg-brand-purple text-white shadow-lg shadow-brand-purple/30" : "border-2 border-brand-purple/20 text-brand-purple-dark"
+                    }`}
+                  >
+                    {p.cta}
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 評價 */}
+      <section className="py-20">
+        <div className="max-w-6xl mx-auto px-8">
+          <div className="text-center">
+            <span className="journal-tab">REVIEWS</span>
+            <h2 className="mt-4 text-4xl font-black text-brand-ink">飼主怎麼說</h2>
+          </div>
+          <div className="mt-12 grid md:grid-cols-3 gap-6">
+            {[
+              { name: "陳小姐", pet: "玩具貴賓・13 歲", text: "每天打卡變成習慣，點數換的洗護券真的用得到，Jumi 的護照也越來越完整。" },
+              { name: "黃先生", pet: "英國短毛貓・3 歲", text: "介面很可愛，任務不會有壓力，偶爾看看文章就能累點，很適合忙碌的上班族。" },
+              { name: "林小姐", pet: "米克斯・5 歲", text: "到店出示 QR 就能折抵，店家掃碼很快，點數明細也看得很安心。" },
+            ].map((r, i) => (
+              <div key={r.name} className={`paper-card p-6 journal-enter journal-enter-${i + 1}`}>
+                <div className="flex gap-0.5 text-brand-coral">
+                  {Array.from({ length: 5 }).map((_, j) => (
+                    <Star key={j} size={14} fill="currentColor" />
+                  ))}
+                </div>
+                <p className="mt-3 text-sm text-brand-ink leading-relaxed">「{r.text}」</p>
+                <div className="mt-4 flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-brand-lilac flex items-center justify-center font-black text-brand-purple">{r.name[0]}</div>
+                  <div>
+                    <p className="text-sm font-bold text-brand-ink">{r.name}</p>
+                    <p className="text-[11px] text-brand-sub">{r.pet}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* 信任 */}
-      <section id="trust" className="py-20">
+      <section className="pb-20">
         <div className="max-w-4xl mx-auto px-8 text-center">
           <span className="journal-tab">TRUST LEDGER</span>
-          <ShieldCheck size={40} className="mx-auto mt-4 text-brand-matcha" />
-          <h2 className="mt-4 text-3xl font-black text-brand-brown">帳務透明，AI 可被信任</h2>
-          <p className="mt-4 text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+          <ShieldCheck size={40} className="mx-auto mt-4 text-brand-mint" />
+          <h2 className="mt-4 text-3xl font-black text-brand-ink">帳務透明，AI 可被信任</h2>
+          <p className="mt-4 text-brand-sub leading-relaxed max-w-2xl mx-auto">
             每一筆點數都顯示來源、狀態、日期、效期與稽核編號，並提供申訴入口。AI 建議標示資料來源與免責聲明，不作醫療診斷；疑似醫療問題一律建議諮詢獸醫師。
           </p>
           <div className="mt-10 receipt-strip p-6 grid grid-cols-3 gap-4">
             {["來源可查", "效期提醒", "申訴管道"].map((t) => (
               <div key={t} className="text-center">
-                <p className="font-bold text-brand-brown text-sm">{t}</p>
-                <p className="mt-1 text-[10px] font-mono text-muted-foreground">LEDGER · VERIFIED</p>
+                <p className="font-bold text-brand-ink text-sm">{t}</p>
+                <p className="mt-1 text-[10px] font-mono text-brand-sub">LEDGER · VERIFIED</p>
               </div>
             ))}
           </div>
@@ -198,13 +290,13 @@ export default function DesktopHome() {
       {/* CTA */}
       <section className="pb-20">
         <div className="max-w-4xl mx-auto px-8">
-          <div className="rounded-[2rem] bg-brand-brown text-white p-12 text-center shadow-2xl shadow-brand-brown/30 relative overflow-hidden">
-            <Sparkles className="mx-auto text-brand-orange" size={32} />
+          <div className="rounded-[2.5rem] bg-gradient-to-br from-brand-purple to-brand-purple-dark text-white p-12 text-center shadow-2xl shadow-brand-purple/30 relative overflow-hidden">
+            <Sparkles className="mx-auto text-brand-coral" size={32} />
             <h2 className="mt-4 text-3xl font-black">準備好為毛孩蓋下第一枚戳章了嗎？</h2>
             <p className="mt-3 text-white/70">加入即可領取 100 點新手禮，開始累積照護回饋。</p>
             <button
               onClick={() => navigate("/welcome")}
-              className="mt-8 h-13 px-8 rounded-2xl bg-brand-orange text-white font-bold shadow-xl active:scale-[0.97] transition-transform"
+              className="mt-8 h-13 px-8 rounded-full bg-brand-coral text-white font-bold shadow-xl active:scale-[0.97] transition-transform"
             >
               免費加入毛孩護照
             </button>
@@ -213,10 +305,10 @@ export default function DesktopHome() {
       </section>
 
       <footer className="border-t border-border/60 py-8">
-        <div className="max-w-6xl mx-auto px-8 flex items-center justify-between text-xs text-muted-foreground">
+        <div className="max-w-6xl mx-auto px-8 flex items-center justify-between text-xs text-brand-sub">
           <div className="flex items-center gap-2">
             <BrandIcon className="w-6 h-6" />
-            <span>毛孩護照 Pet Passport · DEMO V1.0</span>
+            <span>毛孩護照 Pet Passport · DEMO V2.0</span>
           </div>
           <p>本頁為前端展示用 DEMO，所有資料均為示意。</p>
         </div>

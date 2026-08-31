@@ -74,8 +74,8 @@ export default function AiAssistant() {
       <div className="px-5 pt-3">
         <div className="paper-card px-4 py-2.5 flex items-center gap-2.5">
           <img src={currentPet.photo} alt={currentPet.name} className="w-7 h-7 rounded-full object-cover" />
-          <span className="text-xs font-bold text-brand-brown">正在為 {currentPet.name} 推薦</span>
-          <Sparkles size={13} className="text-brand-orange ml-auto" />
+          <span className="text-xs font-bold text-brand-ink">正在為 {currentPet.name} 推薦</span>
+          <Sparkles size={13} className="text-brand-purple ml-auto" />
         </div>
       </div>
 
@@ -83,15 +83,15 @@ export default function AiAssistant() {
       <div className="flex-1 px-5 pt-4 pb-40 space-y-4">
         {msgs.map((m, i) => (
           <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"} journal-enter`}>
-            <div className={`max-w-[85%] ${m.role === "user" ? "bg-brand-brown text-white rounded-2xl rounded-br-md" : "bg-white rounded-2xl rounded-bl-md shadow-sm"} px-4 py-3`}>
-              <p className={`text-sm leading-relaxed ${m.role === "user" ? "" : "text-brand-brown"}`}>{m.text}</p>
+            <div className={`max-w-[85%] ${m.role === "user" ? "bg-brand-purple-dark text-white rounded-2xl rounded-br-md" : "bg-white rounded-2xl rounded-bl-md shadow-sm"} px-4 py-3`}>
+              <p className={`text-sm leading-relaxed ${m.role === "user" ? "" : "text-brand-ink"}`}>{m.text}</p>
               {m.cards && (
                 <div className="mt-3 space-y-2">
                   {m.cards.map((c) => (
                     <button
                       key={c.label}
                       onClick={() => navigate(c.path)}
-                      className="w-full text-left px-3 py-2 rounded-xl bg-brand-apricot text-brand-brown text-xs font-bold active:scale-[0.97] transition-transform"
+                      className="w-full text-left px-3 py-2 rounded-xl bg-brand-lilac text-brand-ink text-xs font-bold active:scale-[0.97] transition-transform"
                     >
                       {c.label} →
                     </button>
@@ -115,7 +115,7 @@ export default function AiAssistant() {
             <button
               key={q}
               onClick={() => send(q)}
-              className="px-3.5 h-8 rounded-full bg-white text-xs font-bold text-brand-brown whitespace-nowrap active:scale-95 transition-transform shrink-0"
+              className="px-3.5 h-8 rounded-full bg-white text-xs font-bold text-brand-ink whitespace-nowrap active:scale-95 transition-transform shrink-0"
             >
               {q}
             </button>
@@ -127,11 +127,11 @@ export default function AiAssistant() {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && send(input)}
             placeholder="問問毛孩助手…"
-            className="flex-1 h-11 px-4 rounded-xl bg-white text-sm outline-none focus:ring-2 ring-brand-orange/40 shadow-sm"
+            className="flex-1 h-11 px-4 rounded-xl bg-white text-sm outline-none focus:ring-2 ring-brand-purple/40 shadow-sm"
           />
           <button
             onClick={() => send(input)}
-            className="w-11 h-11 rounded-xl bg-brand-orange text-white flex items-center justify-center active:scale-95 transition-transform shrink-0"
+            className="w-11 h-11 rounded-xl bg-brand-purple text-white flex items-center justify-center active:scale-95 transition-transform shrink-0"
             aria-label="送出"
           >
             <Send size={17} />

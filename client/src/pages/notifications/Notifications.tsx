@@ -26,7 +26,7 @@ export default function Notifications() {
             key={f}
             onClick={() => setFilter(f)}
             className={`px-3.5 h-8 rounded-full text-xs font-bold transition-all active:scale-95 ${
-              filter === f ? "bg-brand-brown text-white" : "bg-white text-muted-foreground"
+              filter === f ? "bg-brand-purple-dark text-white" : "bg-white text-muted-foreground"
             }`}
           >
             {f}
@@ -38,12 +38,12 @@ export default function Notifications() {
           const Icon = TYPE_ICON[n.type];
           return (
             <div key={n.id} className={`paper-card p-4 flex gap-3 journal-enter journal-enter-${Math.min(i + 1, 5)} ${n.read ? "opacity-70" : ""}`}>
-              <div className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 ${n.read ? "bg-brand-apricot" : "bg-brand-orange/15"}`}>
-                <Icon size={16} className={n.read ? "text-muted-foreground" : "text-brand-orange"} />
+              <div className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 ${n.read ? "bg-brand-lilac" : "bg-brand-purple/15"}`}>
+                <Icon size={16} className={n.read ? "text-muted-foreground" : "text-brand-purple"} />
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2">
-                  <p className="text-sm font-bold text-brand-brown">{n.title}</p>
+                  <p className="text-sm font-bold text-brand-ink">{n.title}</p>
                   {!n.read && <span className="w-1.5 h-1.5 rounded-full bg-brand-brick shrink-0" />}
                 </div>
                 <p className="mt-0.5 text-xs text-muted-foreground leading-relaxed">{n.body}</p>

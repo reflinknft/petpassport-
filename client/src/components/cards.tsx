@@ -6,11 +6,11 @@ import type { Task, Reward, Merchant, Coupon } from "@/lib/data";
 export function TaskCard({ task, index = 0 }: { task: Task; index?: number }) {
   const [, navigate] = useLocation();
   const statusMap = {
-    available: { label: "開始", cls: "bg-brand-orange text-white" },
-    ongoing: { label: "繼續", cls: "bg-brand-brown text-white" },
-    pending: { label: "待驗證", cls: "bg-brand-honey/20 text-brand-honey" },
-    claimable: { label: "領取", cls: "bg-brand-matcha text-white" },
-    done: { label: "已完成", cls: "bg-brand-apricot text-muted-foreground" },
+    available: { label: "開始", cls: "bg-brand-purple text-white" },
+    ongoing: { label: "繼續", cls: "bg-brand-purple-dark text-white" },
+    pending: { label: "待驗證", cls: "bg-brand-coral/20 text-brand-coral" },
+    claimable: { label: "領取", cls: "bg-brand-mint text-white" },
+    done: { label: "已完成", cls: "bg-brand-lilac text-brand-sub" },
   } as const;
   const s = statusMap[task.status];
   return (
@@ -20,20 +20,20 @@ export function TaskCard({ task, index = 0 }: { task: Task; index?: number }) {
     >
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2 mb-1">
-          <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-brand-apricot text-brand-brown">{task.typeLabel}</span>
+          <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-brand-lilac text-brand-purple-dark">{task.typeLabel}</span>
           <span className="text-[11px] text-muted-foreground flex items-center gap-1">
             <Clock3 size={11} /> {task.deadline}
           </span>
         </div>
-        <p className="font-bold text-brand-brown truncate">{task.title}</p>
+        <p className="font-bold text-brand-ink truncate">{task.title}</p>
         {task.status === "ongoing" && (
-          <div className="mt-2 h-1.5 rounded-full bg-brand-apricot overflow-hidden">
-            <div className="h-full rounded-full bg-brand-orange" style={{ width: `${task.progress}%` }} />
+          <div className="mt-2 h-1.5 rounded-full bg-brand-lilac overflow-hidden">
+            <div className="h-full rounded-full bg-brand-purple" style={{ width: `${task.progress}%` }} />
           </div>
         )}
       </div>
       <div className="flex flex-col items-end gap-1.5 shrink-0">
-        <span className="text-brand-orange font-extrabold text-sm tabular">+{task.points} 點</span>
+        <span className="text-brand-coral font-extrabold text-sm tabular">+{task.points} 點</span>
         <span className={`text-[11px] font-bold px-2.5 py-1 rounded-full ${s.cls}`}>{s.label}</span>
       </div>
     </button>
@@ -51,12 +51,12 @@ export function RewardCard({ reward, index = 0 }: { reward: Reward; index?: numb
       <div className="relative h-24 overflow-hidden">
         <img src={reward.image} alt={reward.title} className="w-full h-full object-cover" />
         {reward.hot && (
-          <span className="absolute top-2 left-2 text-[10px] font-bold px-2 py-0.5 rounded-full bg-brand-brick text-white">熱門</span>
+          <span className="absolute top-2 left-2 text-[10px] font-bold px-2 py-0.5 rounded-full bg-brand-coral text-white">熱門</span>
         )}
       </div>
       <div className="p-3">
-        <p className="text-[13px] font-bold text-brand-brown leading-snug line-clamp-2">{reward.title}</p>
-        <p className="mt-1 text-brand-orange font-extrabold text-sm tabular">{reward.points} 點</p>
+        <p className="text-[13px] font-bold text-brand-ink leading-snug line-clamp-2">{reward.title}</p>
+        <p className="mt-1 text-brand-purple font-extrabold text-sm tabular">{reward.points} 點</p>
         <p className="text-[10px] text-muted-foreground">{reward.refValue}</p>
       </div>
     </button>
@@ -74,8 +74,8 @@ export function MerchantCard({ merchant, index = 0 }: { merchant: Merchant; inde
       <img src={merchant.image} alt={merchant.name} className="w-24 h-24 object-cover shrink-0" />
       <div className="flex-1 min-w-0 p-3">
         <div className="flex items-center gap-2">
-          <p className="font-bold text-brand-brown truncate">{merchant.name}</p>
-          <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${merchant.open ? "bg-brand-matcha/15 text-brand-matcha" : "bg-brand-apricot text-muted-foreground"}`}>
+          <p className="font-bold text-brand-ink truncate">{merchant.name}</p>
+          <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${merchant.open ? "bg-brand-mint/15 text-brand-mint" : "bg-brand-lilac text-muted-foreground"}`}>
             {merchant.open ? "營業中" : "休息中"}
           </span>
         </div>
@@ -92,7 +92,7 @@ export function MerchantCard({ merchant, index = 0 }: { merchant: Merchant; inde
 /* ---------- 票券卡（含撕線） ---------- */
 export function CouponCard({ coupon, onClick }: { coupon: Coupon; onClick?: () => void }) {
   const statusMap = {
-    usable: { label: "可使用", cls: "text-brand-matcha border-brand-matcha" },
+    usable: { label: "可使用", cls: "text-brand-mint border-brand-mint" },
     used: { label: "已使用", cls: "text-muted-foreground border-muted-foreground" },
     expired: { label: "已失效", cls: "text-brand-brick border-brand-brick" },
   } as const;
@@ -103,7 +103,7 @@ export function CouponCard({ coupon, onClick }: { coupon: Coupon; onClick?: () =
         <div className="flex">
           <img src={coupon.image} alt={coupon.title} className="w-20 h-20 object-cover shrink-0" />
           <div className="flex-1 min-w-0 p-3">
-            <p className="font-bold text-brand-brown truncate">{coupon.title}</p>
+            <p className="font-bold text-brand-ink truncate">{coupon.title}</p>
             <p className="text-[11px] text-muted-foreground truncate">{coupon.merchant}</p>
             <p className="text-[11px] text-muted-foreground mt-1">效期至 {coupon.expireDate}</p>
           </div>
@@ -113,7 +113,7 @@ export function CouponCard({ coupon, onClick }: { coupon: Coupon; onClick?: () =
         </div>
         <div className="ticket-notch border-t border-dashed border-border px-4 py-2 flex items-center justify-between">
           <span className="text-[10px] text-muted-foreground font-mono">{coupon.code}</span>
-          <Stamp size={14} className="text-brand-orange/50" />
+          <Stamp size={14} className="text-brand-purple/50" />
         </div>
       </div>
     </button>

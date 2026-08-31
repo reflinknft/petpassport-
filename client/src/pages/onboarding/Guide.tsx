@@ -35,20 +35,20 @@ export default function Guide() {
         </button>
       </div>
       <div key={step} className="flex-1 flex flex-col items-center justify-center text-center">
-        <div className="w-24 h-24 rounded-3xl bg-brand-apricot flex items-center justify-center stamp-in">
-          <Icon size={40} className="text-brand-orange" />
+        <div className="w-24 h-24 rounded-3xl bg-brand-lilac flex items-center justify-center stamp-in">
+          <Icon size={40} className="text-brand-purple" />
         </div>
-        <h1 className="mt-8 text-2xl font-black text-brand-brown journal-enter">{slide.title}</h1>
+        <h1 className="mt-8 text-2xl font-black text-brand-ink journal-enter">{slide.title}</h1>
         <p className="mt-3 text-sm text-muted-foreground leading-relaxed max-w-[260px] journal-enter journal-enter-1">{slide.body}</p>
       </div>
       <div className="flex items-center justify-center gap-2 mb-6">
         {SLIDES.map((_, i) => (
-          <span key={i} className={`h-1.5 rounded-full transition-all ${i === step ? "w-6 bg-brand-orange" : "w-1.5 bg-brand-brown/20"}`} />
+          <span key={i} className={`h-1.5 rounded-full transition-all ${i === step ? "w-6 bg-brand-purple" : "w-1.5 bg-brand-purple-dark/20"}`} />
         ))}
       </div>
       <button
         onClick={() => (step < 2 ? setStep(step + 1) : navigate("/pet/new"))}
-        className="w-full h-12 rounded-2xl bg-brand-orange text-white font-bold shadow-lg shadow-brand-orange/30 active:scale-[0.97] transition-transform"
+        className="w-full h-12 rounded-2xl bg-brand-purple text-white font-bold shadow-lg shadow-brand-purple/30 active:scale-[0.97] transition-transform"
       >
         {step < 2 ? "下一步" : "建立毛孩護照"}
       </button>

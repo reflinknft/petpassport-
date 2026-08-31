@@ -31,7 +31,7 @@ export default function Settings() {
               {g.items.map((it) => (
                 <div key={it.label} className="flex items-center justify-between p-4">
                   <span className="text-sm text-muted-foreground">{it.label}</span>
-                  <span className="text-sm font-bold text-brand-brown">{it.value}</span>
+                  <span className="text-sm font-bold text-brand-ink">{it.value}</span>
                 </div>
               ))}
             </div>
@@ -48,11 +48,11 @@ export default function Settings() {
               { label: "資料授權管理", on: null },
             ].map((it) => (
               <div key={it.label} className="flex items-center justify-between p-4">
-                <span className="text-sm font-bold text-brand-brown">{it.label}</span>
+                <span className="text-sm font-bold text-brand-ink">{it.label}</span>
                 {it.on === null ? (
                   <ChevronRight size={16} className="text-muted-foreground" />
                 ) : (
-                  <span className={`w-11 h-6 rounded-full p-0.5 transition-colors ${it.on ? "bg-brand-orange" : "bg-border"}`}>
+                  <span className={`w-11 h-6 rounded-full p-0.5 transition-colors ${it.on ? "bg-brand-purple" : "bg-border"}`}>
                     <span className={`block w-5 h-5 rounded-full bg-white shadow transition-transform ${it.on ? "translate-x-5" : ""}`} />
                   </span>
                 )}
@@ -64,11 +64,11 @@ export default function Settings() {
         <div>
           <h2 className="text-xs font-bold text-muted-foreground px-1">資料權利</h2>
           <div className="mt-2 paper-card divide-y divide-border/70">
-            <button className="w-full flex items-center gap-3 p-4 text-left active:bg-brand-apricot/40 transition-colors">
-              <Download size={16} className="text-brand-brown" />
-              <span className="text-sm font-bold text-brand-brown">申請下載我的資料</span>
+            <button className="w-full flex items-center gap-3 p-4 text-left active:bg-brand-lilac/40 transition-colors">
+              <Download size={16} className="text-brand-ink" />
+              <span className="text-sm font-bold text-brand-ink">申請下載我的資料</span>
             </button>
-            <button className="w-full flex items-center gap-3 p-4 text-left active:bg-brand-apricot/40 transition-colors">
+            <button className="w-full flex items-center gap-3 p-4 text-left active:bg-brand-lilac/40 transition-colors">
               <Trash2 size={16} className="text-brand-brick" />
               <span className="text-sm font-bold text-brand-brick">申請刪除帳號與資料</span>
             </button>

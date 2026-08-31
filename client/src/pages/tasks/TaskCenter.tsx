@@ -22,16 +22,16 @@ export default function TaskCenter() {
       {/* 連續參與 */}
       <div className="px-5 pt-4">
         <div className="paper-card p-4 flex items-center gap-4 journal-enter">
-          <div className="w-12 h-12 rounded-2xl bg-brand-orange/15 flex items-center justify-center shrink-0">
-            <Flame size={22} className="text-brand-orange" />
+          <div className="w-12 h-12 rounded-2xl bg-brand-purple/15 flex items-center justify-center shrink-0">
+            <Flame size={22} className="text-brand-purple" />
           </div>
           <div className="flex-1">
-            <p className="text-sm font-black text-brand-brown">連續照護 6 天</p>
+            <p className="text-sm font-black text-brand-ink">連續照護 6 天</p>
             <p className="text-[11px] text-muted-foreground">再打卡 1 天，本週額外加碼 20 點</p>
           </div>
           <div className="flex gap-1">
             {[1, 1, 1, 1, 1, 1, 0].map((d, i) => (
-              <span key={i} className={`w-2.5 h-2.5 rounded-full ${d ? "bg-brand-orange" : "bg-brand-apricot border border-brand-brown/15"}`} />
+              <span key={i} className={`w-2.5 h-2.5 rounded-full ${d ? "bg-brand-purple" : "bg-brand-lilac border border-brand-purple-dark/15"}`} />
             ))}
           </div>
         </div>
@@ -44,7 +44,7 @@ export default function TaskCenter() {
             key={t}
             onClick={() => setTab(t)}
             className={`px-4 h-9 rounded-full text-sm font-bold transition-all active:scale-95 ${
-              tab === t ? "bg-brand-brown text-white" : "bg-white text-muted-foreground"
+              tab === t ? "bg-brand-purple-dark text-white" : "bg-white text-muted-foreground"
             }`}
           >
             {t}

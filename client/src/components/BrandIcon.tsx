@@ -13,7 +13,7 @@ export default function BrandIcon({ className = "w-8 h-8" }: { className?: strin
         className="absolute inset-0 w-full h-full object-contain"
         onError={(e) => ((e.target as HTMLImageElement).style.display = "none")}
       />
-      <span className="absolute inset-0 -z-10 rounded-full bg-brand-orange flex items-center justify-center">
+      <span className="absolute inset-0 -z-10 rounded-full bg-brand-purple flex items-center justify-center">
         <span className="text-white font-black" style={{ fontSize: "55%" }}>p</span>
       </span>
     </span>

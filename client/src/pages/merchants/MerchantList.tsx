@@ -22,14 +22,14 @@ export default function MerchantList() {
               key={c}
               onClick={() => setCat(c)}
               className={`px-4 h-9 rounded-full text-sm font-bold whitespace-nowrap transition-all active:scale-95 ${
-                cat === c ? "bg-brand-orange text-white" : "bg-white text-muted-foreground"
+                cat === c ? "bg-brand-purple text-white" : "bg-white text-muted-foreground"
               }`}
             >
               {c}
             </button>
           ))}
         </div>
-        <button className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-brand-brown active:scale-95 shrink-0" aria-label="地圖">
+        <button className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-brand-ink active:scale-95 shrink-0" aria-label="地圖">
           <Map size={16} />
         </button>
       </div>

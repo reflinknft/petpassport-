@@ -19,19 +19,19 @@ export default function TopBar({ title, showBack, showLogo, showBell }: TopBarPr
           {showBack && (
             <button
               onClick={() => window.history.back()}
-              className="w-9 h-9 rounded-full flex items-center justify-center text-brand-brown active:scale-95 transition-transform"
+              className="w-9 h-9 rounded-full flex items-center justify-center text-brand-ink active:scale-95 transition-transform"
               aria-label="返回"
             >
               <ArrowLeft size={20} />
             </button>
           )}
           {showLogo && <BrandIcon className="w-8 h-8" />}
-          {title && <h1 className="text-lg font-black text-brand-brown truncate">{title}</h1>}
+          {title && <h1 className="text-lg font-black text-brand-ink truncate">{title}</h1>}
         </div>
         {showBell && (
           <button
             onClick={() => navigate("/notifications")}
-            className="relative w-9 h-9 rounded-full flex items-center justify-center text-brand-brown active:scale-95 transition-transform"
+            className="relative w-9 h-9 rounded-full flex items-center justify-center text-brand-ink active:scale-95 transition-transform"
             aria-label="通知"
           >
             <Bell size={20} />

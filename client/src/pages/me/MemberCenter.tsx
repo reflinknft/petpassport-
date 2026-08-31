@@ -24,14 +24,14 @@ export default function MemberCenter() {
       <div className="flex-1 pb-6">
         {/* 會員卡 */}
         <div className="px-5 pt-5">
-          <div className="rounded-3xl bg-brand-brown text-white p-5 shadow-xl shadow-brand-brown/25 journal-enter">
+          <div className="rounded-3xl bg-brand-purple-dark text-white p-5 shadow-xl shadow-brand-purple-dark/25 journal-enter">
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 rounded-full bg-brand-orange flex items-center justify-center text-2xl font-black">毛</div>
+              <div className="w-14 h-14 rounded-full bg-brand-purple flex items-center justify-center text-2xl font-black">毛</div>
               <div className="flex-1">
                 <p className="font-black text-lg">{MEMBER.name}</p>
                 <p className="text-[11px] text-white/60 font-mono">{MEMBER.memberId}</p>
               </div>
-              <span className="flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full bg-brand-honey/25 text-brand-honey">
+              <span className="flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full bg-brand-coral/25 text-brand-coral">
                 <Crown size={12} /> {MEMBER.level}
               </span>
             </div>
@@ -55,15 +55,15 @@ export default function MemberCenter() {
         {/* 寵物列表 */}
         <div className="px-5 mt-6">
           <div className="flex items-center justify-between">
-            <h2 className="font-black text-brand-brown">我的毛孩</h2>
-            <button onClick={() => navigate("/pet/new")} className="text-xs font-bold text-brand-orange">+ 新增</button>
+            <h2 className="font-black text-brand-ink">我的毛孩</h2>
+            <button onClick={() => navigate("/pet/new")} className="text-xs font-bold text-brand-purple">+ 新增</button>
           </div>
           <div className="mt-3 flex gap-3">
             {pets.map((p) => (
               <button key={p.id} onClick={() => navigate(`/pets/${p.id}`)} className="paper-card flex-1 p-3 flex items-center gap-2.5 active:scale-[0.97] transition-transform">
                 <img src={p.photo} alt={p.name} className="w-10 h-10 rounded-full object-cover" />
                 <div className="text-left min-w-0">
-                  <p className="text-sm font-bold text-brand-brown truncate">{p.name}</p>
+                  <p className="text-sm font-bold text-brand-ink truncate">{p.name}</p>
                   <p className="text-[10px] text-muted-foreground truncate">{p.breed}</p>
                 </div>
               </button>
@@ -79,11 +79,11 @@ export default function MemberCenter() {
               onClick={() => navigate(path)}
               className={`paper-card w-full p-4 flex items-center gap-3 active:scale-[0.98] transition-transform journal-enter journal-enter-${Math.min(i + 1, 5)}`}
             >
-              <div className="w-10 h-10 rounded-xl bg-brand-apricot flex items-center justify-center shrink-0">
-                <Icon size={18} className="text-brand-brown" />
+              <div className="w-10 h-10 rounded-xl bg-brand-lilac flex items-center justify-center shrink-0">
+                <Icon size={18} className="text-brand-ink" />
               </div>
               <div className="text-left">
-                <p className="text-sm font-bold text-brand-brown">{label}</p>
+                <p className="text-sm font-bold text-brand-ink">{label}</p>
                 <p className="text-[11px] text-muted-foreground">{desc}</p>
               </div>
               <ChevronRight size={16} className="ml-auto text-muted-foreground" />
@@ -97,8 +97,8 @@ export default function MemberCenter() {
             onClick={() => navigate(`/pets/${pets[0].id}/card`)}
             className="w-full passport-frame p-4 flex items-center gap-3 bg-white/60 active:scale-[0.98] transition-transform"
           >
-            <IdCard size={18} className="text-brand-orange shrink-0" />
-            <p className="text-xs text-muted-foreground text-left">出示 <span className="font-bold text-brand-brown">電子寵物卡</span>，快速核身與緊急聯絡</p>
+            <IdCard size={18} className="text-brand-purple shrink-0" />
+            <p className="text-xs text-muted-foreground text-left">出示 <span className="font-bold text-brand-ink">電子寵物卡</span>，快速核身與緊急聯絡</p>
             <ChevronRight size={16} className="ml-auto text-muted-foreground" />
           </button>
         </div>

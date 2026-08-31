@@ -17,21 +17,21 @@ export default function TaskDone() {
         <span className="mt-1 text-2xl font-black tabular">+{task.points}</span>
         <span className="text-[10px] font-bold">點數入帳</span>
       </div>
-      <h1 className="mt-8 text-2xl font-black text-brand-brown journal-enter">任務完成！</h1>
+      <h1 className="mt-8 text-2xl font-black text-brand-ink journal-enter">任務完成！</h1>
       <p className="mt-2 text-sm text-muted-foreground journal-enter journal-enter-1">
         「{task.title}」已驗證，{task.points} 點已入帳。
-        目前可用 <span className="font-extrabold text-brand-orange tabular">{points.toLocaleString()}</span> 點。
+        目前可用 <span className="font-extrabold text-brand-purple tabular">{points.toLocaleString()}</span> 點。
       </p>
       <div className="mt-8 w-full space-y-3 journal-enter journal-enter-2">
         <button
           onClick={() => navigate("/wallet")}
-          className="w-full h-12 rounded-2xl bg-brand-orange text-white font-bold shadow-lg shadow-brand-orange/30 active:scale-[0.97] transition-transform"
+          className="w-full h-12 rounded-2xl bg-brand-purple text-white font-bold shadow-lg shadow-brand-purple/30 active:scale-[0.97] transition-transform"
         >
           查看點數錢包
         </button>
         <button
           onClick={() => navigate("/tasks")}
-          className="w-full h-12 rounded-2xl border-2 border-brand-brown/15 text-brand-brown font-bold active:scale-[0.97] transition-transform"
+          className="w-full h-12 rounded-2xl border-2 border-brand-purple-dark/15 text-brand-ink font-bold active:scale-[0.97] transition-transform"
         >
           下一個任務
         </button>

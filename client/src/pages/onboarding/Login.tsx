@@ -23,7 +23,7 @@ export default function Login() {
       <TopBar showBack title="登入 / 註冊" />
       <div className="flex-1 px-6 pt-8 pb-8 flex flex-col">
         <BrandIcon className="w-16 h-16 journal-enter" />
-        <h1 className="mt-4 text-2xl font-black text-brand-brown journal-enter journal-enter-1">
+        <h1 className="mt-4 text-2xl font-black text-brand-ink journal-enter journal-enter-1">
           建立毛孩的<br />第一本點數護照
         </h1>
         <p className="mt-2 text-sm text-muted-foreground journal-enter journal-enter-2">
@@ -42,19 +42,19 @@ export default function Login() {
             <span className="flex-1 h-px bg-border" /> 或 <span className="flex-1 h-px bg-border" />
           </div>
           <div className="paper-card p-4">
-            <label className="text-xs font-bold text-brand-brown">手機號碼</label>
+            <label className="text-xs font-bold text-brand-ink">手機號碼</label>
             <div className="mt-2 flex gap-2">
               <input
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="0912 345 678"
                 inputMode="tel"
-                className="flex-1 h-11 px-4 rounded-xl bg-brand-apricot/60 text-sm font-medium outline-none focus:ring-2 ring-brand-orange/40 placeholder:text-muted-foreground/60"
+                className="flex-1 h-11 px-4 rounded-xl bg-brand-lilac/60 text-sm font-medium outline-none focus:ring-2 ring-brand-purple/40 placeholder:text-muted-foreground/60"
               />
               <button
                 onClick={handleLogin}
                 disabled={!agreed || phone.length < 9}
-                className="h-11 px-4 rounded-xl bg-brand-brown text-white text-sm font-bold flex items-center gap-1.5 active:scale-95 transition-all disabled:opacity-40"
+                className="h-11 px-4 rounded-xl bg-brand-purple-dark text-white text-sm font-bold flex items-center gap-1.5 active:scale-95 transition-all disabled:opacity-40"
               >
                 <Smartphone size={15} /> 驗證
               </button>
@@ -71,7 +71,7 @@ export default function Login() {
             className="mt-0.5 w-4.5 h-4.5 rounded accent-[#F26B1D]"
           />
           <span className="text-xs text-muted-foreground leading-relaxed">
-            我已閱讀並同意<span className="text-brand-orange font-bold">服務條款</span>與<span className="text-brand-orange font-bold">隱私權政策</span>，並了解 DEMO 資料僅供展示。
+            我已閱讀並同意<span className="text-brand-purple font-bold">服務條款</span>與<span className="text-brand-purple font-bold">隱私權政策</span>，並了解 DEMO 資料僅供展示。
           </span>
         </label>
       </div>
