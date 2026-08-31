@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { ChevronRight, Search, Ticket } from "lucide-react";
 import { useLocation } from "wouter";
-import BottomNav from "@/components/BottomNav";
 import TopBar from "@/components/TopBar";
 import { RewardCard } from "@/components/cards";
 import { useDemo } from "@/contexts/DemoContext";
@@ -79,7 +78,6 @@ export default function RewardHome() {
           {list.length === 0 && <p className="py-12 text-center text-sm text-muted-foreground">此分類目前沒有權益</p>}
         </div>
       </div>
-      <BottomNav />
     </div>
   );
 }

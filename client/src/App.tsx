@@ -5,7 +5,7 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { DemoProvider } from "./contexts/DemoContext";
-import PhoneFrame from "./components/PhoneFrame";
+import ResponsiveShell from "./components/ResponsiveShell";
 
 // 啟動與引導
 import Splash from "./pages/onboarding/Splash";
@@ -49,15 +49,12 @@ import DesktopHome from "./pages/desktop/DesktopHome";
 function Router() {
   return (
     <Switch>
-      {/* 桌機版行銷首頁 */}
-      <Route path={"/desktop"} component={DesktopHome} />
-
-      {/* 手機版 DEMO（包在手機殼中） */}
+      {/* 響應式佈局：PC 為官網，手機為 App */}
       <Route>
         {() => (
-          <PhoneFrame>
+          <ResponsiveShell>
             <Switch>
-              <Route path={"/"} component={Splash} />
+              <Route path={"/"} component={DesktopHome} />
               <Route path={"/welcome"} component={Welcome} />
               <Route path={"/login"} component={Login} />
               <Route path={"/guide"} component={Guide} />
@@ -96,7 +93,7 @@ function Router() {
               <Route path={"/support"} component={MemberCenter} />
               <Route component={NotFound} />
             </Switch>
-          </PhoneFrame>
+          </ResponsiveShell>
         )}
       </Route>
       <Route path={"/404"} component={NotFound} />

@@ -12,31 +12,6 @@ export default function DesktopHome() {
 
   return (
     <div className="min-h-screen bg-brand-cream text-brand-ink">
-      {/* 頂部導覽 */}
-      <header className="sticky top-0 z-40 bg-brand-cream/90 backdrop-blur border-b border-border/60">
-        <div className="max-w-6xl mx-auto px-8 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <BrandIcon className="w-9 h-9" />
-            <div>
-              <p className="font-black text-brand-ink leading-none">毛孩護照</p>
-              <p className="text-[10px] font-bold text-brand-purple tracking-widest">PET PASSPORT</p>
-            </div>
-          </div>
-          <nav className="hidden md:flex items-center gap-8 text-sm font-bold text-brand-sub">
-            <a href="#features" className="hover:text-brand-purple transition-colors">功能</a>
-            <a href="#rewards" className="hover:text-brand-purple transition-colors">權益</a>
-            <a href="#merchants" className="hover:text-brand-purple transition-colors">商家</a>
-            <a href="#plans" className="hover:text-brand-purple transition-colors">方案</a>
-          </nav>
-          <button
-            onClick={() => navigate("/welcome")}
-            className="h-10 px-6 rounded-full bg-brand-purple text-white text-sm font-bold shadow-lg shadow-brand-purple/30 active:scale-[0.97] transition-transform"
-          >
-            開始體驗
-          </button>
-        </div>
-      </header>
-
       {/* Hero：中央對齊 + 狗狗與手機 */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 glow-bg" />

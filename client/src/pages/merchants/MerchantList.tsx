@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Map } from "lucide-react";
-import BottomNav from "@/components/BottomNav";
 import TopBar from "@/components/TopBar";
 import { MerchantCard } from "@/components/cards";
 import { MERCHANTS } from "@/lib/data";
@@ -39,7 +38,6 @@ export default function MerchantList() {
         ))}
         {list.length === 0 && <p className="py-16 text-center text-sm text-muted-foreground">此分類目前沒有合作商家</p>}
       </div>
-      <BottomNav />
     </div>
   );
 }

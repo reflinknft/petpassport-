@@ -1,6 +1,5 @@
 import { ChevronRight, Crown, Headset, Heart, IdCard, Settings, Ticket, Wallet } from "lucide-react";
 import { useLocation } from "wouter";
-import BottomNav from "@/components/BottomNav";
 import TopBar from "@/components/TopBar";
 import { useDemo } from "@/contexts/DemoContext";
 import { MEMBER } from "@/lib/data";
@@ -103,7 +102,6 @@ export default function MemberCenter() {
           </button>
         </div>
       </div>
-      <BottomNav />
     </div>
   );
 }

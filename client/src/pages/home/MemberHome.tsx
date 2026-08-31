@@ -1,6 +1,5 @@
 import { Bell, BookOpen, ChevronRight, Flame, GraduationCap, MapPin, Sparkles, Target, TrendingUp } from "lucide-react";
 import { useLocation } from "wouter";
-import BottomNav from "@/components/BottomNav";
 import ProgressRing from "@/components/ProgressRing";
 import { MerchantCard, RewardCard, TaskCard } from "@/components/cards";
 import { useDemo } from "@/contexts/DemoContext";
@@ -256,7 +255,6 @@ export default function MemberHome() {
         </button>
       </section>
 
-      <BottomNav />
     </div>
   );
 }

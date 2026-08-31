@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Flame } from "lucide-react";
-import BottomNav from "@/components/BottomNav";
 import TopBar from "@/components/TopBar";
 import { TaskCard } from "@/components/cards";
 import { TASKS } from "@/lib/data";
@@ -63,7 +62,6 @@ export default function TaskCenter() {
           </div>
         )}
       </div>
-      <BottomNav />
     </div>
   );
 }
