@@ -4,7 +4,7 @@ import ProgressRing from "@/components/ProgressRing";
 import { ASSETS, BRAND_TASKS, CONTENTS, COURSES, MERCHANTS, PARTNERS, REWARDS } from "@/lib/data";
 import { ArrowRight, BarChart3, BookOpen, Coins, Gift, GraduationCap, HeartPulse, MapPin, PawPrint, QrCode, ShieldCheck, Sparkles, Star, Store, Target, TrendingUp, Users } from "lucide-react";
 
-const HERO_PHONE = "/manus-storage/hero-dog-phone-green-yellow_e5470bd8.png";
+const HERO_PHONE = "/manus-storage/ccfdb2c7261838d44249eca2304c3748_c2fc8db5.jpg";
 
 /** 桌機版行銷首頁（Biscuit 式完整平台介紹） */
 export default function DesktopHome() {
@@ -38,7 +38,7 @@ export default function DesktopHome() {
         <div className="relative max-w-5xl mx-auto px-8 mt-10 journal-enter journal-enter-4">
           <div className="relative">
             <div className="rounded-t-[2.5rem] overflow-hidden shadow-2xl shadow-brand-purple/20 bg-brand-cream">
-              <img src={HERO_PHONE} alt="毛孩護照 App 與狗狗" className="w-full max-w-3xl mx-auto block" />
+              <img src={HERO_PHONE} alt="毛孩護照 App 與狗狗" className="w-full max-w-3xl mx-auto block object-contain h-[480px] bg-brand-cream" />
             </div>
             <div className="absolute bottom-8 left-1/2 -translate-x-[110%] paper-card p-4 rotate-[-3deg] shadow-xl flex items-center gap-3">
               <ProgressRing value={80} size={56} stroke={6}>

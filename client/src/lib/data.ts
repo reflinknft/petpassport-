@@ -125,15 +125,15 @@ export const MEMBER = {
 export const PETS: Pet[] = [
   {
     id: "jumi",
-    name: "Jumi",
+    name: "Conti",
     species: "dog",
-    breed: "玩具貴賓",
-    age: 15,
-    gender: "female",
-    weight: 4.2,
-    photo: ASSETS.petJumi,
+    breed: "邊境牧羊犬",
+    age: 2,
+    gender: "male",
+    weight: 12.5,
+    photo: "/manus-storage/ccfdb2c7261838d44249eca2304c3748_c2fc8db5.jpg",
     completeness: 80,
-    tags: ["熟齡犬", "心臟保健", "定期健檢"],
+    tags: ["活潑好動", "喜歡接球", "定期健檢"],
   },
   {
     id: "mochi",
