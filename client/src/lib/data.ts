@@ -131,7 +131,7 @@ export const PETS: Pet[] = [
     age: 2,
     gender: "male",
     weight: 12.5,
-    photo: "/manus-storage/conti-3d_edadd29d.png",
+    photo: "/manus-storage/conti-real_ef15ae3b.png",
     completeness: 80,
     tags: ["活潑好動", "喜歡接球", "定期健檢"],
   },
