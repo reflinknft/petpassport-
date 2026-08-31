@@ -35,7 +35,7 @@ export default function ResponsiveShell({ children }: { children: React.ReactNod
       <header className="sticky top-0 z-40 bg-brand-cream/90 backdrop-blur border-b border-border/60">
         <div className="max-w-6xl mx-auto px-8 h-16 flex items-center justify-between">
           <button onClick={() => navigate("/")} className="flex items-center gap-3 active:scale-95 transition-transform">
-            <BrandIcon className="w-9 h-9" />
+            <BrandIcon className="w-10 h-10" />
             <div className="text-left">
               <p className="font-black text-brand-ink leading-none">毛孩護照</p>
               <p className="text-[10px] font-bold text-brand-purple tracking-widest">PET PASSPORT</p>
