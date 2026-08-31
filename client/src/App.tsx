@@ -45,6 +45,7 @@ import Settings from "./pages/me/Settings";
 import AiAssistant from "./pages/ai/AiAssistant";
 import Notifications from "./pages/notifications/Notifications";
 import DesktopHome from "./pages/desktop/DesktopHome";
+import AmbassadorCenter from "./pages/ambassador/AmbassadorCenter";
 
 function Router() {
   return (
@@ -89,6 +90,7 @@ function Router() {
               <Route path={"/settings"} component={Settings} />
               <Route path={"/ai"} component={AiAssistant} />
               <Route path={"/notifications"} component={Notifications} />
+              <Route path={"/ambassador"} component={AmbassadorCenter} />
               <Route path={"/favorites"} component={MemberCenter} />
               <Route path={"/support"} component={MemberCenter} />
               <Route component={NotFound} />

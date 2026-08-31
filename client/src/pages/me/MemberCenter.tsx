@@ -12,6 +12,7 @@ export default function MemberCenter() {
   const menu = [
     { icon: Wallet, label: "點數錢包", desc: `${points.toLocaleString()} 點`, path: "/wallet" },
     { icon: Ticket, label: "我的票券", desc: "1 張可使用", path: "/coupons" },
+    { icon: Crown, label: "毛孩愛心大使", desc: "推薦好友賺點數", path: "/ambassador" },
     { icon: Heart, label: "我的收藏", desc: "商家與權益", path: "/favorites" },
     { icon: Headset, label: "客服中心", desc: "FAQ 與問題回報", path: "/support" },
     { icon: Settings, label: "帳號設定", desc: "資料、通知與授權", path: "/settings" },

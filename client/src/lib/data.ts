@@ -370,6 +370,55 @@ export const PARTNERS = [
   { name: "HEHO 寵物媒體", url: "https://hehopets.com/", desc: "寵物健康內容" },
 ];
 
+/** 毛孩愛心大使（B2B2C 中間 B） */
+export interface Ambassador {
+  id: string;
+  name: string;
+  level: "見習大使" | "正式大使" | "資深大使";
+  referralCode: string;
+  referralLink: string;
+  totalReferrals: number;
+  activeReferrals: number;
+  totalPointsEarned: number;
+  thisMonthPoints: number;
+  joinDate: string;
+}
+
+export interface Referral {
+  id: string;
+  name: string;
+  petName: string;
+  joinDate: string;
+  status: "已註冊" | "已建立寵物" | "已完成首任務";
+  pointsEarned: number;
+}
+
+export const AMBASSADOR: Ambassador = {
+  id: "amb1",
+  name: "林小毛",
+  level: "正式大使",
+  referralCode: "MAO2026",
+  referralLink: "https://petpassport.tw/r/MAO2026",
+  totalReferrals: 12,
+  activeReferrals: 8,
+  totalPointsEarned: 2400,
+  thisMonthPoints: 350,
+  joinDate: "2026/06/15",
+};
+
+export const REFERRALS: Referral[] = [
+  { id: "r1", name: "陳小姐", petName: "貴賓犬 Jumi", joinDate: "2026/08/20", status: "已完成首任務", pointsEarned: 200 },
+  { id: "r2", name: "林先生", petName: "英短 麻糬", joinDate: "2026/08/22", status: "已建立寵物", pointsEarned: 100 },
+  { id: "r3", name: "王小姐", petName: "米克斯 豆豆", joinDate: "2026/08/25", status: "已註冊", pointsEarned: 50 },
+];
+
+/** 大使層級規則 */
+export const AMBASSADOR_LEVELS = [
+  { level: "見習大使", requirement: "成功推薦 1 人", reward: "每推薦 1 人 +50 點", color: "bg-brand-lilac text-brand-purple" },
+  { level: "正式大使", requirement: "成功推薦 5 人", reward: "每推薦 1 人 +100 點，被推薦人首月任務點數 +10%", color: "bg-brand-purple text-white" },
+  { level: "資深大使", requirement: "成功推薦 20 人", reward: "每推薦 1 人 +200 點，被推薦人首月任務點數 +20%，專屬客服", color: "bg-brand-coral text-white" },
+];
+
 /** 每日照護任務（場景二） */
 export interface DailyTask {
   id: string;

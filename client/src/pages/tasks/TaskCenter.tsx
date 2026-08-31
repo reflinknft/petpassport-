@@ -3,12 +3,15 @@ import { Flame } from "lucide-react";
 import TopBar from "@/components/TopBar";
 import { TaskCard } from "@/components/cards";
 import { TASKS } from "@/lib/data";
+import { Crown } from "lucide-react";
+import { useLocation } from "wouter";
 
 const TABS = ["推薦", "進行中", "已完成"] as const;
 
 /** P15 任務中心 */
 export default function TaskCenter() {
   const [tab, setTab] = useState<(typeof TABS)[number]>("推薦");
+  const [, navigate] = useLocation();
   const list = TASKS.filter((t) => {
     if (tab === "進行中") return t.status === "ongoing" || t.status === "pending" || t.status === "claimable";
     if (tab === "已完成") return t.status === "done";
@@ -49,6 +52,23 @@ export default function TaskCenter() {
             {t}
           </button>
         ))}
+      </div>
+
+      {/* 大使任務 */}
+      <div className="px-5 pt-4">
+        <button
+          onClick={() => navigate("/ambassador")}
+          className="w-full paper-card p-4 flex items-center gap-4 active:scale-[0.98] transition-transform"
+        >
+          <div className="w-12 h-12 rounded-2xl bg-brand-coral/15 flex items-center justify-center shrink-0">
+            <Crown size={22} className="text-brand-coral" />
+          </div>
+          <div className="flex-1 text-left">
+            <p className="text-sm font-black text-brand-ink">毛孩愛心大使</p>
+            <p className="text-[11px] text-muted-foreground">推薦好友加入，每成功 1 人最高 +200 點</p>
+          </div>
+          <span className="text-brand-coral font-black text-sm">去推薦</span>
+        </button>
       </div>
 
       <div className="flex-1 px-5 pt-4 pb-6 space-y-3">
