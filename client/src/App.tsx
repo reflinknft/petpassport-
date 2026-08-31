@@ -55,6 +55,7 @@ import BusinessLogin from "./pages/business/BusinessLogin";
 import BusinessDashboard from "./pages/business/BusinessDashboard";
 import CampaignList from "./pages/business/CampaignList";
 import CampaignNew from "./pages/business/CampaignNew";
+import BusinessLanding from "./pages/business/BusinessLanding";
 import MerchantLogin from "./pages/merchant/MerchantLogin";
 import MerchantHome from "./pages/merchant/MerchantHome";
 import MerchantRedemptions from "./pages/merchant/MerchantRedemptions";
@@ -118,6 +119,7 @@ function Router() {
               <Route path={"/business/dashboard"} component={BusinessDashboard} />
               <Route path={"/business/campaigns"} component={CampaignList} />
               <Route path={"/business/campaigns/new"} component={CampaignNew} />
+              <Route path={"/business"} component={BusinessLanding} />
               <Route path={"/merchant/login"} component={MerchantLogin} />
               <Route path={"/merchant/home"} component={MerchantHome} />
               <Route path={"/merchant/redemptions"} component={MerchantRedemptions} />
