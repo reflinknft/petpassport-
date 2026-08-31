@@ -50,18 +50,18 @@
 }
 
 :root {
-  /* V2.1 品牌核心色（OKLCH）— 紫黃主視覺 */
-  --brand-purple: oklch(0.52 0.16 290);       /* 暖紫 #6F52C8 */
-  --brand-purple-dark: oklch(0.36 0.1 290);   /* 深紫 #44327A */
+  /* V3.0 品牌核心色（OKLCH）— 與 LOGO 一致：深綠 + 橘黃 */
+  --brand-purple: oklch(0.35 0.08 160);       /* 深綠 #1A4A3C（LOGO 輪廓） */
+  --brand-purple-dark: oklch(0.28 0.06 160);  /* 更深綠 #0F332A */
   --brand-cream: oklch(0.975 0.008 90);       /* 奶油白 #FAF8F3 */
-  --brand-lilac: oklch(0.93 0.03 290);        /* 淡紫 #EDE9F8 */
+  --brand-lilac: oklch(0.94 0.03 160);        /* 淡綠 #E8F2EE */
   --brand-mint: oklch(0.72 0.11 165);         /* 薄荷綠 #58BFA4 */
-  --brand-coral: oklch(0.75 0.15 85);         /* 暖黃 #F2B84B */
-  --brand-ink: oklch(0.28 0.03 280);          /* 深墨色 #252332 */
-  --brand-sub: oklch(0.5 0.02 280);           /* 次要文字 #6E6A78 */
-  --brand-pink: oklch(0.68 0.16 350);         /* 粉紅（漸層標題） */
-  --brand-yellow: oklch(0.75 0.15 85);        /* 品牌黃 */
-  --brand-yellow-light: oklch(0.92 0.06 85);  /* 淡黃 */
+  --brand-coral: oklch(0.72 0.16 60);         /* 橘黃 #F2A33C（LOGO P 圓徽） */
+  --brand-ink: oklch(0.28 0.03 160);          /* 深墨綠 #1A2E28 */
+  --brand-sub: oklch(0.5 0.02 160);           /* 次要文字 #5A6B64 */
+  --brand-pink: oklch(0.72 0.16 60);          /* 橘黃（漸層標題） */
+  --brand-yellow: oklch(0.72 0.16 60);        /* 品牌橘黃 */
+  --brand-yellow-light: oklch(0.94 0.05 60);  /* 淡橘黃 */
 
   /* 舊名對應（讓既有 class 平滑過渡） */
   --brand-brown: var(--brand-purple-dark);
