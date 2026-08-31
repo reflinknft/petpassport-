@@ -46,6 +46,11 @@ import AiAssistant from "./pages/ai/AiAssistant";
 import Notifications from "./pages/notifications/Notifications";
 import DesktopHome from "./pages/desktop/DesktopHome";
 import AmbassadorCenter from "./pages/ambassador/AmbassadorCenter";
+import Leaderboard from "./pages/ambassador/Leaderboard";
+import MerchantScan from "./pages/merchant/MerchantScan";
+import MerchantConfirm from "./pages/merchant/MerchantConfirm";
+import MerchantSuccess from "./pages/merchant/MerchantSuccess";
+import MerchantError from "./pages/merchant/MerchantError";
 
 function Router() {
   return (
@@ -91,6 +96,11 @@ function Router() {
               <Route path={"/ai"} component={AiAssistant} />
               <Route path={"/notifications"} component={Notifications} />
               <Route path={"/ambassador"} component={AmbassadorCenter} />
+              <Route path={"/ambassador/leaderboard"} component={Leaderboard} />
+              <Route path={"/merchant/scan"} component={MerchantScan} />
+              <Route path={"/merchant/confirm"} component={MerchantConfirm} />
+              <Route path={"/merchant/success"} component={MerchantSuccess} />
+              <Route path={"/merchant/error"} component={MerchantError} />
               <Route path={"/favorites"} component={MemberCenter} />
               <Route path={"/support"} component={MemberCenter} />
               <Route component={NotFound} />

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useLocation } from "wouter";
-import { CheckCircle2, ChevronRight, Copy, Crown, Gift, Share2, Users } from "lucide-react";
+import { CheckCircle2, ChevronRight, Copy, Crown, Gift, Share2, TrendingUp, Users } from "lucide-react";
 import TopBar from "@/components/TopBar";
 import { AMBASSADOR, AMBASSADOR_LEVELS, REFERRALS } from "@/lib/data";
 import { toast } from "sonner";
@@ -99,6 +99,23 @@ export default function AmbassadorCenter() {
             </div>
             <ChevronRight size={16} className="text-muted-foreground" />
           </div>
+        </div>
+
+        {/* 排行榜入口 */}
+        <div className="px-5 mt-4">
+          <button
+            onClick={() => navigate("/ambassador/leaderboard")}
+            className="w-full paper-card p-4 flex items-center gap-4 active:scale-[0.98] transition-transform"
+          >
+            <div className="w-12 h-12 rounded-2xl bg-brand-purple/15 flex items-center justify-center shrink-0">
+              <TrendingUp size={22} className="text-brand-purple" />
+            </div>
+            <div className="flex-1 text-left">
+              <p className="text-sm font-black text-brand-ink">大使排行榜</p>
+              <p className="text-[11px] text-muted-foreground">查看全站推薦王，每月獎勵加碼</p>
+            </div>
+            <ChevronRight size={16} className="text-muted-foreground" />
+          </button>
         </div>
 
         {/* 推薦紀錄 */}

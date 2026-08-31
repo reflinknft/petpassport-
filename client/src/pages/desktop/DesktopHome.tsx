@@ -255,6 +255,34 @@ export default function DesktopHome() {
         </div>
       </section>
 
+      {/* 成為大使 */}
+      <section className="py-16 bg-gradient-to-br from-brand-purple to-brand-purple-dark text-white">
+        <div className="max-w-4xl mx-auto px-8 text-center">
+          <span className="journal-tab bg-white/20 text-white">AMBASSADOR</span>
+          <h2 className="mt-4 text-4xl font-black">成為毛孩愛心大使</h2>
+          <p className="mt-3 text-white/80 max-w-xl mx-auto">推薦好友加入毛孩護照，每成功 1 人最高 +200 點，被推薦人首月任務點數再分潤 10-20%。</p>
+          <div className="mt-10 grid sm:grid-cols-3 gap-6">
+            {[
+              { level: "見習大使", req: "成功推薦 1 人", reward: "每推薦 1 人 +50 點" },
+              { level: "正式大使", req: "成功推薦 5 人", reward: "每推薦 1 人 +100 點，被推薦人首月 +10%" },
+              { level: "資深大使", req: "成功推薦 20 人", reward: "每推薦 1 人 +200 點，被推薦人首月 +20%" },
+            ].map((l, i) => (
+              <div key={l.level} className="bg-white/10 backdrop-blur rounded-2xl p-6 text-center journal-enter" style={{ animationDelay: `${i * 80}ms` }}>
+                <span className="inline-block px-3 py-1 rounded-full bg-white/20 text-xs font-bold">{l.level}</span>
+                <p className="mt-3 text-sm text-white/70">{l.req}</p>
+                <p className="mt-2 text-sm font-bold text-white">{l.reward}</p>
+              </div>
+            ))}
+          </div>
+          <button
+            onClick={() => navigate("/ambassador")}
+            className="mt-10 h-13 px-10 rounded-full bg-white text-brand-purple font-bold shadow-xl active:scale-[0.97] transition-transform inline-flex items-center gap-2"
+          >
+            成為大使 <ArrowRight size={18} />
+          </button>
+        </div>
+      </section>
+
       {/* 合作夥伴 */}
       <section className="py-16 bg-white/50">
         <div className="max-w-4xl mx-auto px-8 text-center">
