@@ -100,7 +100,7 @@ export default function AiAssistant() {
               )}
               {m.disclaimer && (
                 <p className="mt-2 text-[10px] text-muted-foreground flex items-start gap-1">
-                  <Stethoscope size={11} className="shrink-0 mt-0.5" /> AI 建議僅供參考，不構成醫療診斷；資料來源：您的寵物檔案與平台任務規則。
+                  <Stethoscope size={11} className="shrink-0 mt-0.5" /> AI 建議僅供參考，不構成醫療診斷；資料來源：您的寵物檔案與平台任務規則。推薦內容可能包含商業贊助，已明確標示。
                 </p>
               )}
             </div>

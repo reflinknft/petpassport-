@@ -51,6 +51,19 @@ import MerchantScan from "./pages/merchant/MerchantScan";
 import MerchantConfirm from "./pages/merchant/MerchantConfirm";
 import MerchantSuccess from "./pages/merchant/MerchantSuccess";
 import MerchantError from "./pages/merchant/MerchantError";
+import BusinessLogin from "./pages/business/BusinessLogin";
+import BusinessDashboard from "./pages/business/BusinessDashboard";
+import CampaignList from "./pages/business/CampaignList";
+import CampaignNew from "./pages/business/CampaignNew";
+import MerchantLogin from "./pages/merchant/MerchantLogin";
+import MerchantHome from "./pages/merchant/MerchantHome";
+import MerchantRedemptions from "./pages/merchant/MerchantRedemptions";
+import MerchantIssuePoints from "./pages/merchant/MerchantIssuePoints";
+import MerchantSupport from "./pages/merchant/MerchantSupport";
+import AdminLogin from "./pages/admin/AdminLogin";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminOrganizations from "./pages/admin/AdminOrganizations";
+import Consent from "./pages/me/Consent";
 
 function Router() {
   return (
@@ -101,6 +114,19 @@ function Router() {
               <Route path={"/merchant/confirm"} component={MerchantConfirm} />
               <Route path={"/merchant/success"} component={MerchantSuccess} />
               <Route path={"/merchant/error"} component={MerchantError} />
+              <Route path={"/business/login"} component={BusinessLogin} />
+              <Route path={"/business/dashboard"} component={BusinessDashboard} />
+              <Route path={"/business/campaigns"} component={CampaignList} />
+              <Route path={"/business/campaigns/new"} component={CampaignNew} />
+              <Route path={"/merchant/login"} component={MerchantLogin} />
+              <Route path={"/merchant/home"} component={MerchantHome} />
+              <Route path={"/merchant/redemptions"} component={MerchantRedemptions} />
+              <Route path={"/merchant/points/issue"} component={MerchantIssuePoints} />
+              <Route path={"/merchant/support"} component={MerchantSupport} />
+              <Route path={"/admin/login"} component={AdminLogin} />
+              <Route path={"/admin/dashboard"} component={AdminDashboard} />
+              <Route path={"/admin/organizations"} component={AdminOrganizations} />
+              <Route path={"/consent"} component={Consent} />
               <Route path={"/favorites"} component={MemberCenter} />
               <Route path={"/support"} component={MemberCenter} />
               <Route component={NotFound} />

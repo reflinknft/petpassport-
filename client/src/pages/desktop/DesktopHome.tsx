@@ -1,8 +1,8 @@
-import { ArrowRight, BookOpen, Coins, Gift, GraduationCap, HeartPulse, MapPin, PawPrint, QrCode, ShieldCheck, Sparkles, Star, Store, TrendingUp } from "lucide-react";
 import { useLocation } from "wouter";
 import BrandIcon from "@/components/BrandIcon";
 import ProgressRing from "@/components/ProgressRing";
 import { ASSETS, BRAND_TASKS, CONTENTS, COURSES, MERCHANTS, PARTNERS, REWARDS } from "@/lib/data";
+import { ArrowRight, BarChart3, BookOpen, Building2, Coins, Gift, GraduationCap, HeartPulse, MapPin, PawPrint, QrCode, ShieldCheck, Sparkles, Star, Store, Target, TrendingUp, Users } from "lucide-react";
 
 const HERO_PHONE = "/manus-storage/hero-dog-phone-green-yellow_e5470bd8.png";
 
@@ -12,27 +12,51 @@ export default function DesktopHome() {
 
   return (
     <div className="min-h-screen bg-brand-cream text-brand-ink">
+      {/* 頂部導覽 */}
+      <header className="sticky top-0 z-50 bg-brand-cream/90 backdrop-blur border-b border-border/60">
+        <div className="max-w-6xl mx-auto px-8 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <BrandIcon className="w-8 h-8" />
+            <span className="font-black text-lg text-brand-ink">毛孩護照</span>
+          </div>
+          <nav className="hidden md:flex items-center gap-8 text-sm font-bold text-brand-sub">
+            <a href="#features" className="hover:text-brand-purple transition-colors">平台功能</a>
+            <a href="#solutions" className="hover:text-brand-purple transition-colors">企業方案</a>
+            <a href="#cases" className="hover:text-brand-purple transition-colors">品牌成效</a>
+            <a href="#partners" className="hover:text-brand-purple transition-colors">合作夥伴</a>
+          </nav>
+          <div className="flex items-center gap-3">
+            <button onClick={() => navigate("/business/login")} className="h-10 px-5 rounded-full border-2 border-brand-purple/20 font-bold text-brand-purple-dark text-sm active:scale-[0.97] transition-transform">
+              企業合作
+            </button>
+            <button onClick={() => navigate("/welcome")} className="h-10 px-5 rounded-full bg-brand-purple text-white font-bold text-sm shadow-lg shadow-brand-purple/30 active:scale-[0.97] transition-transform">
+              免費建立護照
+            </button>
+          </div>
+        </div>
+      </header>
+
       {/* Hero：中央對齊 + 狗狗與手機 */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 glow-bg" />
         <div className="relative max-w-4xl mx-auto px-8 pt-14 pb-0 text-center">
-          <span className="journal-tab journal-enter">毛孩點數平台 · DEMO</span>
+          <span className="journal-tab journal-enter">B2B2C 寵物產業會員營運平台</span>
           <h1 className="mt-5 text-[56px] leading-[1.08] font-black gradient-title journal-enter journal-enter-1">
-            照顧毛孩，<br />也累積每一份回饋
+            讓品牌精準觸達，<br />讓飼主樂於互動
           </h1>
           <p className="mt-5 text-lg text-brand-sub leading-relaxed max-w-xl mx-auto journal-enter journal-enter-2">
-            記錄每一次照護、完成任務、閱讀與上課，都能累積毛孩點，兌換洗護、健檢與用品優惠。
+            毛孩護照以毛孩數位身份為資料基礎，協助寵物品牌、門店、醫院完成精準觸達、任務互動、派樣、到店、核銷及再行銷。
           </p>
           <div className="mt-8 flex justify-center gap-4 journal-enter journal-enter-3">
             <button
-              onClick={() => navigate("/welcome")}
+              onClick={() => navigate("/business/login")}
               className="h-13 px-8 rounded-full bg-brand-purple text-white font-bold shadow-xl shadow-brand-purple/35 active:scale-[0.97] transition-transform flex items-center gap-2"
             >
-              開始體驗 DEMO <ArrowRight size={18} />
+              品牌／商家預約合作 <ArrowRight size={18} />
             </button>
-            <a href="#features" className="h-13 px-8 rounded-full border-2 border-brand-purple/20 font-bold text-brand-purple-dark flex items-center active:scale-[0.97] transition-transform">
-              了解平台功能
-            </a>
+            <button onClick={() => navigate("/welcome")} className="h-13 px-8 rounded-full border-2 border-brand-purple/20 font-bold text-brand-purple-dark flex items-center active:scale-[0.97] transition-transform">
+              毛孩家長免費建立護照
+            </button>
           </div>
         </div>
         <div className="relative max-w-5xl mx-auto px-8 mt-10 journal-enter journal-enter-4">
@@ -59,9 +83,9 @@ export default function DesktopHome() {
         <div className="max-w-5xl mx-auto px-8">
           <div className="grid grid-cols-3 gap-6">
             {[
-              { n: "1,280", l: "DEMO 可用點數", Icon: Coins },
-              { n: "5", l: "可體驗任務", Icon: PawPrint },
-              { n: "3", l: "合作商家類型", Icon: Gift },
+              { n: "1,000+", l: "完成建檔會員", Icon: Users },
+              { n: "15%", l: "任務完成率", Icon: Target },
+              { n: "10%", l: "到店核銷率", Icon: Store },
             ].map(({ n, l, Icon }, i) => (
               <div key={l} className={`paper-card p-6 text-center journal-enter journal-enter-${i + 1}`}>
                 <div className="w-12 h-12 mx-auto rounded-full bg-brand-lilac flex items-center justify-center">
@@ -71,6 +95,36 @@ export default function DesktopHome() {
                 <p className="text-sm text-brand-sub mt-1">{l}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 品牌成效 Dashboard 示意 */}
+      <section id="cases" className="py-16 bg-white/50">
+        <div className="max-w-6xl mx-auto px-8">
+          <div className="text-center">
+            <span className="journal-tab">品牌成效</span>
+            <h2 className="mt-4 text-4xl font-black text-brand-ink">即時掌握活動成效</h2>
+            <p className="mt-3 text-brand-sub max-w-xl mx-auto">從曝光、參加、驗證到核銷，每一筆資料都可追溯、可稽核。</p>
+          </div>
+          <div className="mt-10 paper-card p-8">
+            <div className="grid grid-cols-4 gap-6">
+              {[
+                { label: "曝光", value: "12,480", change: "+12%" },
+                { label: "參加", value: "3,240", change: "+8%" },
+                { label: "驗證通過", value: "2,890", change: "+15%" },
+                { label: "核銷", value: "1,240", change: "+22%" },
+              ].map((s) => (
+                <div key={s.label} className="text-center">
+                  <p className="text-sm text-muted-foreground">{s.label}</p>
+                  <p className="mt-1 text-2xl font-black text-brand-ink tabular">{s.value}</p>
+                  <p className="text-xs text-brand-mint font-bold">{s.change}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 h-48 rounded-2xl bg-brand-lilac/50 flex items-center justify-center">
+              <BarChart3 size={48} className="text-brand-purple/40" />
+            </div>
           </div>
         </div>
       </section>

@@ -1,4 +1,4 @@
-import { ChevronRight, Crown, Headset, Heart, IdCard, Settings, Ticket, Wallet } from "lucide-react";
+import { ChevronRight, Crown, Headset, Heart, IdCard, Settings, ShieldCheck, Ticket, Wallet } from "lucide-react";
 import { useLocation } from "wouter";
 import TopBar from "@/components/TopBar";
 import { useDemo } from "@/contexts/DemoContext";
@@ -41,6 +41,7 @@ export default function MemberCenter() {
     { icon: Crown, label: "毛孩愛心大使", desc: "推薦好友賺點數", path: "/ambassador" },
     { icon: Heart, label: "我的收藏", desc: "商家與權益", path: "/favorites" },
     { icon: Headset, label: "客服中心", desc: "FAQ 與問題回報", path: "/support" },
+    { icon: ShieldCheck, label: "隱私與授權", desc: "分層同意管理", path: "/consent" },
     { icon: Settings, label: "帳號設定", desc: "資料、通知與授權", path: "/settings" },
   ];
 

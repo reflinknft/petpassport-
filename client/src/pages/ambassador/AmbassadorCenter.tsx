@@ -123,7 +123,7 @@ export default function AmbassadorCenter() {
             </div>
             <div className="flex-1">
               <p className="text-sm font-black text-brand-ink">本月已獲得 {ambassador?.thisMonthPoints} 點</p>
-              <p className="text-[11px] text-muted-foreground">推薦獎勵 + 被推薦人任務點數分潤</p>
+              <p className="text-[11px] text-muted-foreground">推薦獎勵（一次性）</p>
             </div>
             <ChevronRight size={16} className="text-muted-foreground" />
           </div>
