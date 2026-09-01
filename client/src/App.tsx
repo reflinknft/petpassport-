@@ -56,6 +56,7 @@ import BusinessDashboard from "./pages/business/BusinessDashboard";
 import CampaignList from "./pages/business/CampaignList";
 import CampaignNew from "./pages/business/CampaignNew";
 import BusinessLanding from "./pages/business/BusinessLanding";
+import ProLanding from "./pages/pro/ProLanding";
 import AudienceList from "./pages/business/AudienceList";
 import VerificationCenter from "./pages/business/VerificationCenter";
 import Sampling from "./pages/business/Sampling";
@@ -133,6 +134,7 @@ function Router() {
               <Route path={"/business/campaigns"} component={CampaignList} />
               <Route path={"/business/campaigns/new"} component={CampaignNew} />
               <Route path={"/business"} component={BusinessLanding} />
+              <Route path={"/pro"} component={ProLanding} />
               <Route path={"/business/audiences"} component={AudienceList} />
               <Route path={"/business/verification"} component={VerificationCenter} />
               <Route path={"/business/sampling"} component={Sampling} />

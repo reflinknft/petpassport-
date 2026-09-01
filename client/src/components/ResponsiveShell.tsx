@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
-import { Coins, Gift, Home, PawPrint, User } from "lucide-react";
+import { BriefcaseBusiness, Coins, Gift, Home, PawPrint, User } from "lucide-react";
 import BrandIcon from "./BrandIcon";
 import { useDemo } from "@/contexts/DemoContext";
 
@@ -46,6 +46,9 @@ export default function ResponsiveShell({ children }: { children: React.ReactNod
             <button onClick={() => navigate("/tasks")} className="hover:text-brand-purple transition-colors">任務</button>
             <button onClick={() => navigate("/rewards")} className="hover:text-brand-purple transition-colors">權益</button>
             <button onClick={() => navigate("/merchants")} className="hover:text-brand-purple transition-colors">商家</button>
+            <button onClick={() => navigate("/pro")} className="inline-flex items-center gap-2 rounded-full bg-brand-purple px-4 py-2 text-white shadow-md shadow-brand-purple/20 transition-transform active:scale-95">
+              <BriefcaseBusiness size={15} /> 寵業模式
+            </button>
           </nav>
           <div className="flex items-center gap-4">
             <button onClick={() => navigate("/wallet")} className="flex items-center gap-2 px-4 h-10 rounded-full bg-brand-lilac text-brand-purple-dark font-bold text-sm active:scale-95 transition-transform">

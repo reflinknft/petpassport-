@@ -1,8 +1,8 @@
 import { useLocation } from "wouter";
 import BrandIcon from "@/components/BrandIcon";
 import ProgressRing from "@/components/ProgressRing";
-import { ASSETS, BRAND_TASKS, CONTENTS, COURSES, MERCHANTS, PARTNERS, REWARDS } from "@/lib/data";
-import { ArrowRight, BarChart3, BookOpen, Coins, Gift, GraduationCap, HeartPulse, MapPin, PawPrint, QrCode, ShieldCheck, Sparkles, Star, Store, Target, TrendingUp, Users } from "lucide-react";
+import { CONTENTS, COURSES, MERCHANTS, PARTNERS, REWARDS } from "@/lib/data";
+import { ArrowRight, BookOpen, Coins, Gift, GraduationCap, HeartPulse, MapPin, PawPrint, ShieldCheck, Sparkles, Store, Target, Users } from "lucide-react";
 
 const HERO_PHONE = "/manus-storage/pet-jumi_ae641b54.png";
 
@@ -75,36 +75,6 @@ export default function DesktopHome() {
         </div>
       </section>
 
-      {/* 品牌成效 Dashboard 示意 */}
-      <section id="cases" className="py-16 bg-white/50">
-        <div className="max-w-6xl mx-auto px-8">
-          <div className="text-center">
-            <span className="journal-tab">品牌成效</span>
-            <h2 className="mt-4 text-4xl font-black text-brand-ink">即時掌握活動成效</h2>
-            <p className="mt-3 text-brand-sub max-w-xl mx-auto">從曝光、參加、驗證到核銷，每一筆資料都可追溯、可稽核。</p>
-          </div>
-          <div className="mt-10 paper-card p-8">
-            <div className="grid grid-cols-4 gap-6">
-              {[
-                { label: "曝光", value: "12,480", change: "+12%" },
-                { label: "參加", value: "3,240", change: "+8%" },
-                { label: "驗證通過", value: "2,890", change: "+15%" },
-                { label: "核銷", value: "1,240", change: "+22%" },
-              ].map((s) => (
-                <div key={s.label} className="text-center">
-                  <p className="text-sm text-muted-foreground">{s.label}</p>
-                  <p className="mt-1 text-2xl font-black text-brand-ink tabular">{s.value}</p>
-                  <p className="text-xs text-brand-mint font-bold">{s.change}</p>
-                </div>
-              ))}
-            </div>
-            <div className="mt-8 h-48 rounded-2xl bg-brand-lilac/50 flex items-center justify-center">
-              <BarChart3 size={48} className="text-brand-purple/40" />
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* 平台如何運作（四步驟） */}
       <section id="features" className="py-16 bg-white/50">
         <div className="max-w-6xl mx-auto px-8">
@@ -150,7 +120,7 @@ export default function DesktopHome() {
               { Icon: BookOpen, t: "內容任務", d: "閱讀 HEHO Pet 文章、完成問答驗驗證，邊學邊賺點。", c: "bg-brand-coral/10 text-brand-coral" },
               { Icon: GraduationCap, t: "課程任務", d: "毛小孩照護學院課程學習，完成試看或正式課程獲得高額點數。", c: "bg-brand-purple/10 text-brand-purple" },
               { Icon: Store, t: "到店消費", d: "出示會員 QR 碼，門店掃碼累積消費點數，首次到店加碼。", c: "bg-brand-mint/10 text-brand-mint" },
-              { Icon: TrendingUp, t: "品牌任務", d: "品牌贊助問卷、試用、影片觀看，精準媒合目標飼主。", c: "bg-brand-coral/10 text-brand-coral" },
+              { Icon: ShieldCheck, t: "健康提醒", d: "疫苗、驅蟲與日常照護提醒，幫飼主掌握重要時程。", c: "bg-brand-coral/10 text-brand-coral" },
             ].map(({ Icon, t, d, c }, i) => (
               <div key={t} className={`paper-card p-6 journal-enter journal-enter-${(i % 3) + 1}`}>
                 <div className={`w-12 h-12 rounded-2xl ${c} flex items-center justify-center`}>
@@ -259,48 +229,22 @@ export default function DesktopHome() {
         </div>
       </section>
 
-      {/* 品牌任務 */}
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-8">
-          <div className="text-center max-w-2xl mx-auto">
-            <span className="journal-tab">BRAND TASKS</span>
-            <h2 className="mt-4 text-4xl font-black gradient-title">品牌贊助任務</h2>
-            <p className="mt-3 text-brand-sub">品牌出資發布任務，飼主完成互動獲得點數。</p>
-          </div>
-          <div className="mt-10 grid md:grid-cols-2 gap-6">
-            {BRAND_TASKS.map((b, i) => (
-              <div key={b.id} className={`paper-card overflow-hidden journal-enter journal-enter-${i + 1}`}>
-                <img src={b.image} alt={b.brand} className="w-full h-44 object-cover" />
-                <div className="p-5">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-bold text-brand-coral">{b.brand} · 贊助</span>
-                    <span className="text-brand-coral font-black text-sm tabular">+{b.points} 點</span>
-                  </div>
-                  <h3 className="mt-3 font-black text-brand-ink">{b.title}</h3>
-                  <p className="mt-1 text-xs text-brand-sub">{b.audience}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* 成為大使 */}
       <section className="py-16 bg-gradient-to-br from-brand-purple to-brand-purple-dark text-white">
         <div className="max-w-4xl mx-auto px-8 text-center">
           <span className="journal-tab bg-white/20 text-white">AMBASSADOR</span>
           <h2 className="mt-4 text-4xl font-black">成為毛孩愛心大使</h2>
-          <p className="mt-3 text-white/80 max-w-xl mx-auto">推薦好友加入毛孩護照，每成功 1 人最高 +200 點，被推薦人首月任務點數再分潤 10-20%。</p>
+          <p className="mt-3 text-white/80 max-w-xl mx-auto">推薦好友加入毛孩護照，每成功 1 人即可獲得固定推薦點數，採單層分潤、無組織層級。</p>
           <div className="mt-10 grid sm:grid-cols-3 gap-6">
             {[
-              { level: "見習大使", req: "成功推薦 1 人", reward: "每推薦 1 人 +50 點" },
-              { level: "正式大使", req: "成功推薦 5 人", reward: "每推薦 1 人 +100 點，被推薦人首月 +10%" },
-              { level: "資深大使", req: "成功推薦 20 人", reward: "每推薦 1 人 +200 點，被推薦人首月 +20%" },
-            ].map((l, i) => (
-              <div key={l.level} className="bg-white/10 backdrop-blur rounded-2xl p-6 text-center journal-enter" style={{ animationDelay: `${i * 80}ms` }}>
-                <span className="inline-block px-3 py-1 rounded-full bg-white/20 text-xs font-bold">{l.level}</span>
-                <p className="mt-3 text-sm text-white/70">{l.req}</p>
-                <p className="mt-2 text-sm font-bold text-white">{l.reward}</p>
+              { title: "推薦註冊", desc: "好友完成註冊", reward: "+50 點" },
+              { title: "完成建檔", desc: "好友建立寵物檔案", reward: "+50 點" },
+              { title: "完成首任務", desc: "好友完成第一個任務", reward: "+100 點" },
+            ].map((item, i) => (
+              <div key={item.title} className="bg-white/10 backdrop-blur rounded-2xl p-6 text-center journal-enter" style={{ animationDelay: `${i * 80}ms` }}>
+                <span className="inline-block px-3 py-1 rounded-full bg-white/20 text-xs font-bold">{item.title}</span>
+                <p className="mt-3 text-sm text-white/70">{item.desc}</p>
+                <p className="mt-2 text-sm font-bold text-white">{item.reward}</p>
               </div>
             ))}
           </div>
@@ -342,72 +286,6 @@ export default function DesktopHome() {
         </div>
       </section>
 
-      {/* 方案 */}
-      <section id="plans" className="py-16 bg-white/50">
-        <div className="max-w-5xl mx-auto px-8">
-          <div className="text-center max-w-2xl mx-auto">
-            <span className="journal-tab">PLANS</span>
-            <h2 className="mt-4 text-4xl font-black gradient-title">選擇適合的方案</h2>
-            <p className="mt-3 text-brand-sub">從免費開始，或升級解鎖更多權益。</p>
-          </div>
-          <div className="mt-12 grid md:grid-cols-3 gap-6">
-            {[
-              { name: "Basic", price: "免費", desc: "開始累積毛孩點", features: ["每日照護任務", "基礎點數累積", "兌換入門權益", "廣告支持"], cta: "免費開始", primary: false },
-              { name: "Plus", price: "NT$99/月", desc: "解鎖完整體驗", features: ["無廣告", "點數加速 1.5x", "專屬品牌任務", "優先客服"], cta: "升級 Plus", primary: true },
-              { name: "商家", price: "洽談", desc: "品牌與門店合作", features: ["發布贊助任務", "點數採購", "核銷後台", "成效報表"], cta: "申請合作", primary: false },
-            ].map((p, i) => (
-              <div key={p.name} className={`paper-card p-6 text-center journal-enter journal-enter-${i + 1} ${p.primary ? "ring-2 ring-brand-purple shadow-xl shadow-brand-purple/20" : ""}`}>
-                {p.primary && <span className="inline-block px-3 py-1 rounded-full bg-brand-purple text-white text-[10px] font-bold mb-3">最受歡迎</span>}
-                <h3 className="font-black text-brand-ink text-lg">{p.name}</h3>
-                <p className="mt-1 text-2xl font-black text-brand-purple">{p.price}</p>
-                <p className="mt-1 text-xs text-brand-sub">{p.desc}</p>
-                <ul className="mt-5 space-y-2.5 text-sm text-brand-sub text-left">
-                  {p.features.map((f) => (
-                    <li key={f} className="flex items-center gap-2"><ShieldCheck size={14} className="text-brand-mint shrink-0" /> {f}</li>
-                  ))}
-                </ul>
-                <button className={`mt-6 w-full h-11 rounded-full font-bold text-sm active:scale-[0.97] transition-transform ${p.primary ? "bg-brand-purple text-white shadow-lg shadow-brand-purple/30" : "border-2 border-brand-purple/20 text-brand-purple-dark"}`}>
-                  {p.cta}
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 評價 */}
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-8">
-          <div className="text-center max-w-2xl mx-auto">
-            <span className="journal-tab">TESTIMONIALS</span>
-            <h2 className="mt-4 text-4xl font-black gradient-title">飼主怎麼說</h2>
-          </div>
-          <div className="mt-10 grid md:grid-cols-3 gap-6">
-            {[
-              { name: "陳小姐", pet: "貴賓犬 Jumi", text: "每天打卡變成習慣，點數真的換到洗護券，很實用！", stars: 5 },
-              { name: "林先生", pet: "英短 麻糬", text: "介面很可愛，任務設計讓我更注意貓咪的日常照護。", stars: 5 },
-              { name: "王小姐", pet: "米克斯 豆豆", text: "HEHO 文章看完還能拿點，學到很多熟齡犬知識。", stars: 4 },
-            ].map((t, i) => (
-              <div key={t.name} className={`paper-card p-6 journal-enter journal-enter-${i + 1}`}>
-                <div className="flex gap-1">
-                  {Array.from({ length: 5 }).map((_, j) => (
-                    <Star key={j} size={14} className={j < t.stars ? "text-brand-coral fill-brand-coral" : "text-border"} />
-                  ))}
-                </div>
-                <p className="mt-4 text-sm text-brand-ink leading-relaxed">「{t.text}」</p>
-                <div className="mt-4 flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-brand-lilac flex items-center justify-center font-black text-brand-purple">{t.name[0]}</div>
-                  <div>
-                    <p className="text-sm font-bold text-brand-ink">{t.name}</p>
-                    <p className="text-[10px] text-brand-sub">{t.pet}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="py-20 bg-gradient-to-br from-brand-purple to-brand-purple-dark text-white">
         <div className="max-w-3xl mx-auto px-8 text-center">
@@ -434,9 +312,7 @@ export default function DesktopHome() {
             </div>
           </div>
           <div className="flex items-center gap-6 text-xs font-bold text-brand-sub">
-            <button onClick={() => navigate("/business")} className="hover:text-brand-purple transition-colors">企業合作</button>
-            <button onClick={() => navigate("/merchant/login")} className="hover:text-brand-purple transition-colors">商家登入</button>
-            <button onClick={() => navigate("/admin/login")} className="hover:text-brand-purple transition-colors">平台營運</button>
+            <button onClick={() => navigate("/pro")} className="hover:text-brand-purple transition-colors">寵業模式</button>
           </div>
           <p className="text-xs text-brand-sub">© 2026 毛孩護照 Pet Passport. 僅供產品演示。</p>
         </div>
