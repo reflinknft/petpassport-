@@ -374,7 +374,7 @@ export const PARTNERS = [
 export interface Ambassador {
   id: string;
   name: string;
-  level: "見習大使" | "正式大使" | "資深大使";
+  role: "社群群主" | "寵物門店老闆" | "店長" | "寵物美容師";
   referralCode: string;
   referralLink: string;
   totalReferrals: number;
@@ -382,6 +382,7 @@ export interface Ambassador {
   totalPointsEarned: number;
   thisMonthPoints: number;
   joinDate: string;
+  commissionRate: number; // 固定分潤比例（如 0.1 = 10%）
 }
 
 export interface Referral {
@@ -396,7 +397,7 @@ export interface Referral {
 export const AMBASSADOR: Ambassador = {
   id: "amb1",
   name: "林小毛",
-  level: "正式大使",
+  role: "社群群主",
   referralCode: "MAO2026",
   referralLink: "https://petpassport.tw/r/MAO2026",
   totalReferrals: 12,
@@ -404,6 +405,7 @@ export const AMBASSADOR: Ambassador = {
   totalPointsEarned: 2400,
   thisMonthPoints: 350,
   joinDate: "2026/06/15",
+  commissionRate: 0.1,
 };
 
 export const REFERRALS: Referral[] = [
@@ -412,11 +414,12 @@ export const REFERRALS: Referral[] = [
   { id: "r3", name: "王小姐", petName: "米克斯 豆豆", joinDate: "2026/08/25", status: "已註冊", pointsEarned: 50 },
 ];
 
-/** 大使層級規則 */
-export const AMBASSADOR_LEVELS = [
-  { level: "見習大使", requirement: "成功推薦 1 人", reward: "每推薦 1 人 +50 點", color: "bg-brand-lilac text-brand-purple" },
-  { level: "正式大使", requirement: "成功推薦 5 人", reward: "每推薦 1 人 +100 點，被推薦人首月任務點數 +10%", color: "bg-brand-purple text-white" },
-  { level: "資深大使", requirement: "成功推薦 20 人", reward: "每推薦 1 人 +200 點，被推薦人首月任務點數 +20%，專屬客服", color: "bg-brand-coral text-white" },
+/** 專業工作者合作模式 */
+export const PROFESSIONAL_ROLES = [
+  { role: "社群群主", description: "經營寵物社群，推薦成員加入平台", commission: "固定 10% 分潤", color: "bg-brand-lilac text-brand-purple" },
+  { role: "寵物門店老闆", description: "推薦店內客戶加入平台，並提供店內核銷", commission: "固定 15% 分潤", color: "bg-brand-purple text-white" },
+  { role: "店長", description: "推薦店內客戶加入平台，並協助店內活動", commission: "固定 12% 分潤", color: "bg-brand-coral text-white" },
+  { role: "寵物美容師", description: "推薦客戶加入平台，並提供美容服務", commission: "固定 8% 分潤", color: "bg-brand-mint text-white" },
 ];
 
 /** 每日照護任務（場景二） */

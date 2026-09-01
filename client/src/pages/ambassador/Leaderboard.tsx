@@ -25,7 +25,7 @@ export default function Leaderboard() {
               </div>
               <div className="flex-1">
                 <p className="font-black text-lg">{AMBASSADOR.name}</p>
-                <p className="text-[11px] text-white/60">{AMBASSADOR.level} · 目前排名第 2</p>
+                <p className="text-[11px] text-white/60">{AMBASSADOR.role} · 目前排名第 2</p>
               </div>
               <span className="flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full bg-brand-coral/25 text-brand-coral">
                 <Crown size={12} /> 第 2 名

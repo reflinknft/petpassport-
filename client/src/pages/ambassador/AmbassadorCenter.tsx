@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useLocation } from "wouter";
 import { CheckCircle2, ChevronRight, Copy, Crown, Gift, Share2, TrendingUp, Users } from "lucide-react";
 import TopBar from "@/components/TopBar";
-import { AMBASSADOR_LEVELS } from "@/lib/data";
+import { AMBASSADOR } from "@/lib/data";
 import { useAsyncData } from "@/hooks/useAsyncData";
 import { api } from "@/lib/api";
 import { ListSkeleton, Skeleton } from "@/components/Skeleton";
@@ -63,10 +63,10 @@ export default function AmbassadorCenter() {
               </div>
               <div className="flex-1">
                 <p className="font-black text-lg">{ambassador?.name}</p>
-                <p className="text-[11px] text-white/60">{ambassador?.level} · 加入於 {ambassador?.joinDate}</p>
+                <p className="text-[11px] text-white/60">{ambassador?.role} · 加入於 {ambassador?.joinDate}</p>
               </div>
               <span className="flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full bg-brand-coral/25 text-brand-coral">
-                <Crown size={12} /> {ambassador?.level}
+                <Crown size={12} /> {ambassador?.role}
               </span>
             </div>
             <div className="mt-4 pt-4 border-t border-white/10 grid grid-cols-3 gap-4 text-center">
@@ -168,20 +168,18 @@ export default function AmbassadorCenter() {
           </div>
         </div>
 
-        {/* 層級規則 */}
+        {/* 合作模式 */}
         <div className="px-5 mt-6">
-          <h2 className="font-black text-brand-ink">大使層級</h2>
+          <h2 className="font-black text-brand-ink">合作模式</h2>
           <div className="mt-3 space-y-2.5">
-            {AMBASSADOR_LEVELS.map((l) => (
-              <div key={l.level} className={`paper-card p-4 ${l.level === ambassador?.level ? "ring-2 ring-brand-purple" : ""}`}>
-                <div className="flex items-center justify-between">
-                  <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold ${l.color}`}>{l.level}</span>
-                  {l.level === ambassador?.level && <span className="text-[10px] font-bold text-brand-purple">目前層級</span>}
-                </div>
-                <p className="mt-2 text-xs text-muted-foreground">{l.requirement}</p>
-                <p className="mt-1 text-xs font-bold text-brand-ink">{l.reward}</p>
+            <div className="paper-card p-4">
+              <div className="flex items-center justify-between">
+                <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-brand-purple text-white">單層分潤</span>
+                <span className="text-[10px] font-bold text-brand-purple">目前模式</span>
               </div>
-            ))}
+              <p className="mt-2 text-xs text-muted-foreground">每推薦 1 人成功註冊並完成首任務，即可獲得固定 100 點。</p>
+              <p className="mt-1 text-xs font-bold text-brand-ink">無組織層級，無多層次分潤。</p>
+            </div>
           </div>
         </div>
 
