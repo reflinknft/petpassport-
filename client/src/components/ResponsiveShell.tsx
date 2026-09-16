@@ -45,7 +45,7 @@ export default function ResponsiveShell({ children }: { children: React.ReactNod
             <button onClick={() => navigate("/")} className="hover:text-brand-purple transition-colors">首頁</button>
             <button onClick={() => navigate("/tasks")} className="hover:text-brand-purple transition-colors">任務</button>
             <button onClick={() => navigate("/rewards")} className="hover:text-brand-purple transition-colors">權益</button>
-            <button onClick={() => navigate("/merchants")} className="hover:text-brand-purple transition-colors">商家</button>
+            <button onClick={() => navigate("/merchants")} className="hover:text-brand-purple transition-colors">探索服務</button>
             <button onClick={() => navigate("/pro")} className="inline-flex items-center gap-2 rounded-full bg-brand-purple px-4 py-2 text-white shadow-md shadow-brand-purple/20 transition-transform active:scale-95">
               <BriefcaseBusiness size={15} /> 寵業模式
             </button>

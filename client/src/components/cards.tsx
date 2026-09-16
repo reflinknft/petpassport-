@@ -1,4 +1,4 @@
-import { ChevronRight, Clock3, MapPin, Stamp } from "lucide-react";
+import { BadgeCheck, ChevronRight, Clock3, MapPin, PawPrint, Stamp } from "lucide-react";
 import { useLocation } from "wouter";
 import type { Task, Reward, Merchant, Coupon } from "@/lib/data";
 
@@ -71,7 +71,7 @@ export function MerchantCard({ merchant, index = 0 }: { merchant: Merchant; inde
       onClick={() => navigate(`/merchants/${merchant.id}`)}
       className={`paper-card w-full text-left overflow-hidden flex active:scale-[0.98] transition-transform journal-enter journal-enter-${Math.min(index + 1, 5)}`}
     >
-      <img src={merchant.image} alt={merchant.name} className="w-24 h-24 object-cover shrink-0" />
+      <img src={merchant.image} alt={merchant.name} className="w-24 h-[132px] object-cover shrink-0" />
       <div className="flex-1 min-w-0 p-3">
         <div className="flex items-center gap-2">
           <p className="font-bold text-brand-ink truncate">{merchant.name}</p>
@@ -83,6 +83,15 @@ export function MerchantCard({ merchant, index = 0 }: { merchant: Merchant; inde
         <p className="text-[11px] text-muted-foreground mt-1 flex items-center gap-1">
           <MapPin size={11} /> {merchant.distance} · {merchant.hours}
         </p>
+        <div className="mt-2 flex items-center gap-1.5 flex-wrap">
+          <span className="inline-flex items-center gap-1 rounded-full bg-brand-mint/12 px-2 py-0.5 text-[10px] font-bold text-brand-mint">
+            <PawPrint size={10} /> 人寵友好
+          </span>
+          <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold ${merchant.verificationStatus === "已驗證" ? "bg-brand-lilac text-brand-purple-dark" : "bg-brand-coral/15 text-brand-coral"}`}>
+            <BadgeCheck size={10} /> {merchant.verificationStatus}
+          </span>
+        </div>
+        <p className="mt-2 text-[10px] leading-relaxed text-brand-sub line-clamp-2">{merchant.recommendationReasons[0]}</p>
       </div>
       <ChevronRight size={16} className="self-center mr-3 text-muted-foreground shrink-0" />
     </button>

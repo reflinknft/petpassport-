@@ -2,7 +2,7 @@ import { useLocation } from "wouter";
 import BrandIcon from "@/components/BrandIcon";
 import ProgressRing from "@/components/ProgressRing";
 import { CONTENTS, COURSES, MERCHANTS, PARTNERS, REWARDS } from "@/lib/data";
-import { ArrowRight, BookOpen, Coins, Gift, GraduationCap, HeartPulse, MapPin, PawPrint, ShieldCheck, Sparkles, Store, Target, Users } from "lucide-react";
+import { ArrowRight, BookOpen, Coins, Gift, GraduationCap, HeartPulse, MapPin, MessageCircle, PawPrint, Search, ShieldCheck, Sparkles, Store, Target, Users } from "lucide-react";
 
 const HERO_PHONE = "/manus-storage/pet-jumi_ae641b54.png";
 
@@ -21,7 +21,7 @@ export default function DesktopHome() {
             照顧毛孩，<br />也累積每一份回饋
           </h1>
           <p className="mt-5 text-lg text-brand-sub leading-relaxed max-w-xl mx-auto journal-enter journal-enter-2">
-            記錄每一次照護、完成任務、閱讀與上課，都能累積毛孩點，兌換洗護、健檢與用品優惠。
+            記錄每一次照護、完成任務、閱讀與上課；透過 LINE 與 AI 照護管家，探索適合人與毛孩的高頻生活服務。
           </p>
           <div className="mt-8 flex justify-center gap-4 journal-enter journal-enter-3">
             <button
@@ -121,6 +121,7 @@ export default function DesktopHome() {
               { Icon: GraduationCap, t: "課程任務", d: "毛小孩照護學院課程學習，完成試看或正式課程獲得高額點數。", c: "bg-brand-purple/10 text-brand-purple" },
               { Icon: Store, t: "到店消費", d: "出示會員 QR 碼，門店掃碼累積消費點數，首次到店加碼。", c: "bg-brand-mint/10 text-brand-mint" },
               { Icon: ShieldCheck, t: "健康提醒", d: "疫苗、驅蟲與日常照護提醒，幫飼主掌握重要時程。", c: "bg-brand-coral/10 text-brand-coral" },
+              { Icon: Search, t: "人寵友好服務", d: "依距離、服務需求、營業狀態與接待規範，推薦適合一起前往的服務商家。", c: "bg-brand-purple/10 text-brand-purple" },
             ].map(({ Icon, t, d, c }, i) => (
               <div key={t} className={`paper-card p-6 journal-enter journal-enter-${(i % 3) + 1}`}>
                 <div className={`w-12 h-12 rounded-2xl ${c} flex items-center justify-center`}>
@@ -171,28 +172,29 @@ export default function DesktopHome() {
           <div className="flex items-end justify-between">
             <div>
               <span className="journal-tab">MERCHANTS</span>
-              <h2 className="mt-4 text-4xl font-black gradient-title">合作商家</h2>
-              <p className="mt-3 text-brand-sub">洗護沙龍、用品店、動物醫院，消費即累點。</p>
+              <h2 className="mt-4 text-4xl font-black gradient-title">人寵友好服務推薦</h2>
+              <p className="mt-3 text-brand-sub">從洗護、醫療、用品到餐飲休憩，顯示接待規範與資料驗證狀態。</p>
             </div>
             <button onClick={() => navigate("/merchants")} className="hidden md:flex items-center gap-2 text-brand-purple font-bold text-sm">
               查看全部 <ArrowRight size={16} />
             </button>
           </div>
           <div className="mt-10 grid md:grid-cols-3 gap-6">
-            {MERCHANTS.map((m, i) => (
-              <div key={m.id} className={`paper-card overflow-hidden journal-enter journal-enter-${i + 1}`}>
+            {MERCHANTS.slice(0, 3).map((m, i) => (
+              <button key={m.id} onClick={() => navigate(`/merchants/${m.id}`)} className={`paper-card overflow-hidden text-left transition-transform active:scale-[0.98] journal-enter journal-enter-${i + 1}`}>
                 <img src={m.image} alt={m.name} className="w-full h-40 object-cover" />
                 <div className="p-5">
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-bold text-brand-mint bg-brand-mint/10 px-2 py-1 rounded-full">{m.category}</span>
+                    <span className="text-[10px] font-bold text-brand-mint bg-brand-mint/10 px-2 py-1 rounded-full">{m.category} · 人寵友好</span>
                     <span className="text-[10px] text-brand-sub flex items-center gap-1"><MapPin size={10} /> {m.distance}</span>
                   </div>
                   <h3 className="mt-3 font-black text-brand-ink">{m.name}</h3>
-                  <p className="mt-1 text-xs text-brand-sub">{m.branch}</p>
+                  <p className="mt-1 text-xs text-brand-sub">{m.branch} · {m.recommendationReasons[0]}</p>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
+          <button onClick={() => navigate("/line")} className="mt-8 flex w-full items-center justify-between rounded-[22px] bg-[#0e4d3f] p-5 text-left text-white shadow-xl shadow-brand-purple/15 transition-transform active:scale-[0.99]"><div className="flex items-center gap-3"><div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/15"><MessageCircle size={22} /></div><div><p className="font-black">LINE 毛孩護照已上線</p><p className="mt-1 text-xs text-white/70">AI 照護管家、健康紀錄、今日任務與探索服務都在 LINE 端。</p></div></div><ArrowRight size={18} /></button>
         </div>
       </section>
 

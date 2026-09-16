@@ -1,5 +1,5 @@
 import { useLocation } from "wouter";
-import { ChevronRight, Coins, FileText, Headset, QrCode, Store } from "lucide-react";
+import { BadgeCheck, ChevronRight, Coins, FileText, Headset, QrCode, Store } from "lucide-react";
 import BrandIcon from "@/components/BrandIcon";
 
 /** 商家工作台 */
@@ -17,6 +17,7 @@ export default function MerchantHome() {
     { icon: Coins, label: "消費發點", desc: "手動輸入消費金額", path: "/merchant/points/issue" },
     { icon: FileText, label: "核銷紀錄", desc: "查看今日與歷史紀錄", path: "/merchant/redemptions" },
     { icon: Headset, label: "異常申訴", desc: "提交證明與客服回覆", path: "/merchant/support" },
+    { icon: BadgeCheck, label: "人寵友好設定", desc: "維護接待規範與服務設施", path: "/merchant/friendly-profile" },
   ];
 
   return (
@@ -61,6 +62,10 @@ export default function MerchantHome() {
               <p className="mt-1 text-xs text-muted-foreground">{m.desc}</p>
             </button>
           ))}
+        </div>
+        <div className="mt-6 rounded-2xl border border-dashed border-brand-purple/25 bg-white/65 p-4">
+          <p className="text-sm font-black text-brand-ink">讓合適的飼主找到您的服務</p>
+          <p className="mt-1 text-xs leading-relaxed text-brand-sub">完成接待規範、服務設施與最後更新時間後，平台才能在探索服務與 AI 毛孩照護管家中清楚呈現您的商家資料。</p>
         </div>
       </div>
     </div>

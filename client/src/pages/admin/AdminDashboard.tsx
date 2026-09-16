@@ -1,5 +1,5 @@
 import { useLocation } from "wouter";
-import { Building2, ChevronRight, Coins, FileText, Headset, ShieldCheck, Store, Users } from "lucide-react";
+import { BadgeCheck, Building2, ChevronRight, Coins, FileText, Headset, ShieldCheck, Store, Users } from "lucide-react";
 import BrandIcon from "@/components/BrandIcon";
 
 /** 平台 Admin Dashboard */
@@ -22,6 +22,7 @@ export default function AdminDashboard() {
     { icon: Store, label: "票券與核銷", desc: "票券狀態、異常、取消／退款", path: "/admin/redemptions" },
     { icon: Headset, label: "客服", desc: "案件、SLA、補件、補償", path: "/admin/support" },
     { icon: FileText, label: "帳務結算", desc: "品牌預算、商家應付、平台收入", path: "/admin/settlement" },
+    { icon: BadgeCheck, label: "人寵友好資料審核", desc: "接待規範、設施、驗證與推薦狀態", path: "/admin/pet-friendly" },
   ];
 
   return (

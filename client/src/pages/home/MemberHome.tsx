@@ -15,7 +15,7 @@ export default function MemberHome() {
   const { data: dailyTasks, loading: dailyLoading } = useAsyncData(() => api.getDailyTasks());
   const { data: tasks, loading: tasksLoading } = useAsyncData(() => api.getTasks());
   const { data: rewards, loading: rewardsLoading } = useAsyncData(() => api.getRewards());
-  const { data: merchants, loading: merchantsLoading } = useAsyncData(() => api.getMerchants());
+  const { data: recommendations, loading: recommendationsLoading } = useAsyncData(() => api.getPetFriendlyRecommendations());
   const { data: contents, loading: contentsLoading } = useAsyncData(() => api.getContents());
   const { data: courses, loading: coursesLoading } = useAsyncData(() => api.getCourses());
   const { data: brandTasks, loading: brandTasksLoading } = useAsyncData(() => api.getBrandTasks());
@@ -26,7 +26,7 @@ export default function MemberHome() {
   const dailyTotal = dailyTasks?.length ?? 0;
   const dailyPercent = dailyTotal > 0 ? Math.round((dailyDone / dailyTotal) * 100) : 0;
 
-  if (dailyLoading || tasksLoading || rewardsLoading || merchantsLoading || contentsLoading || coursesLoading || brandTasksLoading || healthLoading) {
+  if (dailyLoading || tasksLoading || rewardsLoading || recommendationsLoading || contentsLoading || coursesLoading || brandTasksLoading || healthLoading) {
     return (
       <div className="min-h-full bg-brand-cream">
         <div className="px-5 pt-4 flex items-center justify-between">
@@ -223,19 +223,23 @@ export default function MemberHome() {
         </div>
       </section>
 
-      {/* 附近商家 */}
+      {/* 人寵友好服務推薦 */}
       <section className="px-5 mt-6">
         <div className="flex items-center justify-between">
-          <h2 className="font-black text-brand-ink flex items-center gap-1.5"><MapPin size={16} className="text-brand-purple" /> 附近商家</h2>
+          <div>
+            <h2 className="font-black text-brand-ink flex items-center gap-1.5"><MapPin size={16} className="text-brand-purple" /> 人寵友好服務推薦</h2>
+            <p className="mt-0.5 text-[10px] text-brand-sub">依距離、營業狀態與 {currentPet.name} 的需求推薦</p>
+          </div>
           <button onClick={() => navigate("/merchants")} className="text-xs font-bold text-brand-purple flex items-center">
             全部 <ChevronRight size={14} />
           </button>
         </div>
         <div className="mt-3 space-y-3">
-          {merchants?.slice(0, 2).map((m, i) => (
+          {recommendations?.slice(0, 2).map((m, i) => (
             <MerchantCard key={m.id} merchant={m} index={i} />
           ))}
         </div>
+        <button onClick={() => navigate("/merchants")} className="mt-3 w-full rounded-xl bg-brand-lilac/75 px-4 py-3 text-left text-xs font-bold text-brand-purple-dark transition-transform active:scale-[0.98]">探索更多人寵友好場域與服務 →</button>
       </section>
 
       {/* HEHO 精選 / 推薦課程 */}
@@ -276,6 +280,14 @@ export default function MemberHome() {
             <p className="text-[11px] text-muted-foreground">問問「點數快到期怎麼用？」</p>
           </div>
           <ChevronRight size={16} className="ml-auto text-muted-foreground" />
+        </button>
+        <button
+          onClick={() => navigate("/line")}
+          className="mt-3 w-full rounded-xl bg-[#0e4d3f] p-3.5 flex items-center gap-3 text-left text-white active:scale-[0.98] transition-transform"
+        >
+          <div className="w-9 h-9 rounded-xl bg-white/15 flex items-center justify-center shrink-0"><Sparkles size={17} /></div>
+          <div><p className="text-sm font-bold">LINE 毛孩護照</p><p className="text-[10px] text-white/70">AI 照護管家、健康紀錄、任務與探索服務</p></div>
+          <ChevronRight size={16} className="ml-auto text-white/70" />
         </button>
       </section>
 

@@ -76,6 +76,16 @@ export interface Merchant {
   image: string;
   open: boolean;
   services: string[];
+  petTypes: string[];
+  sizePolicy: string;
+  friendlyFeatures: string[];
+  booking: string;
+  friendlyNotes: string;
+  lastVerified: string;
+  dataSource: string;
+  recommendationScore: number;
+  recommendationReasons: string[];
+  verificationStatus: "已驗證" | "待確認";
 }
 
 export interface Transaction {
@@ -275,6 +285,16 @@ export const MERCHANTS: Merchant[] = [
     image: ASSETS.storeGrooming,
     open: true,
     services: ["全身洗護", "基礎美容", "SPA 護理"],
+    petTypes: ["犬", "貓"],
+    sizePolicy: "全體型皆可，建議大型犬先預約",
+    friendlyFeatures: ["等候區可帶毛孩", "飲水站", "防滑地墊"],
+    booking: "建議先預約",
+    friendlyNotes: "到店請使用牽繩或提籠；敏感毛孩可預約安靜時段。",
+    lastVerified: "2026/09/12",
+    dataSource: "商家自填，平台複核",
+    recommendationScore: 96,
+    recommendationReasons: ["距離 Jumi 1.2 km，現正營業", "提供小型犬友善洗護與安靜等候區"],
+    verificationStatus: "已驗證",
   },
   {
     id: "m2",
@@ -288,6 +308,16 @@ export const MERCHANTS: Merchant[] = [
     image: ASSETS.storeSupplies,
     open: true,
     services: ["用品零售", "鮮食吧", "自助洗"],
+    petTypes: ["犬", "貓"],
+    sizePolicy: "全體型皆可，入店請牽繩或使用提籠",
+    friendlyFeatures: ["毛孩飲水站", "自助洗區", "寬敞走道"],
+    booking: "可直接到店",
+    friendlyNotes: "鮮食吧外側設有可短暫休息的毛孩座位，尖峰時段建議避開。",
+    lastVerified: "2026/09/10",
+    dataSource: "商家自填，平台複核",
+    recommendationScore: 88,
+    recommendationReasons: ["適合日常補給與自助洗", "可攜帶犬貓入店，距離 3.5 km"],
+    verificationStatus: "已驗證",
   },
   {
     id: "m3",
@@ -301,6 +331,62 @@ export const MERCHANTS: Merchant[] = [
     image: ASSETS.storeVet,
     open: false,
     services: ["一般門診", "健康檢查", "疫苗施打"],
+    petTypes: ["犬", "貓"],
+    sizePolicy: "犬貓皆可，建議使用牽繩或提籠",
+    friendlyFeatures: ["分流候診區", "熟齡健康諮詢", "無障礙入口"],
+    booking: "建議先預約",
+    friendlyNotes: "目前休息中；緊急情況請先電話確認可否收診。",
+    lastVerified: "2026/09/08",
+    dataSource: "商家自填，平台複核",
+    recommendationScore: 76,
+    recommendationReasons: ["適合安排 Jumi 的健康檢查", "設有犬貓分流候診區"],
+    verificationStatus: "已驗證",
+  },
+  {
+    id: "m4",
+    name: "小日子人寵友好咖啡",
+    branch: "台北松山店",
+    category: "餐飲休憩",
+    distance: "1.8 km",
+    hours: "09:30–18:30",
+    phone: "02-2766-8808",
+    address: "台北市松山區民生東路五段 88 號",
+    image: ASSETS.heroPets,
+    open: true,
+    services: ["人寵共食座位", "毛孩鮮食", "室內休憩"],
+    petTypes: ["犬", "貓"],
+    sizePolicy: "小型犬可落地，中大型犬請使用牽繩並依現場安排座位",
+    friendlyFeatures: ["室內人寵共食區", "飲水碗", "寵物停靠掛鉤"],
+    booking: "假日建議先預約",
+    friendlyNotes: "毛孩需保持不干擾其他客人；發情期或具攻擊性的毛孩請先聯繫店家。",
+    lastVerified: "2026/09/14",
+    dataSource: "商家自填，平台複核",
+    recommendationScore: 92,
+    recommendationReasons: ["距離近且現正營業", "Jumi 可在室內人寵共食區一起休息"],
+    verificationStatus: "已驗證",
+  },
+  {
+    id: "m5",
+    name: "森野毛孩散步所",
+    branch: "台北中山店",
+    category: "戶外活動",
+    distance: "2.7 km",
+    hours: "08:00–19:00",
+    phone: "02-2588-0220",
+    address: "台北市中山區新生北路二段 120 巷 8 號",
+    image: ASSETS.storeSupplies,
+    open: true,
+    services: ["散步集合", "基礎社會化", "戶外用品選物"],
+    petTypes: ["犬"],
+    sizePolicy: "小型至中型犬適用，第一次參加請完成性格問卷",
+    friendlyFeatures: ["飲水補給", "遮蔭休息區", "活動前分流"],
+    booking: "首次參加需預約",
+    friendlyNotes: "以安全距離與小團活動為原則；不建議傳染病症狀中的毛孩參與。",
+    lastVerified: "2026/08/28",
+    dataSource: "商家自填，待平台複核",
+    recommendationScore: 81,
+    recommendationReasons: ["適合完成每日散步與社會化需求", "設有小型犬分流與遮蔭休息區"],
+    verificationStatus: "待確認",
   },
 ];
 

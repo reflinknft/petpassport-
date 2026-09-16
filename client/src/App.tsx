@@ -63,6 +63,7 @@ import Sampling from "./pages/business/Sampling";
 import Reports from "./pages/business/Reports";
 import MerchantLogin from "./pages/merchant/MerchantLogin";
 import MerchantHome from "./pages/merchant/MerchantHome";
+import MerchantFriendlyProfile from "./pages/merchant/MerchantFriendlyProfile";
 import MerchantRedemptions from "./pages/merchant/MerchantRedemptions";
 import MerchantIssuePoints from "./pages/merchant/MerchantIssuePoints";
 import MerchantSupport from "./pages/merchant/MerchantSupport";
@@ -78,7 +79,9 @@ import AdminSupport from "./pages/admin/AdminSupport";
 import AdminSettlement from "./pages/admin/AdminSettlement";
 import AdminSettings from "./pages/admin/AdminSettings";
 import AdminAudit from "./pages/admin/AdminAudit";
+import AdminPetFriendlyReview from "./pages/admin/AdminPetFriendlyReview";
 import Consent from "./pages/me/Consent";
+import LineServiceHub from "./pages/line/LineServiceHub";
 
 function Router() {
   return (
@@ -119,6 +122,7 @@ function Router() {
               <Route path={"/coupons/:id/redeemed"} component={Redeemed} />
               <Route path={"/merchants"} component={MerchantList} />
               <Route path={"/merchants/:id"} component={MerchantDetail} />
+              <Route path={"/line"} component={LineServiceHub} />
               <Route path={"/me"} component={MemberCenter} />
               <Route path={"/settings"} component={Settings} />
               <Route path={"/ai"} component={AiAssistant} />
@@ -141,6 +145,7 @@ function Router() {
               <Route path={"/business/reports"} component={Reports} />
               <Route path={"/merchant/login"} component={MerchantLogin} />
               <Route path={"/merchant/home"} component={MerchantHome} />
+              <Route path={"/merchant/friendly-profile"} component={MerchantFriendlyProfile} />
               <Route path={"/merchant/redemptions"} component={MerchantRedemptions} />
               <Route path={"/merchant/points/issue"} component={MerchantIssuePoints} />
               <Route path={"/merchant/support"} component={MerchantSupport} />
@@ -156,6 +161,7 @@ function Router() {
               <Route path={"/admin/settlement"} component={AdminSettlement} />
               <Route path={"/admin/settings"} component={AdminSettings} />
               <Route path={"/admin/audit"} component={AdminAudit} />
+              <Route path={"/admin/pet-friendly"} component={AdminPetFriendlyReview} />
               <Route path={"/consent"} component={Consent} />
               <Route path={"/favorites"} component={MemberCenter} />
               <Route path={"/support"} component={MemberCenter} />

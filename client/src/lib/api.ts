@@ -32,6 +32,16 @@ export const api = {
   // 商家
   getMerchants: async () => { await delay(); return MERCHANTS; },
   getMerchant: async (id: string) => { await delay(); return MERCHANTS.find((m) => m.id === id); },
+  getPetFriendlyRecommendations: async (options?: { category?: string; openOnly?: boolean }) => {
+    await delay();
+    return MERCHANTS
+      .filter((merchant) => {
+        const categoryMatch = !options?.category || options.category === "全部" || merchant.category === options.category;
+        const openMatch = !options?.openOnly || merchant.open;
+        return categoryMatch && openMatch;
+      })
+      .sort((a, b) => b.recommendationScore - a.recommendationScore);
+  },
 
   // 交易
   getTransactions: async () => { await delay(); return TRANSACTIONS; },

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Send, Sparkles, Stethoscope } from "lucide-react";
+import { MapPin, Send, Sparkles, Stethoscope } from "lucide-react";
 import { useLocation } from "wouter";
 import TopBar from "@/components/TopBar";
 import { useDemo } from "@/contexts/DemoContext";
@@ -11,7 +11,7 @@ interface Msg {
   disclaimer?: boolean;
 }
 
-const QUICK = ["最近適合做什麼任務？", "點數快到期怎麼用？", "附近有哪些洗護優惠？"];
+const QUICK = ["最近適合做什麼任務？", "點數快到期怎麼用？", "附近有哪些人寵友好服務？"];
 
 /** P39 AI 毛孩助手（預設情境） */
 export default function AiAssistant() {
@@ -43,6 +43,16 @@ export default function AiAssistant() {
         cards: [{ label: "寵物用品 95 折券", path: "/rewards/r3" }],
       };
     }
+    if (q.includes("人寵") || q.includes("友好") || q.includes("一起") || q.includes("附近")) {
+      return {
+        role: "ai",
+        text: `依 ${currentPet.name} 的犬種、目前位置與營業狀態，我找到 3 個人寵友好服務。最適合今天的是「小日子人寵友好咖啡」：距離 1.8 km、現正營業，提供室內人寵共食區與飲水碗。`,
+        cards: [
+          { label: "查看人寵友好推薦", path: "/merchants" },
+          { label: "小日子人寵友好咖啡", path: "/merchants/m4" },
+        ],
+      };
+    }
     if (q.includes("洗護")) {
       return {
         role: "ai",
@@ -55,7 +65,7 @@ export default function AiAssistant() {
     }
     return {
       role: "ai",
-      text: "這個問題我先用照護資訊協助您。若涉及醫療症狀，建議諮詢獸醫師；我也可以幫您找附近的合作動物醫院。",
+      text: "這個問題我先用照護資訊協助您。若涉及醫療症狀，建議諮詢獸醫師；我也可以幫您找附近具備犬貓分流候診區的合作動物醫院。",
       cards: [{ label: "安心動物醫院", path: "/merchants/m3" }],
       disclaimer: true,
     };
@@ -77,6 +87,12 @@ export default function AiAssistant() {
           <span className="text-xs font-bold text-brand-ink">正在為 {currentPet.name} 推薦</span>
           <Sparkles size={13} className="text-brand-purple ml-auto" />
         </div>
+        <button
+          onClick={() => send("附近有哪些人寵友好服務？")}
+          className="mt-2 flex w-full items-center gap-2 rounded-xl border border-brand-purple/15 bg-white/70 px-3 py-2 text-left text-[11px] font-bold text-brand-purple-dark transition-transform active:scale-[0.98]"
+        >
+          <MapPin size={13} className="text-brand-purple" /> 探索適合 {currentPet.name} 的人寵友好服務 <span className="ml-auto">→</span>
+        </button>
       </div>
 
       {/* 對話區 */}
@@ -100,7 +116,7 @@ export default function AiAssistant() {
               )}
               {m.disclaimer && (
                 <p className="mt-2 text-[10px] text-muted-foreground flex items-start gap-1">
-                  <Stethoscope size={11} className="shrink-0 mt-0.5" /> AI 建議僅供參考，不構成醫療診斷；資料來源：您的寵物檔案與平台任務規則。推薦內容可能包含商業贊助，已明確標示。
+                  <Stethoscope size={11} className="shrink-0 mt-0.5" /> AI 建議僅供參考，不構成醫療診斷；資料來源：寵物檔案、平台規則與已驗證服務資料。推薦內容可能包含商業贊助，已明確標示。
                 </p>
               )}
             </div>
