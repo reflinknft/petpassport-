@@ -8,6 +8,7 @@ export const ASSETS = {
   logoIcon: "/manus-storage/logo-icon_f1e68a12.png",
   petJumi: "/manus-storage/pet-jumi_ae641b54.png",
   petMochi: "/manus-storage/pet-mochi_33cf73f9.png",
+  lineAiQr: "/manus-storage/line-ai-health-qr_bab98526.png",
   heroPets: "/manus-storage/hero-pets_dcd4ab81.png",
   rewardGrooming: "/manus-storage/reward-grooming_8cf75630.png",
   rewardHealth: "/manus-storage/reward-health_ce7682af.png",

@@ -1,7 +1,7 @@
 import { useLocation } from "wouter";
 import BrandIcon from "@/components/BrandIcon";
 import ProgressRing from "@/components/ProgressRing";
-import { CONTENTS, COURSES, MERCHANTS, PARTNERS, REWARDS } from "@/lib/data";
+import { ASSETS, CONTENTS, COURSES, MERCHANTS, PARTNERS, REWARDS } from "@/lib/data";
 import { ArrowRight, BookOpen, Coins, Gift, GraduationCap, HeartPulse, MapPin, MessageCircle, PawPrint, Search, ShieldCheck, Sparkles, Store, Target, Users } from "lucide-react";
 
 const HERO_PHONE = "/manus-storage/pet-jumi_ae641b54.png";
@@ -33,6 +33,16 @@ export default function DesktopHome() {
             <a href="#features" className="h-13 px-8 rounded-full border-2 border-brand-purple/20 font-bold text-brand-purple-dark flex items-center active:scale-[0.97] transition-transform">
               了解平台功能
             </a>
+          </div>
+          <div className="mt-6 mx-auto flex max-w-sm items-center gap-4 rounded-[24px] border border-brand-purple/10 bg-white/85 p-3 text-left shadow-lg shadow-brand-purple/10 backdrop-blur-sm journal-enter journal-enter-4">
+            <div className="shrink-0 rounded-2xl bg-white p-1.5 shadow-sm ring-1 ring-brand-mint/20">
+              <img src={ASSETS.lineAiQr} alt="加入毛孩護照 LINE AI 毛孩健康助手的 QR Code" className="h-24 w-24 rounded-xl object-contain" />
+            </div>
+            <div className="min-w-0">
+              <p className="text-[10px] font-black tracking-[0.14em] text-brand-mint">LINE AI HEALTH ASSISTANT</p>
+              <p className="mt-1 text-sm font-black text-brand-ink">掃描加入毛孩護照 LINE</p>
+              <p className="mt-1 text-xs leading-relaxed text-brand-sub">直接使用 AI 毛孩健康助手，取得日常照護與服務推薦。</p>
+            </div>
           </div>
         </div>
         <div className="relative max-w-5xl mx-auto px-8 mt-10 journal-enter journal-enter-4">

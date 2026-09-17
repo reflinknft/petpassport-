@@ -2,6 +2,7 @@ import { Bot, ChevronRight, ClipboardCheck, Coins, HeartPulse, MessageCircle, Se
 import { useLocation } from "wouter";
 import TopBar from "@/components/TopBar";
 import { useDemo } from "@/contexts/DemoContext";
+import { ASSETS } from "@/lib/data";
 
 const ENTRIES = [
   { label: "問 AI 健康專家", desc: "日常照護、問題整理與服務推薦", path: "/ai", Icon: Bot, tone: "bg-brand-purple text-white" },
@@ -35,6 +36,19 @@ export default function LineServiceHub() {
           <div className="flex items-center gap-3"><div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-purple text-white"><Bot size={22} /></div><div className="min-w-0 flex-1"><div className="flex items-center gap-2"><p className="font-black text-brand-ink">AI 毛孩照護管家</p><span className="rounded-full bg-brand-mint/15 px-2 py-0.5 text-[9px] font-bold text-brand-mint">已上線・持續優化</span></div><p className="mt-0.5 text-[11px] text-brand-sub">先整理情境，再提供照護資訊與服務入口。</p></div><ChevronRight size={17} className="text-brand-sub" /></div>
           <div className="mt-3 flex items-center gap-2 rounded-xl bg-brand-lilac/70 p-2.5 text-[10px] leading-relaxed text-brand-ink"><ShieldCheck size={14} className="shrink-0 text-brand-mint" /> 高風險或症狀問題會提醒諮詢獸醫；AI 不取代醫療診斷。</div>
         </button>
+      </section>
+
+      <section className="px-5 pt-4">
+        <div className="flex items-center gap-4 rounded-[24px] bg-[#0e4d3f] p-4 text-white shadow-lg shadow-brand-purple/15">
+          <div className="shrink-0 rounded-2xl bg-white p-1.5">
+            <img src={ASSETS.lineAiQr} alt="加入毛孩護照 LINE AI 毛孩健康助手的 QR Code" className="h-24 w-24 rounded-xl object-contain" />
+          </div>
+          <div className="min-w-0">
+            <p className="text-[10px] font-bold tracking-[0.14em] text-brand-mint">SCAN TO JOIN LINE</p>
+            <p className="mt-1 text-base font-black">AI 毛孩健康助手</p>
+            <p className="mt-1 text-[11px] leading-relaxed text-white/75">掃描加入毛孩護照 LINE，從對話開始記錄與照護毛孩。</p>
+          </div>
+        </div>
       </section>
 
       <section className="px-5 pt-6">
